@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import AnchorTemporaryDrawer from './AccountSideBar';
 import logo from '../assets/deliverooLogo.svg';
 import home from '../assets/home.png';
 
 const Header = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const toggleDrawer = (isOpen: boolean) => {
-    setDrawerOpen(isOpen);
-  };
 
   return (
     <div
