@@ -4,6 +4,7 @@ import Drawer from '@mui/material/Drawer';
 import logo from '../assets/deliverooLogo.svg';
 import cross from '../assets/cancel (1).png';
 import { Link } from 'react-router-dom';
+import account from '../assets/account.png';
 
 
 type Anchor = 'right';
@@ -47,7 +48,10 @@ export default function AnchorTemporaryDrawer() {
     <div>
       {(['right'] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <button onClick={toggleDrawer(anchor, true)}>Account</button>
+            <button onClick={toggleDrawer(anchor, true)} style={{height: '2.5rem',width: '110%', backgroundColor: 'white', borderRadius: '0.3rem',display:"flex", flexDirection: 'row', alignItems: 'center', justifyContent:"center"}}>
+                <img src={account} style={{width: '15px',height: '15px',paddingRight: '0.4rem'}}/>
+                Account
+            </button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

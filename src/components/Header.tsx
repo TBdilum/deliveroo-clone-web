@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AnchorTemporaryDrawer from './AccountSideBar';
-import logo from '../assets/deliverooLogo.svg'
+import logo from '../assets/deliverooLogo.svg';
+import home from '../assets/home.png';
 
 const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const toggleDrawer = (isOpen) => {
+  const toggleDrawer = (isOpen: boolean) => {
     setDrawerOpen(isOpen);
   };
 
@@ -18,18 +19,19 @@ const Header = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px',
+        borderBottom: '0.5px solid black',
+        width: '100vw',
+        boxSizing: 'border-box',
       }}
     >
-      {/* Logo */}
-      <div>
+      <div style={{ paddingRight: '10rem',paddingLeft: '2rem',paddingTop: '0.5rem' }}>
         <Link to="/">
           <img src={logo} alt="Deliveroo Logo" />
         </Link>
       </div>
 
-      {/* Search Bar */}
-      <div className="search-bar" style={{ position: 'relative', width: '200px' }}>
-      <span
+      <div className="search-bar" style={{ position: 'relative', flex: 1 }}>
+        <span
           style={{
             position: 'absolute',
             right: '10px',
@@ -45,23 +47,47 @@ const Header = () => {
           type="text"
           placeholder="Search Tossed - St Martin's Lane"
           style={{
+            borderRadius: '0.3rem',
             width: '100%',
-            padding: '10px 40px 10px 10px', // Add padding for the icon
+            padding: '10px 40px 10px 10px',
             boxSizing: 'border-box',
           }}
         />
       </div>
 
-      {/* Buttons */}
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <div style={{ marginRight: '2rem' }}>
-          <Link to="/SignPage">
-            <button>Sign Up or Login</button>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          paddingLeft: '15rem',
+          paddingRight: '4rem',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <div style={{ marginRight: '2rem', width: '100%' }}>
+          <Link to="/SignPage" style={{
+              textDecoration: 'none',
+            }}>
+            <button
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                height: '2.5rem',
+                width: '110%',
+                backgroundColor: 'white',
+                borderRadius: '0.3rem',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+                <img src={home} style={{width: '15px',height: '15px',paddingRight: '0.4rem'}}/>
+              Sign Up or Login
+            </button>
           </Link>
         </div>
 
         <div>
-          <AnchorTemporaryDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
+          <AnchorTemporaryDrawer />
         </div>
       </div>
     </div>
