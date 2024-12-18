@@ -48,7 +48,7 @@ export default function AnchorTemporaryDrawer() {
     <div>
       {(['right'] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-            <button onClick={toggleDrawer(anchor, true)} style={{height: '2.5rem',width: '110%', backgroundColor: 'white', borderRadius: '0.3rem',display:"flex", flexDirection: 'row', alignItems: 'center', justifyContent:"center"}}>
+            <button onClick={toggleDrawer(anchor, true)} style={{height: '2.5rem',width: '110%', backgroundColor: 'white', borderRadius: '0.3rem',display:"flex", flexDirection: 'row', alignItems: 'center', justifyContent:"center", border: '1px solid #D8D8D8'}}>
                 <img src={account} style={{width: '15px',height: '15px',paddingRight: '0.4rem'}}/>
                 Account
             </button>

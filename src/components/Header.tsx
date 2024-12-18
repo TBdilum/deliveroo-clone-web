@@ -31,7 +31,7 @@ const Header = () => {
             right: '10px',
             top: '50%',
             transform: 'translateY(-50%)',
-            color: '#aaa',
+            color: '#D8D8D8',
             cursor: 'pointer',
           }}
         >
@@ -45,6 +45,7 @@ const Header = () => {
             width: '100%',
             padding: '10px 40px 10px 10px',
             boxSizing: 'border-box',
+            border: '1px solid #D8D8D8'
           }}
         />
       </div>
@@ -72,6 +73,7 @@ const Header = () => {
                 borderRadius: '0.3rem',
                 justifyContent: 'center',
                 alignItems: 'center',
+                border: '1px solid #D8D8D8'
               }}
             >
                 <img src={home} style={{width: '15px',height: '15px',paddingRight: '0.4rem'}}/>
