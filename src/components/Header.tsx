@@ -16,6 +16,10 @@ const Header = () => {
         borderBottom: '0.5px solid black',
         width: '100vw',
         boxSizing: 'border-box',
+        position: 'sticky',
+         top: '0',
+        zIndex: '10',
+        backgroundColor: 'white'
       }}
     >
       <div style={{ paddingRight: '10rem',paddingLeft: '2rem',paddingTop: '0.5rem' }}>
