@@ -28,24 +28,23 @@ const MostPopularItems = ({ mostPopularItems }: MostPopularItemsProps) => {
   return (
     <div
       style={{
-        padding: "1rem 4rem",
-        backgroundColor: "#f9f9f9",
+        padding: "1rem 4rem 0rem 0rem",
+        backgroundColor: "transparent",
+        width: "100%",
+        height: "auto",
         position: "relative",
-        width: "1120px",
-        height: "320px",
       }}
     >
       <h2 style={{ fontSize: "2rem", marginBottom: "1.5rem" }}>
         Most Popular Items
       </h2>
 
-      {/* Scroll Buttons */}
       <button
         onClick={() => scroll("left")}
         style={{
           position: "absolute",
           top: "50%",
-          left: "-1.5rem",
+          left: "0",
           transform: "translateY(-50%)",
           background: "rgba(255, 255, 255, 0.8)",
           border: "1px solid #ddd",
@@ -62,7 +61,7 @@ const MostPopularItems = ({ mostPopularItems }: MostPopularItemsProps) => {
         style={{
           position: "absolute",
           top: "50%",
-          right: "-1.5rem",
+          right: "0",
           transform: "translateY(-50%)",
           background: "rgba(255, 255, 255, 0.8)",
           border: "1px solid #ddd",
@@ -75,68 +74,110 @@ const MostPopularItems = ({ mostPopularItems }: MostPopularItemsProps) => {
         ▶
       </button>
 
-      {/* Scrollable Container */}
       <div
-        ref={containerRef}
         style={{
-          display: "flex",
-          overflowX: "auto",
-          whiteSpace: "nowrap",
-          scrollBehavior: "smooth",
-          gap: "1.5rem",
-          padding: "3rem 0",
+          position: "relative",
         }}
       >
-        {mostPopularItems.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              flex: "0 0 auto",
-              width: "123px",
-              border: "1px solid #ddd",
-              borderRadius: "8px",
-              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-              backgroundColor: "white",
-              textAlign: "center",
-            }}
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              style={{ width: "123px", height: "123px", objectFit: "cover" }}
-            />
-            <div style={{ padding: "0.6rem" }}>
-              <h3
+        <div
+          ref={containerRef}
+          style={{
+            display: "flex",
+            overflowX: "auto",
+            whiteSpace: "nowrap",
+            scrollBehavior: "smooth",
+            gap: "1.5rem",
+            padding: "1rem 0rem 2rem",
+          }}
+        >
+          {mostPopularItems.map((item) => (
+            <div
+              key={item.id}
+              style={{
+                flex: "0 0 auto",
+                width: "123px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+                backgroundColor: "white",
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <img
+                src={item.image}
+                alt={item.name}
                 style={{
-                  fontSize: "0.9rem",
-                  margin: "0 0 0.5rem",
-                  fontWeight: "bold",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
+                  width: "123px",
+                  height: "123px",
+                  objectFit: "cover",
                 }}
-              >
-                {item.name}
-              </h3>
-              <p style={{ fontSize: "1rem", margin: "0" }}>{item.price}</p>
-              <button
+              />
+              <div style={{ padding: "0.6rem", flexGrow: 1 }}>
+                <h3
+                  style={{
+                    fontSize: "0.9rem",
+                    margin: "0 0 0.5rem",
+                    fontWeight: "bold",
+                    overflow: "hidden",
+                    whiteSpace: "normal",
+                    wordWrap: "break-word",
+                    textAlign: "center",
+                  }}
+                >
+                  {item.name}
+                </h3>
+              </div>
+              <div
                 style={{
-                  width: "100%",
-                  marginTop: "0.5rem",
                   padding: "0.5rem",
-                  borderRadius: "4px",
-                  border: "none",
-                  backgroundColor: "#00b8a9",
-                  color: "white",
-                  fontWeight: "bold",
-                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
-                +
-              </button>
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    margin: "0 0 0.5rem",
+                    fontWeight: "bold",
+                    color: "#333",
+                  }}
+                >
+                  {item.price}
+                </p>
+                <button
+                  style={{
+                    width: "100%",
+                    padding: "0.5rem",
+                    borderRadius: "4px",
+                    border: "none",
+                    backgroundColor: "#00b8a9",
+                    color: "white",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                >
+                  +
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "150px",
+            height: "100%",
+            background:
+              "linear-gradient(to left, rgb(255, 255, 255), rgba(255, 255, 255, 0.3))",
+            pointerEvents: "none",
+          }}
+        />
       </div>
     </div>
   );

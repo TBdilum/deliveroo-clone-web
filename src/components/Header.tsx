@@ -7,26 +7,28 @@ import { Container } from "@mui/material";
 const Header = () => {
   return (
     <Container
+      disableGutters={true}
+      maxWidth={false}
       sx={{
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        pb:5,
+        alignItems: "center",
+        paddingBottom: 0,
         borderBottom: "0.5px solid black",
-        width: "100vw",
-        boxSizing: "border-box",
+        width: "100%",
         position: "sticky",
         top: "0",
-        zIndex: "10",
+        zIndex: "100",
+        paddingTop: 0,
         backgroundColor: "white",
-        height: "100px",
+        height: "70px",
+        margin: 0,
       }}
     >
       <div
         style={{
-          paddingRight: "10rem",
-          paddingLeft: "2rem",
-          paddingTop: "0.5rem",
+          display: "flex",
         }}
       >
         <Link to="/">
@@ -64,12 +66,11 @@ const Header = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          paddingLeft: "15rem",
-          paddingRight: "4rem",
+          paddingLeft: "2rem",
           whiteSpace: "nowrap",
         }}
       >
-        <div style={{ marginRight: "2rem", width: "100%" }}>
+        <div style={{ marginRight: "2rem", paddingLeft: "0rem" }}>
           <Link
             to="/SignPage"
             style={{
@@ -81,13 +82,13 @@ const Header = () => {
                 display: "flex",
                 flexDirection: "row",
                 height: "2.5rem",
-                width: "110%",
                 backgroundColor: "white",
                 borderRadius: "0.3rem",
                 justifyContent: "center",
                 alignItems: "center",
                 border: "1px solid #D8D8D8",
               }}
+              className="login-button"
             >
               <img
                 src={home}

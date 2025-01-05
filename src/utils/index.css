@@ -1,0 +1,21 @@
+
+  @media (max-width: 768px) {
+    .login-button {
+      display: none;
+    }
+  }
+
+  body {
+    font-family: "IBM Plex Sans", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: visible;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  * {
+    outline: 1px solid red;
+  }
+  
