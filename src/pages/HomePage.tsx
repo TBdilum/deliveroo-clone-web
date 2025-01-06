@@ -48,11 +48,11 @@ const HomePage = () => {
             flexDirection: "row",
             marginTop: "2rem",
             borderBottom: "1px solid #D8D8D8",
-            paddingBottom: "2rem",
             boxSizing: "border-box",
             width: "100%",
-            height: "50%",
+            height: "30%",
           }}
+          className="header-container"
         >
           <div
             style={{ width: "50%", height: "auto" }}
@@ -70,7 +70,6 @@ const HomePage = () => {
               display: "flex",
               flexDirection: "row",
               borderBottom: "1px solid #D8D8D8",
-              paddingBottom: "2rem",
               boxSizing: "border-box",
               width: "100%",
               height: "100%",
@@ -92,36 +91,40 @@ const HomePage = () => {
               <p style={{ fontSize: "1rem", color: "#666" }}>
                 0.20 miles away · Closes at 21:00 · £7.00 minimum
               </p>
-              <button
-                style={{
-                  border: "none",
-                  backgroundColor: "transparent",
-                  textAlign: "left",
-                  cursor: "pointer",
-                  fontSize: "1rem",
-                }}
-              >
-                <p style={{ fontWeight: "bold", margin: "0.2rem 0" }}>Info</p>
-                <p style={{ margin: "0.2rem 0 1rem", color: "#00b8a9" }}>
-                  Map, allergens and hygiene rating
-                </p>
-              </button>
-              <button
-                style={{
-                  border: "none",
-                  backgroundColor: "transparent",
-                  textAlign: "left",
-                  cursor: "pointer",
-                  fontSize: "1rem",
-                }}
-              >
-                <p style={{ fontWeight: "bold", margin: "0.2rem 0" }}>
-                  4.8 Excellent
-                </p>
-                <p style={{ margin: "0.2rem 0", color: "#00b8a9" }}>
-                  See all 500 reviews
-                </p>
-              </button>
+              <div className="info-buttons">
+                <button
+                  style={{
+                    border: "none",
+                    backgroundColor: "transparent",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                  }}
+                >
+                  <p style={{ fontWeight: "bold", margin: "0.2rem 0rem " }}>
+                    Info
+                  </p>
+                  <p style={{ margin: "0.2rem 0 1rem", color: "#00b8a9" }}>
+                    Map, allergens and hygiene rating
+                  </p>
+                </button>
+                <button
+                  style={{
+                    border: "none",
+                    backgroundColor: "transparent",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                  }}
+                >
+                  <p style={{ fontWeight: "bold", margin: "0.2rem 0" }}>
+                    4.8 Excellent
+                  </p>
+                  <p style={{ margin: "0.2rem 0", color: "#00b8a9" }}>
+                    See all 500 reviews
+                  </p>
+                </button>
+              </div>
             </div>
 
             <div
@@ -133,6 +136,7 @@ const HomePage = () => {
                   fontSize: "1rem",
                   margin: "0 0 1rem 0",
                   color: "#666",
+                  width: "auto",
                 }}
               >
                 Deliver is 5 - 15 min
@@ -150,15 +154,16 @@ const HomePage = () => {
               </p>
               <button
                 style={{
-                  width: "100%",
+                  width: "auto",
                   marginTop: "1rem",
                   borderRadius: "0.3rem",
+                  backgroundColor: "white",
                   border: "1px solid #D8D8D8",
-                  backgroundColor: "transparent",
                   padding: "0.5rem 1rem",
                   fontSize: "1rem",
                   color: "#333",
                 }}
+                className="start-group-order"
               >
                 Start Group Order
               </button>
@@ -226,12 +231,12 @@ const HomePage = () => {
         >
           <div
             style={{
-              maxWidth: "75%",
+              width: "60vw",
               padding: "2rem 2rem 2rem 0rem",
-              flex: "3",
               display: "flex",
               flexDirection: "column",
             }}
+            className="main-container"
           >
             <span>Adults need around 2000 kcal a day</span>
             <MostPopularItems mostPopularItems={mostPopularItems} />
@@ -252,8 +257,8 @@ const HomePage = () => {
           </div>
           <div
             style={{
-              maxWidth: "25%",
-              width: "25%",
+              width: "35%",
+              minWidth: "30%",
               maxHeight: "83vh",
               border: "1px solid #D8D8D8",
               position: "sticky",
