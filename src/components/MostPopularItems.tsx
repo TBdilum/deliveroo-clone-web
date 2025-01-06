@@ -89,6 +89,7 @@ const MostPopularItems = ({ mostPopularItems }: MostPopularItemsProps) => {
             gap: "1.5rem",
             padding: "1rem 0rem 2rem",
           }}
+          className="most-popular-items-container"
         >
           {mostPopularItems.map((item) => (
             <div

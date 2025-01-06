@@ -6,6 +6,7 @@ import { mostPopularItems } from "../data/MostPopularItems";
 import { Container } from "@mui/material";
 import Salads from "../components/Salads";
 import Header from "../components/Header";
+import "../utils/index.css";
 
 const HomePage = () => {
   const [activeButton, setActiveButton] = useState(0);
@@ -39,28 +40,43 @@ const HomePage = () => {
         }}
       >
         <Header />
-        <Container disableGutters={true} maxWidth={false}>
+        <Container
+          disableGutters={true}
+          maxWidth={false}
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            marginTop: "2rem",
+            borderBottom: "1px solid #D8D8D8",
+            paddingBottom: "2rem",
+            boxSizing: "border-box",
+            width: "100%",
+            height: "50%",
+          }}
+        >
           <div
+            style={{ width: "50%", height: "auto" }}
+            className="image-container"
+          >
+            <img
+              src={main}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              alt="Main"
+            />
+          </div>
+          <div
+            className="buttons-container"
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
-              marginTop: "2rem",
               borderBottom: "1px solid #D8D8D8",
               paddingBottom: "2rem",
               boxSizing: "border-box",
               width: "100%",
+              height: "100%",
             }}
           >
-            <div style={{ flex: "1 1 30%", marginRight: "2rem" }}>
-              <img
-                src={main}
-                style={{ width: "100%", height: "auto" }}
-                alt="Main"
-              />
-            </div>
-
-            <div style={{ flex: "1 1 30%", marginRight: "2rem" }}>
+            <div style={{ paddingLeft: "1rem", width: "100%" }}>
               <p
                 style={{
                   fontWeight: "bolder",
@@ -108,7 +124,10 @@ const HomePage = () => {
               </button>
             </div>
 
-            <div style={{ flex: "1 1 auto", textAlign: "right" }}>
+            <div
+              style={{ textAlign: "right", alignItems: "right", width: "30%" }}
+              className="delivery-buttons"
+            >
               <p
                 style={{
                   fontSize: "1rem",
@@ -131,6 +150,7 @@ const HomePage = () => {
               </p>
               <button
                 style={{
+                  width: "100%",
                   marginTop: "1rem",
                   borderRadius: "0.3rem",
                   border: "1px solid #D8D8D8",
@@ -165,11 +185,13 @@ const HomePage = () => {
             style={{
               display: "flex",
               flexDirection: "row",
+              overflowX: "auto",
               justifyContent: "space-between",
               alignItems: "center",
               paddingTop: "1rem",
-              width: "85%",
+              width: "100%",
             }}
+            className="categories-container"
           >
             {categories.map((category, index) => (
               <button
@@ -183,7 +205,9 @@ const HomePage = () => {
                   fontWeight: activeButton === index ? "bold" : "",
                   padding: "0.5rem 1rem",
                   cursor: "pointer",
+                  textWrap: "nowrap",
                 }}
+                className="category-item"
               >
                 <span>{category}</span>
               </button>
@@ -228,9 +252,9 @@ const HomePage = () => {
           </div>
           <div
             style={{
-              maxWidth: "100%",
+              maxWidth: "25%",
+              width: "25%",
               maxHeight: "83vh",
-              flex: "2",
               border: "1px solid #D8D8D8",
               position: "sticky",
               display: "flex",
@@ -243,6 +267,7 @@ const HomePage = () => {
               zIndex: 10,
               marginTop: "2rem",
             }}
+            className="cart-container"
           >
             <p>Cart</p>
           </div>
