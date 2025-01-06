@@ -28,7 +28,6 @@ const MostPopularItems = ({ mostPopularItems }: MostPopularItemsProps) => {
   return (
     <div
       style={{
-        padding: "1rem 4rem 0rem 0rem",
         backgroundColor: "transparent",
         width: "100%",
         height: "auto",

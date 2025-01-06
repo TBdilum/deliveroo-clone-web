@@ -220,19 +220,14 @@ const HomePage = () => {
           </div>
         </Container>
         <Container
-          sx={{
-            maxWidth: "100vw",
-            display: "flex",
-            flexDirection: "row",
-            paddingBottom: "2rem",
-          }}
+          className="main-container1"
+          sx={{ display: "flex", flexDirection: "row" }}
           disableGutters={true}
           maxWidth={false}
         >
           <div
             style={{
-              width: "60vw",
-              padding: "2rem 2rem 2rem 0rem",
+              padding: "2rem 0rem 2rem 0rem",
               display: "flex",
               flexDirection: "column",
             }}
@@ -257,16 +252,14 @@ const HomePage = () => {
           </div>
           <div
             style={{
-              width: "35%",
-              minWidth: "30%",
-              maxHeight: "83vh",
+              maxHeight: "80vh",
               border: "1px solid #D8D8D8",
               position: "sticky",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              top: "160px",
-              padding: "2rem 5rem",
+              top: "167px",
+              paddingLeft: "2rem",
               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
               backgroundColor: "#fff",
               zIndex: 10,
