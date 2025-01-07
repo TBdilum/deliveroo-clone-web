@@ -8,21 +8,21 @@ import Header from "../components/Header";
 import "../utils/index.css";
 import ScrollSpy from "react-ui-scrollspy";
 
+const categories = [
+  "🥗 Salads 🥗",
+  "💪 Gym food 💪",
+  "Sides",
+  "🌯 Rainbow Wraps 🌯",
+  "🔥 Hot Power Bowls 🔥",
+  "Smoothies, shakes & juice",
+  "Snacks",
+  "Platters",
+  "Desserts",
+  "Cold Drinks",
+];
+
 const HomePage = () => {
   const [activeButton, setActiveButton] = useState(0);
-
-  const categories = [
-    "🥗 Salads 🥗",
-    "💪 Gym food 💪",
-    "Sides",
-    "🌯 Rainbow Wraps 🌯",
-    "🔥 Hot Power Bowls 🔥",
-    "Smoothies, shakes & juice",
-    "Snacks",
-    "Platters",
-    "Desserts",
-    "Cold Drinks",
-  ];
 
   const handleButtonClick = (index: number) => {
     setActiveButton(index);
@@ -60,7 +60,7 @@ const HomePage = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [categories]);
+  }, []);
 
   return (
     <>

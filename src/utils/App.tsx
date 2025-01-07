@@ -15,8 +15,8 @@ const App = () => {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />}></Route>
         <Route path="/SignPage" element={<SignUpPage />}></Route>
-      </Route>
-    )
+      </Route>,
+    ),
   );
   return <RouterProvider router={router} />;
 };
