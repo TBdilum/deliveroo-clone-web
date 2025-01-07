@@ -146,7 +146,10 @@ const HomePage = () => {
               <p style={{ fontSize: "1rem", color: "#666" }}>
                 0.20 miles away · Closes at 21:00 · £7.00 minimum
               </p>
-              <div className="info-buttons">
+              <div
+                className="info-buttons"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
                 <button
                   style={{
                     border: "none",

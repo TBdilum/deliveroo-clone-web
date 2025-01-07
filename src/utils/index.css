@@ -15,9 +15,6 @@
   * {
     -webkit-scrollbar: none;
   }
-  * {
-    outline: 1px solid rgb(0, 21, 255);
-  }
   
   .categories-container {
     display: flex;
@@ -38,12 +35,12 @@
     width: 65%;
   }
   .cart-container{
-    width: "auto";
+    width: "100%";
     min-width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0rem 1rem 0rem 1rem;
+    margin: 0rem 0rem 0rem 2rem;
   }
 
   
@@ -72,6 +69,9 @@
   
 
   @media (max-width: 1260px) {
+    .info-buttons {
+      flex-direction: row!important;
+    }
     .buttons-container {
       flex-direction: column;
       align-items: start;
