@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Back from "../assets/back.png";
 import main from "../assets/Main.jpeg";
 import MostPopularItems from "../components/MostPopularItems";
@@ -7,6 +7,7 @@ import { Container } from "@mui/material";
 import Salads from "../components/Salads";
 import Header from "../components/Header";
 import "../utils/index.css";
+import ScrollSpy from "react-ui-scrollspy";
 
 const HomePage = () => {
   const [activeButton, setActiveButton] = useState(0);
@@ -26,7 +27,41 @@ const HomePage = () => {
 
   const handleButtonClick = (index: number) => {
     setActiveButton(index);
+    const element = document.querySelector(`[data-to-scrollspy-id="${index}"]`);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let foundActive = false;
+
+      categories.forEach((category, index) => {
+        const section = document.getElementById(category);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 190 && rect.bottom >= 0) {
+            setActiveButton(index);
+            foundActive = true;
+          }
+        }
+      });
+
+      if (
+        !foundActive &&
+        window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight
+      ) {
+        setActiveButton(categories.length - 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [categories]);
 
   return (
     <>
@@ -41,7 +76,7 @@ const HomePage = () => {
       >
         <Header />
         <Container
-          disableGutters={true}
+          disableGutters
           maxWidth={false}
           sx={{
             display: "flex",
@@ -50,20 +85,40 @@ const HomePage = () => {
             borderBottom: "1px solid #D8D8D8",
             boxSizing: "border-box",
             width: "100%",
-            height: "30%",
+            height: "100%",
           }}
           className="header-container"
         >
           <div
-            style={{ width: "50%", height: "auto" }}
+            style={{ position: "relative", width: "40%", height: "auto" }}
             className="image-container"
           >
+            <button
+              style={{
+                width: "40%",
+                margin: "0rem 2rem ",
+                position: "absolute",
+                top: "72%",
+                left: "52%",
+                borderRadius: "0.3rem",
+                backgroundColor: "white",
+                border: "1px solid #D8D8D8",
+                padding: "1rem 0rem",
+                fontSize: "1rem",
+                color: "#333",
+                zIndex: 10,
+              }}
+              className="start-group-order-button"
+            >
+              Start Group Order
+            </button>
             <img
               src={main}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
               alt="Main"
             />
           </div>
+
           <div
             className="buttons-container"
             style={{
@@ -170,9 +225,8 @@ const HomePage = () => {
             </div>
           </div>
         </Container>
-
         <Container
-          disableGutters={true}
+          disableGutters
           maxWidth={false}
           sx={{
             borderBottom: "1px solid #D8D8D8",
@@ -214,15 +268,16 @@ const HomePage = () => {
                 }}
                 className="category-item"
               >
-                <span>{category}</span>
+                {category}
               </button>
             ))}
           </div>
         </Container>
+
         <Container
           className="main-container1"
           sx={{ display: "flex", flexDirection: "row" }}
-          disableGutters={true}
+          disableGutters
           maxWidth={false}
         >
           <div
@@ -235,20 +290,27 @@ const HomePage = () => {
           >
             <span>Adults need around 2000 kcal a day</span>
             <MostPopularItems mostPopularItems={mostPopularItems} />
-            {categories.map((category) => (
-              <>
-                <span
-                  style={{
-                    fontFamily: "inherit",
-                    fontWeight: "bold",
-                    fontSize: "1.5rem",
-                  }}
+            <ScrollSpy scrollThrottle={300}>
+              {categories.map((category, index) => (
+                <div
+                  key={index}
+                  id={category}
+                  data-to-scrollspy-id={index}
+                  style={{ paddingBottom: "2rem" }}
                 >
-                  {category}
-                </span>
-                <Salads />
-              </>
-            ))}
+                  <span
+                    style={{
+                      fontFamily: "inherit",
+                      fontWeight: "bold",
+                      fontSize: "1.5rem",
+                    }}
+                  >
+                    {category}
+                  </span>
+                  <Salads />
+                </div>
+              ))}
+            </ScrollSpy>
           </div>
           <div
             style={{

@@ -46,6 +46,7 @@ const Header = () => {
             color: "#D8D8D8",
             cursor: "pointer",
           }}
+          className="search-icon"
         >
           🔍
         </span>
@@ -57,8 +58,8 @@ const Header = () => {
             width: "100%",
             padding: "10px 40px 10px 10px",
             boxSizing: "border-box",
-            border: "1px solid #D8D8D8",
           }}
+          className="search-input"
         />
       </div>
 
@@ -97,13 +98,14 @@ const Header = () => {
                   height: "15px",
                   paddingRight: "0.4rem",
                 }}
+                className="home-button-image"
               />
-              Sign Up or Login
+              <p className="home-button-text">Sign Up or Login</p>
             </button>
           </Link>
         </div>
 
-        <div>
+        <div className="account-button">
           <AnchorTemporaryDrawer />
         </div>
       </div>
