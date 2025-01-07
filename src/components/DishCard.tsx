@@ -1,14 +1,14 @@
 import { Container } from "@mui/material";
 import React from "react";
-import { salads } from "../data/Sides";
+import { dishes } from "../data/Sides";
 
-const Salads = () => {
+const DishCard = () => {
   return (
     <Container
       disableGutters={true}
       maxWidth={false}
       sx={{
-        padding: "2rem 2rem 2rem 0rem",
+        paddingTop: "2rem",
       }}
     >
       <div
@@ -22,7 +22,7 @@ const Salads = () => {
           justifyContent: "start",
         }}
       >
-        {salads.map((item) => (
+        {dishes.map((item) => (
           <div
             key={item.id}
             style={{
@@ -100,4 +100,4 @@ const Salads = () => {
   );
 };
 
-export default Salads;
+export default DishCard;

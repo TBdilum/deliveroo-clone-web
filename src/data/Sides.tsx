@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 import saladImage from "../assets/salad.jpeg";
 
-interface Salad {
+interface Dish {
   id: number;
   name: string;
   description: string;
@@ -9,10 +9,10 @@ interface Salad {
   image: string;
 }
 
-export const salads: Salad[] = [];
+export const dishes: Dish[] = [];
 
 for (let i = 0; i <= 30; i++) {
-  salads.push({
+  dishes.push({
     id: i,
     name: faker.commerce.productName(),
     description: faker.commerce.productDescription(),

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Back from "../assets/back.png";
 import main from "../assets/Main.jpeg";
 import MostPopularItems from "../components/MostPopularItems";
 import { mostPopularItems } from "../data/MostPopularItems";
 import { Container } from "@mui/material";
-import Salads from "../components/Salads";
+import Salads from "../components/DishCard";
 import Header from "../components/Header";
 import "../utils/index.css";
 import ScrollSpy from "react-ui-scrollspy";
