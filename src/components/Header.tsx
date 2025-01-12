@@ -1,115 +1,83 @@
 import { Link } from "react-router-dom";
-import AnchorTemporaryDrawer from "./AccountSideBar";
 import logo from "../assets/deliverooLogo.svg";
-import home from "../assets/home.png";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import Button from "./Button";
+import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const Header = () => {
   return (
-    <Container
-      disableGutters={true}
-      maxWidth={false}
+    <Box
       sx={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingBottom: 0,
-        borderBottom: "0.5px solid black",
         width: "100%",
-        position: "sticky",
-        top: "0",
-        zIndex: "100",
-        paddingTop: 0,
-        backgroundColor: "white",
-        height: "70px",
-        margin: 0,
+        height: "60px",
       }}
     >
-      <div
-        style={{
+      <Container
+        sx={{
+          width: "100%",
+          height: "100%",
           display: "flex",
         }}
       >
-        <Link to="/">
-          <img src={logo} alt="Deliveroo Logo" />
-        </Link>
-      </div>
-
-      <div className="search-bar" style={{ position: "relative", flex: 1 }}>
-        <span
-          style={{
-            position: "absolute",
-            right: "10px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "#D8D8D8",
-            cursor: "pointer",
+        <Box
+          sx={{
+            flex: 1,
+            height: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
           }}
-          className="search-icon"
         >
-          🔍
-        </span>
-        <input
-          type="text"
-          placeholder="Search Tossed - St Martin's Lane"
-          style={{
-            borderRadius: "0.3rem",
-            width: "100%",
-            padding: "10px 40px 10px 10px",
-            boxSizing: "border-box",
-          }}
-          className="search-input"
-        />
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          paddingLeft: "2rem",
-          whiteSpace: "nowrap",
-        }}
-      >
-        <div style={{ marginRight: "2rem", paddingLeft: "0rem" }}>
-          <Link
-            to="/SignPage"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <button
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                height: "2.5rem",
-                backgroundColor: "white",
-                borderRadius: "0.3rem",
-                justifyContent: "center",
-                alignItems: "center",
-                border: "1px solid #D8D8D8",
-              }}
-              className="login-button"
-            >
-              <img
-                src={home}
-                style={{
-                  width: "15px",
-                  height: "15px",
-                  paddingRight: "0.4rem",
-                }}
-                className="home-button-image"
-              />
-              <p className="home-button-text">Sign Up or Login</p>
-            </button>
+          <Link to="/">
+            <img src={logo} height={32} alt="Deliveroo Logo" />
           </Link>
-        </div>
-
-        <div className="account-button">
-          <AnchorTemporaryDrawer />
-        </div>
-      </div>
-    </Container>
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+            height: "100%",
+          }}
+        ></Box>
+        <Box
+          sx={{
+            flex: 1,
+            height: "100%",
+            alignItems: "center",
+            flexDirection: "row",
+            display: "flex",
+          }}
+        >
+          <Button
+            sx={{
+              mr: 1,
+            }}
+            PrefixComponent={
+              <HomeOutlinedIcon
+                sx={{
+                  color: "rgb(0, 204, 188)",
+                  pr: 1,
+                }}
+              />
+            }
+          >
+            Sign up or login
+          </Button>
+          <Button
+            PrefixComponent={
+              <Person2OutlinedIcon
+                sx={{
+                  color: "rgb(0, 204, 188)",
+                  pr: 1,
+                }}
+              />
+            }
+          >
+            Account
+          </Button>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
