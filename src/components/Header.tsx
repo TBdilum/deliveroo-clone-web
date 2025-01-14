@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/deliverooLogo.svg";
+import logo from "/assets/deliverooLogo.svg";
 import { Box, Container } from "@mui/material";
 import Button from "./Button";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import SearchBar from "../features/menu/components/SearchBar";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 const Header = () => {
   return (
@@ -19,6 +21,7 @@ const Header = () => {
           height: "100%",
           display: "flex",
         }}
+        disableGutters
       >
         <Box
           sx={{
@@ -35,10 +38,16 @@ const Header = () => {
         </Box>
         <Box
           sx={{
-            flex: 1,
+            flex: 2,
             height: "100%",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingTop: "0.5rem",
           }}
-        ></Box>
+        >
+          <SearchBar />
+        </Box>
         <Box
           sx={{
             flex: 1,
@@ -46,6 +55,7 @@ const Header = () => {
             alignItems: "center",
             flexDirection: "row",
             display: "flex",
+            justifyContent: "flex-end",
           }}
         >
           <Button
