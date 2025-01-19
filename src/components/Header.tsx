@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "/assets/deliverooLogo.svg";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Button from "./Button";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchBar from "../features/menu/components/SearchBar";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 const Header = () => {
   return (
@@ -13,6 +12,10 @@ const Header = () => {
       sx={{
         width: "100%",
         height: "60px",
+        position: "sticky",
+        top: "0",
+        zIndex: "1000",
+        backgroundColor: "white",
       }}
     >
       <Container
@@ -21,7 +24,6 @@ const Header = () => {
           height: "100%",
           display: "flex",
         }}
-        disableGutters
       >
         <Box
           sx={{
@@ -61,6 +63,11 @@ const Header = () => {
           <Button
             sx={{
               mr: 1,
+              display: {
+                xs: "none",
+                sm: "none",
+                md: "flex",
+              },
             }}
             PrefixComponent={
               <HomeOutlinedIcon
@@ -78,12 +85,22 @@ const Header = () => {
               <Person2OutlinedIcon
                 sx={{
                   color: "rgb(0, 204, 188)",
-                  pr: 1,
                 }}
               />
             }
           >
-            Account
+            <Typography
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+                },
+                pl: 1,
+              }}
+            >
+              Account
+            </Typography>
           </Button>
         </Box>
       </Container>

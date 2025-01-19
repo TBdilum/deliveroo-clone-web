@@ -1,22 +1,31 @@
 import { faker } from "@faker-js/faker";
-import saladImage from "../assets/salad.jpeg";
+import saladImage from "/public/assets/salad.jpeg";
 
-interface Dish {
+interface IDish {
   id: number;
   name: string;
-  description: string;
   price: string;
   image: string;
+  categoryId: number;
+}
+interface ICategory {
+  id: number;
+  name: string;
 }
 
-export const dishes: Dish[] = [];
+export const dishes: IDish[] = Array.from({
+  length: 40,
+}).map((_, index) => ({
+  id: index,
+  name: faker.food.dish(),
+  price: faker.commerce.price({ symbol: "$" }),
+  image: saladImage,
+  categoryId: faker.number.int({ max: 30, min: 0 }),
+}));
 
-for (let i = 0; i <= 30; i++) {
-  dishes.push({
-    id: i,
-    name: faker.commerce.productName(),
-    description: faker.commerce.productDescription(),
-    price: `£${parseFloat(faker.commerce.price()).toFixed(2)}`,
-    image: saladImage,
-  });
-}
+export const categories: ICategory[] = Array.from({
+  length: 30,
+}).map((_, index) => ({
+  id: index,
+  name: faker.food.ethnicCategory(),
+}));

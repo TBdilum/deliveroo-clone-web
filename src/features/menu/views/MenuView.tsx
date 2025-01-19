@@ -8,7 +8,6 @@ const MenuView = () => {
   return (
     <Box
       sx={{
-        background: "red",
         height: "500px",
       }}
     >

@@ -1,16 +1,49 @@
-import { Container } from "@mui/material";
-import React from "react";
+import { Box, Container } from "@mui/material";
+import { useState } from "react";
+import CategoryChip from "./CategoryChip";
+import { categories } from "../../../data/Sides";
 
 const CategoriesBar = () => {
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number>();
+
+  const handleOnCategoryClick = (id: number) => {
+    setSelectedCategoryId(id);
+  };
+
   return (
-    <Container
+    <Box
       sx={{
-        background: "blue",
-        height: "100px",
+        borderTopWidth: 1,
+        borderStyle: "solid",
+        borderColor: "#EEEEEE",
       }}
     >
-      CategoriesBar
-    </Container>
+      <Container
+        disableGutters
+        sx={{
+          height: "50px",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "sticky",
+          top: "60px",
+          zIndex: "500",
+          backgroundColor: "white",
+          overflowY: "hidden",
+          overflowX: "scroll",
+        }}
+      >
+        {categories.map((category) => (
+          <CategoryChip
+            key={category.id}
+            data={category}
+            onClick={handleOnCategoryClick}
+            selected={selectedCategoryId === category.id}
+          />
+        ))}
+      </Container>
+    </Box>
   );
 };
 

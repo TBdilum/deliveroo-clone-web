@@ -26,6 +26,7 @@ function Button({
         borderRadius: 1,
         color: "rgb(46, 51, 51)",
         fontFamily: "IBM Plex Sans, serif;",
+        whiteSpace: "nowrap",
       }}
     >
       {PrefixComponent}

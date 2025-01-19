@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 
-const footer = () => {
+const Footer = () => {
   return (
     <div>
       <Container
@@ -132,4 +132,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
