@@ -6,11 +6,7 @@ import DishView from "./DishView";
 
 const MenuView = () => {
   return (
-    <Box
-      sx={{
-        height: "500px",
-      }}
-    >
+    <Box>
       <SpecialView />
       <PopularView />
       <DishView />

@@ -1,12 +1,11 @@
 import React from "react";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 const Footer = () => {
   return (
     <div>
       <Container
-        disableGutters={true}
-        maxWidth={false}
+        maxWidth="xl"
         sx={{
           width: "100vw",
           backgroundColor: "rgb(46, 51, 51)",
@@ -17,9 +16,7 @@ const Footer = () => {
           alignItems: "center",
         }}
       >
-        <Container
-          disableGutters={true}
-          maxWidth={false}
+        <Box
           sx={{
             flexDirection: "row",
             display: "flex",
@@ -126,7 +123,7 @@ const Footer = () => {
             <span>Deliveroo Students Careers</span>
             <span>Restaurant signup Become a rider</span>
           </div>
-        </Container>
+        </Box>
       </Container>
     </div>
   );

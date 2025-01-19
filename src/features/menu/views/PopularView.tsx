@@ -1,12 +1,21 @@
-import { Box, Container } from "@mui/material";
-import React from "react";
+import { Box, Container, Typography } from "@mui/material";
 import SpecialCard from "../components/SpecialCard";
-import { specials } from "./SpecialView";
+import { popular } from "../../../data/Sides";
 
 const PopularView = () => {
   return (
-    <Container disableGutters sx={{ height: "380px" }}>
-      <span>Popular Items</span>
+    <Container
+      disableGutters
+      sx={{ height: "380px", marginBottom: "1rem", marginTop: "2rem" }}
+    >
+      <Typography
+        sx={{
+          fontWeight: "bold",
+        }}
+        variant="h6"
+      >
+        Popular with other people
+      </Typography>
       <Box
         sx={{
           display: "flex",
@@ -15,7 +24,7 @@ const PopularView = () => {
           overflow: "scroll",
         }}
       >
-        {specials.map((item) => (
+        {popular.map((item) => (
           <SpecialCard data={item} key={item.id} />
         ))}
       </Box>

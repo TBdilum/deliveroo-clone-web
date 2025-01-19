@@ -18,13 +18,13 @@ const restaurant = {
 const RestaurantInfoView = () => {
   return (
     <Container
+      maxWidth="xl"
       sx={{
         px: {
           xs: 0,
           sm: 2,
           md: 3,
         },
-        py: 2,
       }}
     >
       <Grid container>

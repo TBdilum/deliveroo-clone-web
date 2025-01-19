@@ -1,5 +1,4 @@
-import { Button } from "@mui/material";
-import React from "react";
+import { Box, Typography } from "@mui/material";
 
 type CategoryChipProps = {
   data: {
@@ -16,23 +15,24 @@ const CategoryChip = ({ data, onClick, selected }: CategoryChipProps) => {
   };
 
   return (
-    <Button
+    <Box
       onClick={handleOnClick}
       sx={{
-        display: "flex",
         backgroundColor: selected ? "#00b8a9" : "#ffffff",
         color: selected ? "#ffffff" : "#00b8a9",
         borderRadius: "20px",
         border: "none",
         fontWeight: selected ? "bold" : "regular",
         cursor: "pointer",
-        textWrap: "wrap",
         paddingLeft: "1rem",
-        mr: 2,
+        mr: 1,
+        px: 2,
+        py: 0.5,
+        whiteSpace: "nowrap",
       }}
     >
-      {data.name}
-    </Button>
+      <Typography>{data.name}</Typography>
+    </Box>
   );
 };
 

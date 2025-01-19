@@ -1,22 +1,26 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
 
 const Cart = () => {
   return (
-    <Container
-      disableGutters
+    <Box
       className="cart-container"
       sx={{
-        background: "green",
-        height: "500px",
+        marginTop: "2rem",
+        marginLeft: "0.5rem",
+        height: "700px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        zIndex: "200",
+        position: "sticky",
+        top: "60px",
+        zIndex: "100",
+        border: "1px solid grey",
+        boxShadow: "2px 2px 2px lightgrey",
       }}
     >
       Cart
-    </Container>
+    </Box>
   );
 };
 

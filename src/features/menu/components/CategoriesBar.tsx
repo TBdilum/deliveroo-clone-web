@@ -1,14 +1,18 @@
 import { Box, Container } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryChip from "./CategoryChip";
 import { categories } from "../../../data/Sides";
 
 const CategoriesBar = () => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number>();
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1);
 
   const handleOnCategoryClick = (id: number) => {
     setSelectedCategoryId(id);
   };
+
+  useEffect(() => {
+    setSelectedCategoryId(categories[0].id);
+  }, []);
 
   return (
     <Box
@@ -16,22 +20,25 @@ const CategoriesBar = () => {
         borderTopWidth: 1,
         borderStyle: "solid",
         borderColor: "#EEEEEE",
+        position: "sticky",
+        height: "70px",
+        alignItems: "center",
+        display: "flex",
+        top: "60px",
+        zIndex: "500",
+        backgroundColor: "white",
       }}
     >
       <Container
-        disableGutters
+        maxWidth="xl"
         sx={{
-          height: "50px",
-          width: "100%",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
-          position: "sticky",
-          top: "60px",
-          zIndex: "500",
-          backgroundColor: "white",
           overflowY: "hidden",
           overflowX: "scroll",
+          "::-webkit-scrollbar": {
+            display: "none",
+          },
         }}
       >
         {categories.map((category) => (
