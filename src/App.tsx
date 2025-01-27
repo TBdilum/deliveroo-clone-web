@@ -5,10 +5,10 @@ import {
   createRoutesFromElements,
   createBrowserRouter,
 } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import SignUpPage from "../pages/SignUpPage";
-import MainLayout from "../layout/MainLayout";
-import WithPageTitle from "../hocs/WithPageTitle";
+import HomePage from "./pages/HomePage";
+import SignUpPage from "./pages/SignUpPage";
+import MainLayout from "./layout/MainLayout";
+import WithPageTitle from "./hocs/WithPageTitle";
 
 const App = () => {
   const router = createBrowserRouter(
