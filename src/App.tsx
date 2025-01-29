@@ -9,13 +9,23 @@ import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
 import MainLayout from "./layout/MainLayout";
 import WithPageTitle from "./hocs/WithPageTitle";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route
+          path="/"
           index
+          element={
+            <WithPageTitle title="Deliveroo">
+              <LandingPage />
+            </WithPageTitle>
+          }
+        ></Route>
+        <Route
+          path="/menu"
           element={
             <WithPageTitle title="Tossed">
               <HomePage />

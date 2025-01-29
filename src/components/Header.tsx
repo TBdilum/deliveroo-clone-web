@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "/assets/deliverooLogo.svg";
+import { useLocation } from "react-router-dom";
 import { Box, Container, Typography } from "@mui/material";
 import Button from "./Button";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
@@ -7,6 +8,8 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchBar from "../features/menu/components/SearchBar";
 
 const Header = () => {
+  const location = useLocation();
+
   return (
     <Box
       sx={{
@@ -61,6 +64,22 @@ const Header = () => {
             justifyContent: "flex-end",
           }}
         >
+          {location.pathname == "/" && (
+            <Button>
+              <Typography
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "none",
+                    md: "flex",
+                  },
+                }}
+              >
+                Partner with Us
+              </Typography>
+            </Button>
+          )}
+
           <Button
             sx={{
               mr: 1,

@@ -25,6 +25,7 @@ const RestaurantInfoView = () => {
           sm: 2,
           md: 3,
         },
+        py: 5,
       }}
     >
       <Grid container>

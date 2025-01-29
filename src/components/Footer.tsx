@@ -7,6 +7,8 @@ const Footer = () => {
       <Container
         maxWidth="xl"
         sx={{
+          position: "sticky",
+          bottom: "0",
           width: "100vw",
           backgroundColor: "rgb(46, 51, 51)",
           padding: "2rem 4rem",
