@@ -39,6 +39,7 @@ const MainView = () => {
           backgroundPositionY: "30px, 80px",
           backgroundRepeat: "no-repeat",
           backgroundSize: "50%, 20%",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
         }}
       >
         <Box
