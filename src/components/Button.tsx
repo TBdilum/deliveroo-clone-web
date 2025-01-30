@@ -20,6 +20,7 @@ function Button({
         ...(sx ?? {}),
         borderWidth: 1,
         borderColor: "rgb(232, 235, 235)",
+        backgroundColor: "rgb(255, 255, 255)",
         borderStyle: "solid",
         px: 2,
         py: 1,

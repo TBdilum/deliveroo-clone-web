@@ -66,7 +66,7 @@ const Header = () => {
             flexDirection: "row",
             display: "flex",
             justifyContent: "flex-end",
-            gap: "1rem",
+            gap: "1.7rem",
           }}
         >
           {location.pathname == "/" && (
@@ -96,7 +96,7 @@ const Header = () => {
 
           <Button
             sx={{
-              mr: 1,
+              mr: 0.5,
               display: {
                 xs: "none",
                 sm: "none",
