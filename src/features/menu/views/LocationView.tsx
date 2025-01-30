@@ -4,14 +4,14 @@ const LocationView = () => {
   return (
     <div
       style={{
-        height: "300px",
+        height: "500px",
         backgroundColor: "red",
         width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "1100px",
+        top: "850px",
       }}
     >
       LocationView

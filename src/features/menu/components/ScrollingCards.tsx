@@ -4,14 +4,14 @@ const ScrollingCards = () => {
   return (
     <div
       style={{
-        height: "500px",
+        height: "300px",
         backgroundColor: "orange",
         width: "100vw",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "600px",
+        top: "550px",
       }}
     >
       ScrollingCards

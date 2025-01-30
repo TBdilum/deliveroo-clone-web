@@ -4,7 +4,7 @@ const MainView = () => {
   return (
     <div
       style={{
-        height: "600px",
+        height: "550px",
         backgroundColor: "grey",
         width: "100vw",
         display: "flex",
@@ -12,6 +12,9 @@ const MainView = () => {
         alignItems: "center",
         position: "absolute",
         top: "0px",
+        backgroundImage: "url('/assets/route.svg')",
+        backgroundPosition: "10% center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       MainView

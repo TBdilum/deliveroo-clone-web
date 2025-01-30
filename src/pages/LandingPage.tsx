@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Container } from "@mui/material";
 import LocationView from "../features/menu/views/LocationView";
 import MainView from "../features/menu/views/MainView";
 import ScrollingCards from "../features/menu/components/ScrollingCards";
@@ -7,7 +7,7 @@ import MainCardView from "../features/menu/views/MainCardView";
 
 const LandingPage = () => {
   return (
-    <Box
+    <Container
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -20,7 +20,7 @@ const LandingPage = () => {
       <LocationView />
       <MealDeal />
       <MainCardView />
-    </Box>
+    </Container>
   );
 };
 

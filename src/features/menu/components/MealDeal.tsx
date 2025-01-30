@@ -4,14 +4,14 @@ const MealDeal = () => {
   return (
     <div
       style={{
-        height: "300px",
+        height: "400px",
         backgroundColor: "purple",
         width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "1400px",
+        top: "1300px",
       }}
     >
       MealDeal
