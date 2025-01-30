@@ -6,6 +6,7 @@ import {
   IconButton,
 } from "@mui/material";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
+import { Link } from "react-router-dom";
 
 const MainView = () => {
   return (
@@ -146,7 +147,17 @@ const MainView = () => {
             />
 
             <Typography sx={{ fontSize: "11px" }}>
-              Log in for your recent addresses.
+              <Link
+                to={"/SignPage"}
+                style={{
+                  color: "#00CCBC",
+                  textDecoration: "none",
+                  paddingRight: "5px",
+                }}
+              >
+                Log in
+              </Link>
+              for your recent addresses.
             </Typography>
           </Box>
         </Box>
