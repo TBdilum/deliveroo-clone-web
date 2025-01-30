@@ -11,7 +11,7 @@ const MealDeal = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "1250px",
+        top: "1200px",
         backgroundImage:
           "url('https://cwa.roocdn.com/_next/static/media/merch-itemrow@2x.09d506d7.svg'),url('/assets/merch-sparkleleft.svg'),url('/assets/merch-sparkleright.svg'), url('/assets/MealDealsBackground.svg')",
         backgroundPosition:

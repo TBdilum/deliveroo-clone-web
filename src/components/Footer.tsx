@@ -20,7 +20,7 @@ const Footer = () => {
           justifyContent: "center",
           alignItems: "center",
           position: isMainPage ? "absolute" : "static",
-          top: isMainPage ? "2200px" : "",
+          top: isMainPage ? "2100px" : "",
         }}
       >
         <Box

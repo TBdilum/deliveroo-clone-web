@@ -12,8 +12,8 @@ const LocationView = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "750px",
-        backgroundColor: "#f1f0f0",
+        top: "700px",
+        backgroundColor: "rgb(253, 252, 252)",
       }}
     >
       <Box

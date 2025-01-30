@@ -1,20 +1,20 @@
-import React from "react";
+import AutoScrollingCardSection from "./AutomaticScrollCard";
 
 const ScrollingCards = () => {
   return (
     <div
       style={{
-        height: "300px",
-        backgroundColor: "orange",
+        height: "250px",
         width: "100vw",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
         top: "450px",
+        backgroundColor: "rgb(253, 252, 252)",
       }}
     >
-      ScrollingCards
+      <AutoScrollingCardSection />
     </div>
   );
 };

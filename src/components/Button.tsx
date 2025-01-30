@@ -19,13 +19,10 @@ function Button({
       sx={{
         ...(sx ?? {}),
         borderWidth: 1,
-        borderColor: "rgb(232, 235, 235)",
-        backgroundColor: "rgb(255, 255, 255)",
         borderStyle: "solid",
         px: 2,
         py: 1,
         borderRadius: 1,
-        color: "rgb(46, 51, 51)",
         fontFamily: "IBM Plex Sans, serif;",
         whiteSpace: "nowrap",
       }}
