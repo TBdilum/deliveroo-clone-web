@@ -11,7 +11,7 @@ const LocationView = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "850px",
+        top: "750px",
       }}
     >
       LocationView

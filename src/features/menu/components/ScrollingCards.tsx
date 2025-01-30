@@ -11,7 +11,7 @@ const ScrollingCards = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "550px",
+        top: "450px",
       }}
     >
       ScrollingCards
