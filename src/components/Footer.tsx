@@ -1,13 +1,16 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location = useLocation();
+  const isMainPage = location.pathname === "/";
   return (
     <div>
       <Container
-        maxWidth="xl"
+        disableGutters
+        maxWidth={false}
         sx={{
-          position: "sticky",
           bottom: "0",
           width: "100vw",
           backgroundColor: "rgb(46, 51, 51)",
@@ -16,6 +19,8 @@ const Footer = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          position: isMainPage ? "absolute" : "static",
+          top: isMainPage ? "2300px" : "",
         }}
       >
         <Box

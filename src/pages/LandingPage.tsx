@@ -1,7 +1,27 @@
-import React from "react";
+import { Box } from "@mui/material";
+import LocationView from "../features/menu/views/LocationView";
+import MainView from "../features/menu/views/MainView";
+import ScrollingCards from "../features/menu/components/ScrollingCards";
+import MealDeal from "../features/menu/components/MealDeal";
+import MainCardView from "../features/menu/views/MainCardView";
 
 const LandingPage = () => {
-  return <div>This is the LandingPage</div>;
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "top",
+      }}
+    >
+      <MainView />
+      <ScrollingCards />
+      <LocationView />
+      <MealDeal />
+      <MainCardView />
+    </Box>
+  );
 };
 
 export default LandingPage;

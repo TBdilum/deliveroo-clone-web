@@ -14,7 +14,7 @@ import LandingPage from "./pages/LandingPage";
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
+      <Route element={<MainLayout />}>
         <Route
           path="/"
           index
