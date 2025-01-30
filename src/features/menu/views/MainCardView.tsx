@@ -1,4 +1,4 @@
-import React from "react";
+import { Box } from "@mui/material";
 
 const MainCardView = () => {
   return (
@@ -11,10 +11,10 @@ const MainCardView = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "absolute",
-        top: "1700px",
+        top: "1600px",
       }}
     >
-      MainCardView
+      <Box></Box>
     </div>
   );
 };
