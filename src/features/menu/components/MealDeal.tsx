@@ -5,7 +5,7 @@ const MealDeal = () => {
   return (
     <div
       style={{
-        height: "350px",
+        height: "40 0px",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -99,7 +99,7 @@ const MealDeal = () => {
         <Typography
           sx={{
             textAlign: "center",
-            mb: "4rem",
+            mb: "6rem",
             fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" }, // Smaller text on small screens
           }}
         >
@@ -115,6 +115,8 @@ const MealDeal = () => {
         style={{
           width: "100%",
           height: "auto",
+          bottom: 0,
+          position: "absolute",
           marginTop: "2rem", // Add spacing below the content
         }}
       />

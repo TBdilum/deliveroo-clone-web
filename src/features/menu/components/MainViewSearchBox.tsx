@@ -26,7 +26,7 @@ const MainViewSearchBox = () => {
       <Typography
         sx={{
           fontWeight: "bolder",
-          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" },
+          fontSize: { xs: "1.8rem", sm: "2.5rem", md: "2rem" },
           lineHeight: 1.2,
         }}
       >

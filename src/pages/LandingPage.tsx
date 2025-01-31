@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import LocationView from "../features/menu/views/LocationView";
 import MainView from "../features/menu/views/MainView";
 import ScrollingCards from "../features/menu/components/ScrollingCards";
@@ -8,25 +8,23 @@ import Footer from "../components/Footer";
 
 const LandingPage = () => {
   return (
-    <Container disableGutters>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          flexGrow: 1,
-          width: "100%",
-          height: "100vh",
-        }}
-      >
-        <MainView />
-        <ScrollingCards />
-        <LocationView />
-        <MealDeal />
-        <MainCardView />
-        <Footer />
-      </Box>
-    </Container>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        flexGrow: 1,
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <MainView />
+      <ScrollingCards />
+      <LocationView />
+      <MealDeal />
+      <MainCardView />
+      <Footer />
+    </Box>
   );
 };
 

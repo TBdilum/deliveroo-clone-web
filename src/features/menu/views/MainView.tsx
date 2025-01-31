@@ -1,81 +1,81 @@
-import { Box, Grid2 } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 import MainViewSearchBox from "../components/MainViewSearchBox";
 
 const MainView = () => {
   return (
-    <div
-      style={{
-        minHeight: "450px",
+    <Grid
+      container
+      sx={{
+        top: "0",
         width: "100vw",
-        display: "flex",
-        justifyContent: "center",
         alignItems: "center",
-        position: "relative",
+        justifyContent: "center",
         backgroundColor: "#f1f0f0",
+        backgroundImage: "url(/assets/route.svg)",
+        backgroundSize: "100%",
+        backgroundPosition: " 3% center",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <Grid2>
-        <Grid2>
-          <Box
-            sx={{
-              backgroundColor: "#00CCBC",
+      {/* Left Section */}
+      <Grid item xs={0} sm={0} md={4}>
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* Left Graphic Inside */}
+          <img
+            src="/assets/left-2x.png"
+            alt="Left Graphic"
+            style={{
               position: "absolute",
-              left: "0",
-              top: "50%",
-              transform: "translateY(-80%)",
-              width: "25%",
-              maxWidth: "200px",
+              top: "80%",
+              left: "65%",
+              transform: "translate(-50%, -50%)",
+              width: "70%",
               height: "auto",
             }}
-          >
-            {/* Blue Background Image */}
-            <img
-              src="/assets/route.svg"
-              alt="Blue Background"
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-            />
-            {/* Left Graphic Inside the Blue Background */}
-            <img
-              src="/assets/left-2x.png"
-              alt="Left Graphic"
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: "80%",
-                height: "auto",
-              }}
-            />
-          </Box>
-        </Grid2>
-        <Grid2>
-          <Box sx={{ backgroundColor: "#00CCBC" }}>
-            {/* Right Image */}
-            <img
-              src="/assets/right-2x.png"
-              alt="Right Graphic"
-              style={{
-                position: "absolute",
-                right: "0",
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: "30%",
-                maxWidth: "250px",
-                height: "auto",
-              }}
-            />
-          </Box>
-        </Grid2>
-        <Grid2>
-          <MainViewSearchBox />
-        </Grid2>
-      </Grid2>
-    </div>
+          />
+        </Box>
+      </Grid>
+
+      {/* Center Section */}
+      <Grid item xs={12} sm={8} md={4} sx={{ zIndex: 100 }}>
+        <MainViewSearchBox />
+      </Grid>
+
+      {/* Right Section */}
+      <Grid item xs={0} sm={4} md={4} lg={4}>
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* Right Graphic */}
+          <img
+            src="/assets/right-2x.png"
+            alt="Right Graphic"
+            style={{
+              translate: "10% ",
+              width: "180%",
+              height: "auto",
+            }}
+          />
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
 

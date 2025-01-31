@@ -11,6 +11,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const Header = () => {
   const location = useLocation();
   const isTransparent = location.pathname === "/";
+  const inSignPage = location.pathname === "/SignPage";
   return (
     <Box
       sx={{
@@ -95,15 +96,11 @@ const Header = () => {
 
           <Button
             sx={{
+              display: inSignPage ? "none" : "flex",
               mr: 0.5,
               fontSize: "1rem",
               backgroundColor: "white",
               border: "none",
-              display: {
-                xs: "flex",
-                sm: "flex",
-                md: "flex",
-              },
             }}
             PrefixComponent={
               <HomeOutlinedIcon
@@ -121,7 +118,10 @@ const Header = () => {
           </Button>
 
           <Button
-            sx={{ border: "none", backgroundColor: "white" }}
+            sx={{
+              backgroundColor: "white",
+              border: inSignPage ? "0.5px solid rgb(232, 230, 230)" : "none",
+            }}
             PrefixComponent={
               <Person2OutlinedIcon
                 sx={{
