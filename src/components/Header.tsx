@@ -15,7 +15,7 @@ const Header = () => {
     <Box
       sx={{
         backgroundColor: isTransparent ? "transparent" : "white",
-        width: "100vw",
+        width: "100%",
         height: "60px",
         position: isTransparent ? "" : "sticky",
         top: "0",
@@ -69,9 +69,17 @@ const Header = () => {
             gap: "1.7rem",
           }}
         >
-          {location.pathname == "/" && (
+          {location.pathname === "/" && (
             <Button
-              sx={{ backgroundColor: "white", border: "none" }}
+              sx={{
+                backgroundColor: "white",
+                border: "none",
+                display: {
+                  xs: "flex",
+                  sm: "none",
+                  md: "flex",
+                },
+              }}
               PrefixComponent={
                 <ExpandMoreIcon
                   sx={{
@@ -81,31 +89,21 @@ const Header = () => {
                 />
               }
             >
-              <Typography
-                sx={{
-                  display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "flex",
-                  },
-                }}
-              >
-                Partner with Us
-              </Typography>
+              <Typography>Partner with Us</Typography>
             </Button>
           )}
 
           <Button
             sx={{
               mr: 0.5,
-              display: {
-                xs: "none",
-                sm: "none",
-                md: "flex",
-              },
               fontSize: "1rem",
               backgroundColor: "white",
               border: "none",
+              display: {
+                xs: "flex",
+                sm: "flex",
+                md: "flex",
+              },
             }}
             PrefixComponent={
               <HomeOutlinedIcon
@@ -116,8 +114,12 @@ const Header = () => {
               />
             }
           >
-            Sign up or login
+            <Typography sx={{ display: { xs: "none", sm: "flex" } }}>
+              {" "}
+              Sign up or login
+            </Typography>
           </Button>
+
           <Button
             sx={{ border: "none", backgroundColor: "white" }}
             PrefixComponent={

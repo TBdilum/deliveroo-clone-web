@@ -14,7 +14,7 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        width: "260px",
+        width: "100%",
         height: "450px",
       }}
     >

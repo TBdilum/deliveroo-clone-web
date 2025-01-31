@@ -5,7 +5,14 @@ import Header from "../components/Header";
 
 const MainLayout = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", width: "100vw" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <Header />
       <Outlet />
       <Footer />
