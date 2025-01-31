@@ -329,7 +329,7 @@ const Footer = () => {
             <TwitterIcon />
           </Box>
 
-          <Typography>© 2025 Deliveroo</Typography>
+          <Typography sx={{ fontSize: "0.7rem" }}>© 2025 Deliveroo</Typography>
         </Box>
       </Container>
     </div>
