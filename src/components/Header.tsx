@@ -71,6 +71,7 @@ const Header = () => {
         >
           {location.pathname == "/" && (
             <Button
+              sx={{ backgroundColor: "white", border: "none" }}
               PrefixComponent={
                 <ExpandMoreIcon
                   sx={{
@@ -103,12 +104,14 @@ const Header = () => {
                 md: "flex",
               },
               fontSize: "1rem",
+              backgroundColor: "white",
+              border: "none",
             }}
             PrefixComponent={
               <HomeOutlinedIcon
                 sx={{
                   color: "rgb(0, 204, 188)",
-                  pr: 1,
+                  pr: 0.8,
                 }}
               />
             }
@@ -116,6 +119,7 @@ const Header = () => {
             Sign up or login
           </Button>
           <Button
+            sx={{ border: "none", backgroundColor: "white" }}
             PrefixComponent={
               <Person2OutlinedIcon
                 sx={{

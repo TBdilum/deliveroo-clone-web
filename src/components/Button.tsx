@@ -19,7 +19,6 @@ function Button({
       sx={{
         ...(sx ?? {}),
         borderWidth: 1,
-        borderStyle: "solid",
         px: 2,
         py: 1,
         borderRadius: 1,
