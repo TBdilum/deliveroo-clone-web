@@ -68,7 +68,6 @@ const MealDeal = () => {
               fontSize: { xs: "1.5rem", sm: "2.5rem", md: "3rem" }, // Responsive font size
               paddingLeft: "0.1rem",
               paddingRight: "0.1rem",
-              textAlign: "center",
             }}
           >
             Up to 25% off meal deals
@@ -116,9 +115,7 @@ const MealDeal = () => {
         style={{
           width: "100%",
           height: "auto",
-          marginTop: "2rem",
-          bottom: "0",
-          position: "absolute", // Add spacing below the content
+          marginTop: "2rem", // Add spacing below the content
         }}
       />
     </div>
