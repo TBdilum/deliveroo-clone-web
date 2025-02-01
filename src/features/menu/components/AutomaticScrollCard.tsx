@@ -6,7 +6,7 @@ const AutoScrollingCardSection = () => {
     <Box
       sx={{
         width: "100%",
-        padding: "10px 0",
+        padding: "0 0",
         overflow: "hidden", // Adjust as needed
       }}
     >

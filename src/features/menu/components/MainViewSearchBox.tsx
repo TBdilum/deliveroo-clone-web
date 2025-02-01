@@ -47,7 +47,7 @@ const MainViewSearchBox = () => {
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Typography sx={{ fontSize: "13px" }}>
+        <Typography sx={{ fontSize: "10px" }}>
           Enter a postcode to see what we deliver:
         </Typography>
 
@@ -58,7 +58,16 @@ const MainViewSearchBox = () => {
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "25px",
+              fontSize: { xs: "1rem", sm: "2.5rem", md: "2rem" },
               height: "50px",
+            },
+            "& .MuiInputBase-input": {
+              alignItems: "center",
+              marginBottom: { xs: "0", sm: "0.7rem" },
+              "&::placeholder": {
+                fontSize: { xs: "0.75rem", sm: "1rem" },
+                opacity: 0.4,
+              },
             },
           }}
           InputProps={{

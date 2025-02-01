@@ -6,8 +6,9 @@ const ScrollingCards = () => {
     <Box
       sx={{
         width: "100%",
+        height: "auto",
         backgroundColor: "rgb(253, 252, 252)",
-        padding: "2rem 0",
+        padding: "0rem 0",
       }}
     >
       <AutoScrollingCardSection />
