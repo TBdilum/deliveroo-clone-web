@@ -1,5 +1,4 @@
 import { Box, Grid } from "@mui/material";
-
 import MainViewSearchBox from "../components/MainViewSearchBox";
 
 const MainView = () => {
@@ -7,19 +6,20 @@ const MainView = () => {
     <Grid
       container
       sx={{
-        top: "0",
-        width: "100vw",
+        width: "100%",
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#f1f0f0",
         backgroundImage: "url(/assets/route.svg)",
-        backgroundSize: "100%",
-        backgroundPosition: " 3% center",
+        backgroundSize: "50%",
+        backgroundPosition: "3% 20%",
+        top: "0",
         backgroundRepeat: "no-repeat",
+        padding: "2rem 1rem",
       }}
     >
       {/* Left Section */}
-      <Grid item xs={0} sm={0} md={4}>
+      <Grid item xs={0} sm={0} md={4} lg={4}>
         <Box
           sx={{
             position: "relative",
@@ -47,7 +47,7 @@ const MainView = () => {
       </Grid>
 
       {/* Center Section */}
-      <Grid item xs={12} sm={8} md={4} sx={{ zIndex: 100 }}>
+      <Grid item xs={12} sm={8} md={4} lg={4} sx={{ zIndex: 100 }}>
         <MainViewSearchBox />
       </Grid>
 
@@ -58,7 +58,7 @@ const MainView = () => {
             position: "relative",
             width: "100%",
             height: "100%",
-            display: "flex",
+            display: { xs: "none", sm: "flex", md: "flex" },
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -68,8 +68,9 @@ const MainView = () => {
             src="/assets/right-2x.png"
             alt="Right Graphic"
             style={{
+              minWidth: "160%",
               translate: "10% ",
-              width: "180%",
+              width: "200%",
               height: "auto",
             }}
           />

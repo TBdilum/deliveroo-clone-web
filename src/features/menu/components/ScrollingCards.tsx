@@ -1,21 +1,17 @@
 import AutoScrollingCardSection from "./AutomaticScrollCard";
+import { Box } from "@mui/material";
 
 const ScrollingCards = () => {
   return (
-    <div
-      style={{
-        top: "500px",
-        height: "auto",
-        width: "100vw",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "absolute",
+    <Box
+      sx={{
+        width: "100%",
         backgroundColor: "rgb(253, 252, 252)",
+        padding: "2rem 0",
       }}
     >
       <AutoScrollingCardSection />
-    </div>
+    </Box>
   );
 };
 

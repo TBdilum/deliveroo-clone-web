@@ -3,29 +3,24 @@ import React from "react";
 
 const MealDeal = () => {
   return (
-    <div
-      style={{
-        height: "40 0px",
+    <Box
+      sx={{
         width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        top: "1200px",
-        paddingTop: "2rem",
-        backgroundColor: "#000", // Fallback background color if needed
-        zIndex: 0,
-        position: "absolute", // For image positioning
+        padding: "2rem 0",
+        backgroundColor: "#000",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       {/* Meal Deals Background */}
-      <div
-        style={{
+      <Box
+        sx={{
           position: "absolute",
-          bottom: 0,
+          top: 0,
+          left: 0,
           width: "100%",
           height: "100%",
-          zIndex: -1,
+          zIndex: 0,
         }}
       >
         <img
@@ -37,7 +32,7 @@ const MealDeal = () => {
             objectFit: "cover",
           }}
         />
-      </div>
+      </Box>
 
       {/* Content */}
       <Box
@@ -48,6 +43,8 @@ const MealDeal = () => {
           alignItems: "center",
           color: "white",
           zIndex: 2,
+          position: "relative",
+          padding: "2rem",
         }}
       >
         <Box
@@ -57,7 +54,7 @@ const MealDeal = () => {
             src="/assets/merch-sparkleleft.svg"
             alt="Sparkle Left"
             style={{
-              width: "8%", // Smaller for responsiveness
+              width: "8%",
               height: "auto",
               marginRight: "1rem",
             }}
@@ -65,7 +62,7 @@ const MealDeal = () => {
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: { xs: "1.5rem", sm: "2.5rem", md: "3rem" }, // Responsive font size
+              fontSize: { xs: "1.5rem", sm: "2.5rem", md: "3rem" },
               paddingLeft: "0.1rem",
               paddingRight: "0.1rem",
             }}
@@ -89,7 +86,7 @@ const MealDeal = () => {
             textAlign: "center",
             mb: "0.5rem",
             mt: "1rem",
-            fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" }, // Smaller text on small screens
+            fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
           }}
         >
           Need a midweek pick-me-up, a break from cooking for the family or just
@@ -100,7 +97,7 @@ const MealDeal = () => {
           sx={{
             textAlign: "center",
             mb: "6rem",
-            fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" }, // Smaller text on small screens
+            fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
           }}
         >
           Subject to availability. Participating restaurants only.
@@ -115,12 +112,11 @@ const MealDeal = () => {
         style={{
           width: "100%",
           height: "auto",
-          bottom: 0,
           position: "absolute",
-          marginTop: "2rem", // Add spacing below the content
+          bottom: 0,
         }}
       />
-    </div>
+    </Box>
   );
 };
 

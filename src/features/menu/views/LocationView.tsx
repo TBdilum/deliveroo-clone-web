@@ -5,43 +5,32 @@ import AndroidIcon from "@mui/icons-material/Android";
 const LocationView = () => {
   return (
     <Container
-      style={{
+      sx={{
         width: "100%",
-        height: "auto",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        position: "absolute",
-        top: "700px",
+        padding: "2rem",
         backgroundColor: "rgb(253, 252, 252)",
-        padding: "2rem", // Add padding for responsiveness
       }}
     >
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", sm: "column", lg: "row" },
+          flexDirection: { xs: "column", lg: "row" },
           width: "100%",
-          height: "auto", // Adjust height to auto for column layout
-          justifyContent: "space-between",
-          alignItems: "center",
           backgroundColor: "white",
           borderRadius: "10px",
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
           overflow: "hidden",
-          position: "relative", // Add dynamic padding based on screen size
         }}
       >
+        {/* Left Section */}
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             gap: "1.5rem",
             maxWidth: "600px",
-            alignItems: "flex-start",
-
             padding: "2rem",
-            flexGrow: 1, // Make sure it grows when flexDirection is column
+            flexGrow: 1,
           }}
         >
           <Typography
@@ -57,6 +46,7 @@ const LocationView = () => {
             way. You’ll get a notification when they’re nearby, too.
           </Typography>
 
+          {/* App Store and Google Play Buttons */}
           <Box sx={{ display: "flex", gap: "1rem" }}>
             <IconButton
               sx={{
@@ -96,6 +86,7 @@ const LocationView = () => {
           </Box>
         </Box>
 
+        {/* Right Section (Map Image) */}
         <Box sx={{ width: "100%", height: "auto", position: "relative" }}>
           <img
             src="https://img2.storyblok.com/filters:format(webp)/f/62776/x/ca59b51c51/map-min.svg"
@@ -107,12 +98,13 @@ const LocationView = () => {
             }}
           />
 
+          {/* Notification Image */}
           <Box
             sx={{
-              width: { xs: "150px", sm: "400px" },
+              width: { xs: "150px", sm: "350px" },
               position: "absolute",
-              top: "5%",
-              right: "5%",
+              top: "-4%",
+              right: "1%",
               backgroundColor: "transparent",
               padding: "10px",
               display: "flex",
