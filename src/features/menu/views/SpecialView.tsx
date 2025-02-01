@@ -4,7 +4,7 @@ import { specials } from "../../../data/Sides";
 
 const SpecialView = () => {
   return (
-    <Container disableGutters sx={{ mt: 2, mb: 5 }}>
+    <Container disableGutters sx={{ mt: 2, mb: 2 }}>
       <Typography
         variant="h6"
         sx={{
@@ -13,7 +13,7 @@ const SpecialView = () => {
       >
         20% off selected items
       </Typography>
-      <Typography variant="body2">
+      <Typography variant="body2" sx={{ marginBottom: "0.7rem" }}>
         Spend £15.00, get 20% off selected items – T&Cs apply. New customers
         only.
       </Typography>

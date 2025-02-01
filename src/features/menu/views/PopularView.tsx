@@ -6,11 +6,12 @@ const PopularView = () => {
   return (
     <Container
       disableGutters
-      sx={{ height: "380px", marginBottom: "1rem", marginTop: "2rem" }}
+      sx={{ height: "380px", marginBottom: "1rem", marginTop: "1rem" }}
     >
       <Typography
         sx={{
           fontWeight: "bold",
+          marginBottom: "0.7rem",
         }}
         variant="h6"
       >

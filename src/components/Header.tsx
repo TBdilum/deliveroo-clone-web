@@ -24,7 +24,7 @@ const Header = () => {
         justifyContent: "center",
         position: isTransparent ? "absolute" : "sticky",
         top: "0",
-        zIndex: "1000",
+        zIndex: "10000",
         paddingBottom: "0.8rem",
         paddingTop: "0.5rem",
         borderBottom: isTransparent ? "none" : "0.5px solid #ccc",

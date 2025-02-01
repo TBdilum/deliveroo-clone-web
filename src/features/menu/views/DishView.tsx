@@ -36,7 +36,16 @@ const DishView = () => {
     <Box>
       {mappedCategories.map(({ category, dishes }, index) => (
         <Box key={category?.id ?? "" + index}>
-          <Typography>{category?.name}</Typography>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: "1.3rem",
+              marginTop: "1rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            {category?.name}
+          </Typography>
           <Grid
             container
             spacing={{
@@ -47,6 +56,7 @@ const DishView = () => {
           >
             {dishes.map((dish) => (
               <Grid
+                sx={{ marginBottom: "1rem" }}
                 key={dish.id}
                 size={{
                   sm: 12,

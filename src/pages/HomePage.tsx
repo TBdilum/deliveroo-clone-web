@@ -10,34 +10,42 @@ const HomePage = () => {
     <Box sx={{ flexGrow: 1, width: "100%" }}>
       <RestaurantInfoView />
       <CategoriesBar />
-      <Container maxWidth="xl">
-        <Grid container spacing={2}>
-          <Grid
-            size={{
-              sm: 12,
-              xs: 12,
-              md: 8,
-            }}
-          >
-            <MenuView />
+      <Box
+        sx={{
+          flexGrow: 1,
+          width: "100%",
+          backgroundColor: "rgba(255, 255, 255, 0.75)",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Grid container spacing={2}>
+            <Grid
+              size={{
+                sm: 12,
+                xs: 12,
+                md: 8,
+              }}
+            >
+              <MenuView />
+            </Grid>
+            <Grid
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "block",
+                },
+              }}
+              size={{
+                sm: 0,
+                md: 4,
+              }}
+            >
+              <Cart />
+            </Grid>
           </Grid>
-          <Grid
-            sx={{
-              display: {
-                xs: "none",
-                sm: "none",
-                md: "block",
-              },
-            }}
-            size={{
-              sm: 0,
-              md: 4,
-            }}
-          >
-            <Cart />
-          </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </Box>
     </Box>
   );
 };
