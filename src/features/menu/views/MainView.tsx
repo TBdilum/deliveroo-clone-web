@@ -16,16 +16,17 @@ const MainView = () => {
         top: "0",
         backgroundRepeat: "no-repeat",
         padding: "2rem 1rem",
+        position: "relative",
       }}
     >
       {/* Left Section */}
       <Grid item xs={0} sm={0} md={4} lg={4}>
         <Box
           sx={{
+            display: { xs: "none", sm: "none", md: "flex" },
             position: "relative",
             width: "100%",
             height: "100%",
-            display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -39,6 +40,7 @@ const MainView = () => {
               top: "80%",
               left: "65%",
               transform: "translate(-50%, -50%)",
+              minWidth: "350px",
               width: "70%",
               height: "auto",
             }}

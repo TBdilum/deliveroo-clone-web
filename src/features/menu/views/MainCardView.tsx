@@ -6,7 +6,7 @@ const MainCardView = () => {
     <Box
       sx={{
         width: "100%",
-        padding: "2rem",
+        padding: "1rem",
         backgroundColor: "white",
       }}
     >
