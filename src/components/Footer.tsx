@@ -14,7 +14,7 @@ const Footer = () => {
     <div
       style={{
         backgroundColor: "rgb(46, 51, 51)",
-        padding: "3rem 4rem",
+        paddingTop: "2rem",
         color: "white",
         position: isMainPage ? "sticky" : "static",
         width: "100%",
@@ -33,7 +33,7 @@ const Footer = () => {
           justifyContent: "space-between",
           alignItems: "flex-start",
           gap: "2rem",
-          width: "90%",
+          width: "80%",
           height: "auto",
         }}
       >
@@ -46,6 +46,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
+            minHeight: "150px",
             maxWidth: "500px",
           }}
         >
@@ -75,6 +76,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
+            minHeight: "150px",
             maxWidth: "500px",
           }}
         >
@@ -101,6 +103,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
+            minHeight: "150px",
             maxWidth: "500px",
           }}
         >
@@ -127,6 +130,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
+            minHeight: "150px",
             maxWidth: "500px",
           }}
         >
@@ -172,27 +176,37 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Box>
-      </Container>
-
-      {/* Social Icons & Copyright */}
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "1rem",
-          width: "100%",
-          color: "white",
-          marginTop: "1rem",
-        }}
-      >
-        <Box sx={{ display: "flex", gap: "0.6rem" }}>
-          <FacebookOutlinedIcon />
-          <InstagramIcon />
-          <TwitterIcon />
+        <Box
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "2rem",
+            top: "0",
+            width: "100%",
+            color: "white",
+            justifyContent: "space-between",
+            marginTop: "-1.5rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              gap: "0.6rem",
+              marginTop: "0.4rem",
+            }}
+          >
+            <FacebookOutlinedIcon />
+            <InstagramIcon />
+            <TwitterIcon />
+          </Box>
+          <Box right={0}>
+            <Typography sx={{ fontSize: "0.8rem", color: " #585c5c" }}>
+              © 2025 Deliveroo
+            </Typography>
+          </Box>
         </Box>
-        <Typography sx={{ fontSize: "0.8rem" }}>© 2025 Deliveroo</Typography>
-      </Box>
+      </Container>
     </div>
   );
 };
