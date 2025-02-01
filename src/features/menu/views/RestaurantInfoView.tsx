@@ -30,7 +30,7 @@ const RestaurantInfoView = () => {
         py: 3,
       }}
     >
-      <Box sx={{ paddingBottom: "1.5rem" }}>
+      <Box sx={{ paddingBottom: "1rem" }}>
         <Button
           PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
           sx={{

@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Container, Grid2 as Grid } from "@mui/material";
 import RestaurantInfoView from "../features/menu/views/RestaurantInfoView";
 import CategoriesBar from "../features/menu/components/CategoriesBar";
