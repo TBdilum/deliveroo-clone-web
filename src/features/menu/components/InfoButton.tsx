@@ -25,7 +25,7 @@ const InfoButton = ({ title, description, Icon }: InfoButtonProps) => {
         }}
       >
         <Typography>{title}</Typography>
-        <Typography>{description}</Typography>
+        <Typography sx={{ color: "#585c5c" }}>{description}</Typography>
       </Box>
       <Box>
         <ChevronRightOutlinedIcon />

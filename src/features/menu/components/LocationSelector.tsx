@@ -30,7 +30,7 @@ const LocationSelector = () => {
       }}
       onClick={handleOnClick}
     >
-      <DirectionsBikeOutlinedIcon />
+      <DirectionsBikeOutlinedIcon sx={{ color: "#00b8a9" }} />
       <Typography
         sx={{
           mx: 2,

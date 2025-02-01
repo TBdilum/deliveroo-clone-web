@@ -5,7 +5,8 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import LocationSelector from "../components/LocationSelector";
 import Button from "../../../components/Button";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const restaurant = {
   name: "Tossed - Baker Street",
@@ -18,16 +19,32 @@ const restaurant = {
 const RestaurantInfoView = () => {
   return (
     <Container
+      disableGutters
       maxWidth="xl"
       sx={{
         px: {
           xs: 0,
           sm: 2,
-          md: 3,
+          md: 2,
         },
-        py: 5,
+        py: 3,
       }}
     >
+      <Box sx={{ paddingBottom: "1.5rem" }}>
+        <Button
+          PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
+          sx={{
+            gap: 1,
+            color: "rgb(0, 204, 188)",
+            fontSize: "1rem",
+            fontWeight: "normal",
+            left: "0",
+            marginLeft: "-1rem",
+          }}
+        >
+          Back
+        </Button>
+      </Box>
       <Grid container>
         <Grid
           size={{
@@ -121,12 +138,12 @@ const RestaurantInfoView = () => {
           <InfoButton
             title="Info"
             description="Map, allergens and hygiene rating"
-            Icon={<InfoOutlinedIcon />}
+            Icon={<InfoOutlinedIcon sx={{ color: "#585c5c" }} />}
           />
           <InfoButton
             title="4.8 Excellent (500+)"
             description="Tasty Food"
-            Icon={<StarOutlinedIcon />}
+            Icon={<StarOutlinedIcon sx={{ color: "#4d7c1b" }} />}
           />
           <Box
             sx={{
@@ -140,8 +157,12 @@ const RestaurantInfoView = () => {
           >
             <LocationSelector />
             <Button
-              sx={{ my: 2 }}
-              PrefixComponent={<PeopleAltIcon sx={{ mr: 1 }} />}
+              sx={{ my: 2, border: "0.5px solid #ccc" }}
+              PrefixComponent={
+                <PeopleOutlineOutlinedIcon
+                  sx={{ mr: 1, color: "rgb(0, 204, 188)" }}
+                />
+              }
             >
               Start Group Order
             </Button>
@@ -164,8 +185,12 @@ const RestaurantInfoView = () => {
         >
           <LocationSelector />
           <Button
-            sx={{ my: 2 }}
-            PrefixComponent={<PeopleAltIcon sx={{ mr: 1 }} />}
+            sx={{ my: 2, border: "0.5px solid #ccc" }}
+            PrefixComponent={
+              <PeopleOutlineOutlinedIcon
+                sx={{ mr: 1, color: "rgb(0, 204, 188)" }}
+              />
+            }
           >
             Start Group Order
           </Button>

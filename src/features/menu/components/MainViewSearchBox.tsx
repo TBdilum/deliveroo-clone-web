@@ -47,7 +47,7 @@ const MainViewSearchBox = () => {
           boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Typography sx={{ fontSize: "10px" }}>
+        <Typography sx={{ fontSize: "13px" }}>
           Enter a postcode to see what we deliver:
         </Typography>
 
@@ -94,7 +94,7 @@ const MainViewSearchBox = () => {
           }}
         />
 
-        <Typography sx={{ fontSize: "11px", marginTop: "0.5rem" }}>
+        <Typography sx={{ fontSize: "12px", marginTop: "0.5rem" }}>
           <Link
             to={"/SignPage"}
             style={{

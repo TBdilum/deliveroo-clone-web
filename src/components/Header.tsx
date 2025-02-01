@@ -19,9 +19,15 @@ const Header = () => {
         backgroundColor: isTransparent ? "transparent" : "white",
         width: "100%",
         height: "60px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
         position: isTransparent ? "absolute" : "sticky",
         top: "0",
         zIndex: "1000",
+        paddingBottom: "0.8rem",
+        paddingTop: "0.5rem",
+        borderBottom: isTransparent ? "none" : "0.5px solid #ccc",
       }}
     >
       <Container
@@ -30,8 +36,8 @@ const Header = () => {
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center", // Center items vertically
-          position: "relative", // Ensure this is the reference point for absolutely positioned children
+          alignItems: "center",
+          position: "relative",
         }}
       >
         {/* Logo Section */}
@@ -95,17 +101,17 @@ const Header = () => {
                 />
               }
             >
-              <Typography>Partner with Us</Typography>
+              <Typography sx={{ color: "#2e3333" }}>Partner with Us</Typography>
             </Button>
           )}
 
           <Button
             sx={{
+              border: "0.02px solid #ccc",
               display: { xs: "none", sm: "flex" },
               mr: 0.5,
               fontSize: "1rem",
               backgroundColor: "white",
-              border: "none",
             }}
             PrefixComponent={
               <HomeOutlinedIcon
@@ -117,7 +123,15 @@ const Header = () => {
             }
           >
             <Typography sx={{ display: { xs: "none", sm: "flex" } }}>
-              Sign up or login
+              <Link
+                to={"/SignPage"}
+                style={{
+                  textDecoration: "none",
+                  color: "#2e3333",
+                }}
+              >
+                Sign up or login
+              </Link>
             </Typography>
           </Button>
 
@@ -125,7 +139,9 @@ const Header = () => {
             sx={{
               display: { xs: "none", sm: "flex" },
               backgroundColor: "white",
-              border: inSignPage ? "0.5px solid rgb(232, 230, 230)" : "none",
+              border: inSignPage
+                ? "0.5px solid rgb(232, 230, 230)"
+                : "0.02px solid #ccc",
             }}
             PrefixComponent={
               <Person2OutlinedIcon
@@ -137,6 +153,7 @@ const Header = () => {
           >
             <Typography
               sx={{
+                color: "#2e3333",
                 display: {
                   xs: "none",
                   sm: "none",
