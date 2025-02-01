@@ -11,7 +11,7 @@ const MainView = () => {
         justifyContent: "center",
         backgroundColor: "#f1f0f0",
         backgroundImage: "url(/assets/route.svg)",
-        backgroundSize: "50%",
+        backgroundSize: "auto",
         backgroundPosition: "3% 20%",
         top: "0",
         backgroundRepeat: "no-repeat",
@@ -68,9 +68,9 @@ const MainView = () => {
             src="/assets/right-2x.png"
             alt="Right Graphic"
             style={{
-              minWidth: "160%",
+              minWidth: "800px",
               translate: "10% ",
-              width: "200%",
+              width: "300%",
               height: "auto",
             }}
           />

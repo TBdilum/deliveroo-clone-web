@@ -18,7 +18,7 @@ const Header = () => {
         backgroundColor: isTransparent ? "transparent" : "white",
         width: "100%",
         height: "60px",
-        position: isTransparent ? "" : "sticky",
+        position: isTransparent ? "absolute" : "sticky",
         top: "0",
         zIndex: "1000",
       }}

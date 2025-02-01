@@ -6,6 +6,7 @@ const MealDeal = () => {
     <Box
       sx={{
         width: "100%",
+        maxHeight: "340px",
         padding: "2rem 0",
         backgroundColor: "#000",
         position: "relative",
@@ -45,6 +46,7 @@ const MealDeal = () => {
           zIndex: 2,
           position: "relative",
           padding: "2rem",
+          paddingBottom: "4rem",
         }}
       >
         <Box
@@ -54,9 +56,10 @@ const MealDeal = () => {
             src="/assets/merch-sparkleleft.svg"
             alt="Sparkle Left"
             style={{
+              minWidth: "50px",
               width: "8%",
               height: "auto",
-              marginRight: "1rem",
+              marginRight: "0.5rem",
             }}
           />
           <Typography
@@ -65,6 +68,7 @@ const MealDeal = () => {
               fontSize: { xs: "1.5rem", sm: "2.5rem", md: "3rem" },
               paddingLeft: "0.1rem",
               paddingRight: "0.1rem",
+              textAlign: "center",
             }}
           >
             Up to 25% off meal deals
@@ -73,10 +77,11 @@ const MealDeal = () => {
             src="/assets/merch-sparkleright.svg"
             alt="Sparkle Right"
             style={{
+              minWidth: "50px",
               width: "8%",
               height: "auto",
               objectFit: "contain",
-              marginLeft: "1rem",
+              marginLeft: "0.5rem",
             }}
           />
         </Box>
@@ -96,7 +101,7 @@ const MealDeal = () => {
         <Typography
           sx={{
             textAlign: "center",
-            mb: "6rem",
+            mb: "1.3rem",
             fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
           }}
         >
@@ -110,6 +115,8 @@ const MealDeal = () => {
         src="/assets/merch-itemrow.svg"
         alt="item-row"
         style={{
+          minHeight: "40px",
+          paddingTop: "0.5rem",
           width: "100%",
           height: "auto",
           position: "absolute",
