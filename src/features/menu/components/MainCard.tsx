@@ -14,7 +14,7 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        width: "100%",
+        width: "95%",
         height: "450px",
       }}
     >
@@ -39,6 +39,7 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
             position: "absolute",
             top: "0",
             left: "0",
+            right: "0",
           }}
         />
       </Box>
