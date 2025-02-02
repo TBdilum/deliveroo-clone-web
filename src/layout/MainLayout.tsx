@@ -10,7 +10,7 @@ const MainLayout = () => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        minHeight: "100vh", // Ensure full viewport height
+        minHeight: "100vh",
         overflow: "visible",
       }}
     >

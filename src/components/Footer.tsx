@@ -33,7 +33,7 @@ const Footer = () => {
           flexWrap: "wrap",
           justifyContent: "space-between",
           alignItems: "flex-start",
-          gap: "2rem",
+          gap: "1rem",
           width: "80%",
           height: "auto",
         }}
@@ -142,12 +142,10 @@ const Footer = () => {
             Take Deliveroo with you
           </Typography>
           <Grid container spacing={2}>
-            {/* App Store Button */}
             <Grid item xs={12} sm={12}>
               <AppStoreButton theme={"dark"} width={200} height={50} url={""} />
             </Grid>
 
-            {/* Google Play Button */}
             <Grid item xs={12} sm={12}>
               <GooglePlayButton
                 theme={"dark"}
@@ -175,7 +173,7 @@ const Footer = () => {
             sx={{
               display: "flex",
               gap: "0.6rem",
-              marginTop: "0.4rem",
+              marginTop: "1rem",
             }}
           >
             <FacebookOutlinedIcon />
@@ -183,7 +181,9 @@ const Footer = () => {
             <TwitterIcon />
           </Box>
           <Box right={0}>
-            <Typography sx={{ fontSize: "0.8rem", color: " #585c5c" }}>
+            <Typography
+              sx={{ fontSize: "0.8rem", color: " #585c5c", mt: "1rem" }}
+            >
               © 2025 Deliveroo
             </Typography>
           </Box>

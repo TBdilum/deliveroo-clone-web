@@ -1,6 +1,7 @@
-import { Box, Container, IconButton, Typography } from "@mui/material";
-import AppleIcon from "@mui/icons-material/Apple";
-import AndroidIcon from "@mui/icons-material/Android";
+import { Box, Container, Typography } from "@mui/material";
+import { Grid2 as Grid } from "@mui/material";
+import { GooglePlayButton } from "react-mobile-app-button";
+import { AppStoreButton } from "react-mobile-app-button";
 
 const LocationView = () => {
   return (
@@ -22,7 +23,6 @@ const LocationView = () => {
           overflow: "hidden",
         }}
       >
-        {/* Left Section */}
         <Box
           sx={{
             display: "flex",
@@ -46,47 +46,29 @@ const LocationView = () => {
             way. You’ll get a notification when they’re nearby, too.
           </Typography>
 
-          {/* App Store and Google Play Buttons */}
           <Box sx={{ display: "flex", gap: "1rem" }}>
-            <IconButton
-              sx={{
-                backgroundColor: "#000",
-                color: "white",
-                borderRadius: "10px",
-                padding: "10px 15px",
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
-                fontSize: { xs: "0.75rem", sm: "0.9rem" },
-              }}
-            >
-              <AppleIcon sx={{ fontSize: "1.5rem" }} />
-              <Typography sx={{ fontSize: { xs: "0.75rem", sm: "0.9rem" } }}>
-                App Store
-              </Typography>
-            </IconButton>
+            <Grid container spacing={2}>
+              <Grid>
+                <AppStoreButton
+                  theme={"dark"}
+                  width={200}
+                  height={50}
+                  url={""}
+                />
+              </Grid>
 
-            <IconButton
-              sx={{
-                backgroundColor: "#00CCBC",
-                color: "white",
-                borderRadius: "10px",
-                padding: "10px 15px",
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
-                fontSize: { xs: "0.75rem", sm: "0.9rem" },
-              }}
-            >
-              <AndroidIcon sx={{ fontSize: "1.5rem" }} />
-              <Typography sx={{ fontSize: { xs: "0.75rem", sm: "0.9rem" } }}>
-                Google Play
-              </Typography>
-            </IconButton>
+              <Grid>
+                <GooglePlayButton
+                  theme={"dark"}
+                  width={200}
+                  height={50}
+                  url={""}
+                />
+              </Grid>
+            </Grid>
           </Box>
         </Box>
 
-        {/* Right Section (Map Image) */}
         <Box sx={{ width: "100%", height: "auto", position: "relative" }}>
           <img
             src="https://img2.storyblok.com/filters:format(webp)/f/62776/x/ca59b51c51/map-min.svg"
@@ -98,7 +80,6 @@ const LocationView = () => {
             }}
           />
 
-          {/* Notification Image */}
           <Box
             sx={{
               width: { xs: "150px", sm: "350px" },
