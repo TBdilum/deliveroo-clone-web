@@ -25,7 +25,7 @@ const CategoriesBar = () => {
         alignItems: "center",
         display: "flex",
         top: "60px",
-        zIndex: "500",
+        zIndex: "1001",
         backgroundColor: "white",
       }}
     >
@@ -34,8 +34,7 @@ const CategoriesBar = () => {
         sx={{
           display: "flex",
           alignItems: "center",
-          overflowY: "hidden",
-          overflowX: "scroll",
+          overflowX: "auto",
           "::-webkit-scrollbar": {
             display: "none",
           },

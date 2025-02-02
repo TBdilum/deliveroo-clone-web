@@ -14,6 +14,8 @@ const HomePage = () => {
           flexGrow: 1,
           width: "100%",
           backgroundColor: "rgba(255, 255, 255, 0.75)",
+          minHeight: "calc(100vh - 130px)", // Ensure enough height for scrolling
+          overflowY: "auto", // Allow
         }}
       >
         <Container maxWidth="xl">

@@ -144,15 +144,16 @@ const Footer = () => {
           <Grid container spacing={2}>
             {/* App Store Button */}
             <Grid item xs={12} sm={12}>
-              <AppStoreButton theme={"dark"} width={"200px"} height={"50px"} />
+              <AppStoreButton theme={"dark"} width={200} height={50} url={""} />
             </Grid>
 
             {/* Google Play Button */}
             <Grid item xs={12} sm={12}>
               <GooglePlayButton
                 theme={"dark"}
-                width={"200px"}
-                height={"50px"}
+                width={200}
+                height={50}
+                url={""}
               />
             </Grid>
           </Grid>

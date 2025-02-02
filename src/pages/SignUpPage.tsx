@@ -46,6 +46,10 @@ const SignUpPage = () => {
             backgroundColor: "#4c69ba",
             width: "100%",
             height: "3rem",
+            mb: "0.5rem",
+            gap: "0.5rem",
+            fontWeight: "bold",
+            fontSize: "1rem",
           }}
         >
           Continue With Facebook
@@ -68,6 +72,10 @@ const SignUpPage = () => {
             marginTop: "0.5rem",
             width: "100%",
             height: "3rem",
+            mb: "0.5rem",
+            gap: "0.5rem",
+            fontWeight: "bold",
+            fontSize: "1rem",
           }}
         >
           Continue With Google
@@ -80,6 +88,9 @@ const SignUpPage = () => {
             marginTop: "0.5rem",
             width: "100%",
             height: "3rem",
+            gap: "0.5rem",
+            fontWeight: "bold",
+            fontSize: "1rem",
           }}
         >
           Continue With Apple
@@ -108,13 +119,16 @@ const SignUpPage = () => {
             color: "white",
             backgroundColor: "rgb(0, 204, 188)",
             height: "3rem",
+            gap: "0.5rem",
+            fontWeight: "bold",
+            fontSize: "1rem",
           }}
         >
           Continue With Email
         </Button>
         <Typography
           sx={{
-            fontSize: "0.8rem",
+            fontSize: "0.75rem",
             marginTop: "1rem",
             width: "100%",
             textAlign: "left",

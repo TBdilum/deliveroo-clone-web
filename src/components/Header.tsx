@@ -22,7 +22,7 @@ const Header = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        position: isTransparent ? "absolute" : "sticky",
+        position: isTransparent ? "absolute" : "fixed",
         top: "0",
         zIndex: "10000",
         paddingBottom: "0.8rem",
