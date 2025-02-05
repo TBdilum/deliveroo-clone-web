@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
-import React from "react";
 import InfoButton from "../components/InfoButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
@@ -7,16 +7,55 @@ import LocationSelector from "../components/LocationSelector";
 import Button from "../../../components/Button";
 import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getRestaurants } from "../../../backend/getRestaurants";
 
-const restaurant = {
-  name: "Tossed - Baker Street",
-  tags: ["Chicken", "Salads", "Healthy"],
-  openAt: "10:00",
-  minimumValue: 28.0,
-  deliveryCharge: 12.23,
-};
+interface Restaurant {
+  name: string;
+  description: string;
+  tags: string[];
+  openingAt: string;
+  closingAt: string;
+  minimumValue: number;
+  deliveryCharge: number;
+}
 
 const RestaurantInfoView = () => {
+  const { orgId } = useParams();
+  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (orgId) {
+        try {
+          const data = await getRestaurants(orgId);
+
+          if (!data) {
+            setError("Restaurant not found.");
+          } else {
+            setRestaurant(data);
+          }
+        } catch (err) {
+          setError("Failed to fetch restaurant data");
+        }
+      } else {
+        setError("Organization ID is undefined.");
+      }
+    };
+
+    fetchData();
+  }, [orgId]);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!restaurant) {
+    return <Typography>Loading...</Typography>;
+  }
+
   return (
     <Container
       disableGutters
@@ -123,7 +162,7 @@ const RestaurantInfoView = () => {
             }}
           >
             <Typography variant="body1">
-              Opens at {restaurant.openAt}
+              Opens at {restaurant.openingAt}
             </Typography>
             <Typography sx={{ mx: 1 }}>•</Typography>
             <Typography variant="body1">
