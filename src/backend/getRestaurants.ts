@@ -1,7 +1,7 @@
 export const getRestaurants = async (orgId: string) => {
   try {
     const response = await fetch(
-      `http://localhost:3000/restaurant/${encodeURIComponent(orgId)}`,
+      `http://localhost:3000/restaurants/${encodeURIComponent(orgId)}`,
     );
 
     if (!response.ok) {

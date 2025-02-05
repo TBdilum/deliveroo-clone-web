@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
 import InfoButton from "../components/InfoButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -17,8 +16,8 @@ interface Restaurant {
   tags: string[];
   openingAt: string;
   closingAt: string;
-  minimumValue: number;
-  deliveryCharge: number;
+  minimumValue: string;
+  deliveryCharge: string;
 }
 
 const RestaurantInfoView = () => {
@@ -37,6 +36,7 @@ const RestaurantInfoView = () => {
           } else {
             setRestaurant(data);
           }
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
           setError("Failed to fetch restaurant data");
         }
@@ -166,11 +166,11 @@ const RestaurantInfoView = () => {
             </Typography>
             <Typography sx={{ mx: 1 }}>•</Typography>
             <Typography variant="body1">
-              ${restaurant.minimumValue.toFixed(2)} minimum
+              ${restaurant.minimumValue} minimum
             </Typography>
             <Typography sx={{ mx: 1 }}>•</Typography>
             <Typography variant="body1">
-              ${restaurant.deliveryCharge.toFixed(2)} delivery
+              ${restaurant.deliveryCharge} delivery
             </Typography>
           </Typography>
 
