@@ -9,6 +9,7 @@ import SignUpPage from "./pages/SignUpPage";
 import MainLayout from "./layout/MainLayout";
 import WithPageTitle from "./hocs/WithPageTitle";
 import LandingPage from "./pages/LandingPage";
+import AllRestaurantsPage from "./pages/AllRestaurantsPage";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -24,7 +25,7 @@ const App = () => {
           }
         ></Route>
         <Route
-          path="/menu/:orgId"
+          path="/:orgId/menu"
           element={
             <WithPageTitle title="Tossed">
               <HomePage />
@@ -36,6 +37,14 @@ const App = () => {
           element={
             <WithPageTitle title="Sign Up">
               <SignUpPage />
+            </WithPageTitle>
+          }
+        ></Route>
+        <Route
+          path="/restaurants"
+          element={
+            <WithPageTitle title="Restaurants">
+              <AllRestaurantsPage />
             </WithPageTitle>
           }
         ></Route>

@@ -12,6 +12,7 @@ import { getRestaurants } from "../../../backend/getRestaurants";
 
 interface Restaurant {
   name: string;
+  image: string;
   description: string;
   tags: string[];
   openingAt: string;
@@ -103,11 +104,12 @@ const RestaurantInfoView = () => {
                 md: 2,
                 overflow: "hidden",
               },
+              boxShadow: "0px 1px 15px 0.5px  #ccc",
             }}
           >
             <img
               alt="MainDish-image"
-              src="/assets/Main.jpeg"
+              src={restaurant.image}
               style={{
                 width: "100%",
                 height: "100%",

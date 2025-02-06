@@ -1,11 +1,9 @@
-import { Box, Container, Typography, Grid } from "@mui/material";
+import { Box, Container, Typography, Grid2 as Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
-
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { GooglePlayButton } from "react-mobile-app-button";
-import { AppStoreButton } from "react-mobile-app-button";
+import { GooglePlayButton, AppStoreButton } from "react-mobile-app-button";
 
 const Footer = () => {
   const location = useLocation();
@@ -20,7 +18,7 @@ const Footer = () => {
         position: isMainPage ? "sticky" : "static",
         width: "100%",
         display: "flex",
-        top: "auto",
+        top: "60px",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
@@ -38,7 +36,6 @@ const Footer = () => {
           height: "auto",
         }}
       >
-        {/* Discover Section */}
         <Box
           sx={{
             display: "flex",
@@ -68,7 +65,6 @@ const Footer = () => {
           </Typography>
         </Box>
 
-        {/* Legal Section */}
         <Box
           sx={{
             display: "flex",
@@ -95,7 +91,6 @@ const Footer = () => {
           </Typography>
         </Box>
 
-        {/* Help Section */}
         <Box
           sx={{
             display: "flex",
@@ -122,7 +117,6 @@ const Footer = () => {
           </Typography>
         </Box>
 
-        {/* Social & Apps Section */}
         <Box
           sx={{
             display: "flex",
@@ -142,11 +136,11 @@ const Footer = () => {
             Take Deliveroo with you
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={12}>
+            <Grid size={{ sm: 12, xs: 12 }}>
               <AppStoreButton theme={"dark"} width={200} height={50} url={""} />
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid size={{ sm: 12, xs: 12 }}>
               <GooglePlayButton
                 theme={"dark"}
                 width={200}
