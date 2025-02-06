@@ -53,12 +53,15 @@ const AllRestaurantsPage = () => {
           disableGutters
           maxWidth="xl"
           sx={{
-            px: {
+            width: "70%",
+            borderRadius: {
               xs: 0,
               sm: 2,
               md: 2,
+              overflow: "hidden",
             },
-            py: 3,
+            boxShadow: "5px 4px 10px 5px rgba(0, 0, 0, 0.1)",
+            margin: "2rem",
           }}
         >
           <Grid container>
@@ -75,13 +78,9 @@ const AllRestaurantsPage = () => {
                   width: "100%",
                   height: "100%",
                   maxHeight: "200px",
-                  borderRadius: {
-                    xs: 0,
-                    sm: 2,
-                    md: 2,
-                    overflow: "hidden",
-                  },
-                  boxShadow: "0px 1px 1px 0.5px  #ccc",
+
+                  alignItems: "left",
+                  justifyContent: "left",
                 }}
               >
                 <img
@@ -89,8 +88,7 @@ const AllRestaurantsPage = () => {
                   src={restaurant.image}
                   style={{
                     width: "100%",
-                    alignItems: "center",
-                    justifyContent: "center",
+
                     height: "100%",
                     objectFit: "contain",
                   }}
