@@ -1,5 +1,11 @@
+import { Box, Typography } from "@mui/material";
+
 const AllRestaurantsPage = () => {
-  return <div>AllRestaurantsPage</div>;
+  return (
+    <Box sx={{ paddingTop: "60px", paddingLeft: "6rem", paddingRight: "6rem" }}>
+      <Typography>Restaurants</Typography>
+    </Box>
+  );
 };
 
 export default AllRestaurantsPage;

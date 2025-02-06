@@ -18,7 +18,7 @@ const Footer = () => {
         position: isMainPage ? "sticky" : "static",
         width: "100%",
         display: "flex",
-        top: "60px",
+        top: "600px",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",

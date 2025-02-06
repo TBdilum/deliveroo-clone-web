@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import logo from "/assets/deliverooLogo.svg";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import logo from "/deliverooLogo.svg";
 import { Box, Container, Typography } from "@mui/material";
 import Button from "./Button";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
