@@ -1,11 +1,9 @@
 import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
 import { getAllRestaurants } from "../backend/getAllRestaurants";
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
 import InfoButton from "../features/menu/components/InfoButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 interface Restaurant {
   name: string;
