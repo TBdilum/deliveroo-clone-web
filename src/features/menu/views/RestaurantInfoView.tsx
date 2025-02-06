@@ -42,7 +42,7 @@ const RestaurantInfoView = () => {
           setError("Failed to fetch restaurant data");
         }
       } else {
-        setError("Organization ID is undefined.");
+        setError("Please check the OrgID.");
       }
     };
 
@@ -104,7 +104,7 @@ const RestaurantInfoView = () => {
                 md: 2,
                 overflow: "hidden",
               },
-              boxShadow: "0px 1px 15px 0.5px  #ccc",
+              boxShadow: "0px 1px 1px 0.5px  #ccc",
             }}
           >
             <img
