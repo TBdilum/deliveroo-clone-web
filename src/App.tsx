@@ -25,7 +25,7 @@ const App = () => {
           }
         ></Route>
         <Route
-          path="/:orgId/menu"
+          path="/restaurants/:orgId/menu"
           element={
             <WithPageTitle title="Tossed">
               <HomePage />

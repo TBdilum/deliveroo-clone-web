@@ -1,9 +1,10 @@
-import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { getAllRestaurants } from "../backend/getAllRestaurants";
 import { useEffect, useState } from "react";
 import InfoButton from "../features/menu/components/InfoButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import { Link } from "react-router-dom";
 
 interface Restaurant {
   name: string;
@@ -46,109 +47,115 @@ const AllRestaurantsPage = () => {
   }
 
   return (
-    <Box sx={{ paddingTop: "60px", paddingLeft: "6rem", paddingRight: "6rem" }}>
-      {restaurant.map((restaurant, index) => (
-        <Container
-          key={index}
-          disableGutters
-          maxWidth="xl"
-          sx={{
-            width: "70%",
-            borderRadius: {
-              xs: 0,
-              sm: 2,
-              md: 2,
-              overflow: "hidden",
-            },
-            boxShadow: "5px 4px 10px 5px rgba(0, 0, 0, 0.1)",
-            margin: "2rem",
+    <Box
+      sx={{
+        paddingTop: "60px",
+        paddingX: "6rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      {restaurant.map((restaurant) => (
+        <Link
+          to={`/restaurants/${restaurant.name}/menu`}
+          key={restaurant.name}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            width: "100%",
+            height: "100%",
           }}
         >
-          <Grid container>
-            <Grid
-              size={{
-                xs: 12,
-                sm: 3,
-                md: 4,
-                lg: 3,
-              }}
-            >
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  maxHeight: "200px",
-
-                  alignItems: "left",
-                  justifyContent: "left",
-                }}
-              >
-                <img
-                  alt="MainDish-image"
-                  src={restaurant.image}
-                  style={{
+          <Container
+            disableGutters
+            maxWidth="lg"
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              borderRadius: 2,
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+              marginBottom: "2rem",
+              transition: "transform 0.2s ease-in-out",
+              "&:hover": {
+                cursor: "pointer",
+                transform: "scale(1.02)",
+                boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.15)",
+              },
+            }}
+          >
+            <Grid container spacing={0} alignItems="center">
+              {/* Image Section */}
+              <Grid item xs={12} sm={3}>
+                <Box
+                  sx={{
                     width: "100%",
-
-                    height: "100%",
-                    objectFit: "contain",
+                    height: "200px",
+                    borderRadius: "8px 0 0 8px",
+                    overflow: "hidden",
                   }}
-                />
-              </Box>
-            </Grid>
-            <Grid
-              size={{
-                xs: 12,
-                sm: 9,
-                md: 8,
-                lg: 5,
-              }}
-              sx={{
-                px: 2,
-              }}
-            >
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: "bold",
-                }}
-              >
-                {restaurant.name}
-              </Typography>
+                >
+                  <img
+                    alt={restaurant.name}
+                    src={restaurant.image}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </Box>
+              </Grid>
 
-              <Typography
-                variant="body1"
-                sx={{
-                  mt: 1,
-                  display: "flex",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                <Typography variant="body1">
-                  Opens at {restaurant.openingAt}
-                </Typography>
-                <Typography sx={{ mx: 1 }}>•</Typography>
-                <Typography variant="body1">
-                  ${restaurant.minimumValue} minimum
-                </Typography>
-                <Typography sx={{ mx: 1 }}>•</Typography>
-                <Typography variant="body1">
-                  ${restaurant.deliveryCharge} delivery
-                </Typography>
-              </Typography>
+              {/* Text Section */}
+              <Grid item xs={12} sm={9}>
+                <Box
+                  sx={{
+                    padding: "1rem",
+                    textAlign: "left",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 1,
+                  }}
+                >
+                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                    {restaurant.name}
+                  </Typography>
 
-              <InfoButton
-                title="Info"
-                description="Map, allergens and hygiene rating"
-                Icon={<InfoOutlinedIcon sx={{ color: "#585c5c" }} />}
-              />
-              <InfoButton
-                title="4.8 Excellent (500+)"
-                description="Tasty Food"
-                Icon={<StarOutlinedIcon sx={{ color: "#4d7c1b" }} />}
-              />
+                  <Typography variant="body2" sx={{ color: "gray" }}>
+                    {restaurant.tags.join(" • ")}
+                  </Typography>
+
+                  <Typography variant="body2" sx={{ color: "#444" }}>
+                    Opens at {restaurant.openingAt} | ${restaurant.minimumValue}{" "}
+                    min | ${restaurant.deliveryCharge} delivery
+                  </Typography>
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      gap: 2,
+                      mt: 1,
+                      flexDirection: "column",
+                    }}
+                  >
+                    <InfoButton
+                      title="Info"
+                      description="Map, allergens and hygiene rating"
+                      Icon={<InfoOutlinedIcon sx={{ color: "#585c5c" }} />}
+                    />
+                    <InfoButton
+                      title="4.8 Excellent (500+)"
+                      description="Tasty Food"
+                      Icon={<StarOutlinedIcon sx={{ color: "#4d7c1b" }} />}
+                    />
+                  </Box>
+                </Box>
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
+          </Container>
+        </Link>
       ))}
     </Box>
   );
