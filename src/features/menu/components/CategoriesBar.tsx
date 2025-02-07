@@ -1,18 +1,45 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Box, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import CategoryChip from "./CategoryChip";
-import { categories } from "../../../data/Sides";
+import { getCategories } from "../../../backend/getCategories";
+import { ICategory } from "../../../data/Sides";
+
+export const categories: ICategory[] = [];
 
 const CategoriesBar = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1);
+  const [categories, setCategories] = useState<ICategory[]>([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await getCategories();
+        if (!data) {
+          setError("categories not found.");
+        } else {
+          categories.push(data);
+          setCategories(data);
+        }
+      } catch (error) {
+        console.error("Error fetching categories", error);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleOnCategoryClick = (id: number) => {
     setSelectedCategoryId(id);
   };
 
-  useEffect(() => {
-    setSelectedCategoryId(categories[0].id);
-  }, []);
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!categories) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Box

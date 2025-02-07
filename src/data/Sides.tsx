@@ -25,13 +25,6 @@ export const dishes: IDish[] = Array.from({
   categoryId: faker.number.int({ max: 30, min: 0 }),
 }));
 
-export const categories: ICategory[] = Array.from({
-  length: 30,
-}).map((_, index) => ({
-  id: index,
-  name: faker.food.ethnicCategory(),
-}));
-
 export const specials: IDish[] = Array.from({ length: 25 }).map((_, index) => ({
   id: index,
   image: faker.image.url(),

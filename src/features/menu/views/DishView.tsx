@@ -1,7 +1,8 @@
 import { Box, Grid2 as Grid, Typography } from "@mui/material";
-import { categories, dishes, IDish } from "../../../data/Sides";
+import { dishes, IDish } from "../../../data/Sides";
 import Dish from "../components/Dish";
 import { useMemo } from "react";
+import { categories } from "../components/CategoriesBar";
 
 const DishView = () => {
   const groupedDishes = useMemo(() => {
@@ -21,7 +22,7 @@ const DishView = () => {
     () =>
       Object.entries(groupedDishes).map(([categoryId, dishes]) => {
         const category = categories.find(
-          (item) => item.id.toString() === categoryId,
+          (category) => category.id.toString() === categoryId,
         );
 
         return {

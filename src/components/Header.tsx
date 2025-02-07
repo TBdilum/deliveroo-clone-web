@@ -1,16 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "/deliverooLogo.svg";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Button from "./Button";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchBar from "../features/menu/components/SearchBar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Svgs } from "../theme";
 
 const Header = () => {
   const location = useLocation();
   const isTransparent = location.pathname === "/";
-  const inSignPage = location.pathname === "/SignPage";
 
   return (
     <Box
@@ -26,7 +25,9 @@ const Header = () => {
         zIndex: "10000",
         paddingBottom: "0.8rem",
         paddingTop: "0.5rem",
-        borderBottom: isTransparent ? "none" : "0.5px solid #ccc",
+        borderBottomWidth: isTransparent ? 0 : "0.5px",
+        borderColor: "#ccc",
+        borderStyle: "solid",
       }}
     >
       <Container
@@ -39,7 +40,6 @@ const Header = () => {
           position: "relative",
         }}
       >
-        {/* Logo Section */}
         <Box
           sx={{
             flex: 1,
@@ -49,11 +49,10 @@ const Header = () => {
           }}
         >
           <Link to="/">
-            <img src={logo} height={32} alt="Deliveroo Logo" />
+            <img src={Svgs.DeliverooLogo} height={32} alt="Deliveroo Logo" />
           </Link>
         </Box>
 
-        {/* Search Bar Section (only on /menu route) */}
         {location.pathname === "/menu" && (
           <Box
             sx={{
@@ -69,7 +68,6 @@ const Header = () => {
           </Box>
         )}
 
-        {/* Buttons Section */}
         <Box
           sx={{
             flex: 1,
@@ -77,92 +75,20 @@ const Header = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-end",
-            gap: "1.7rem",
+            gap: "5px",
           }}
         >
           {location.pathname === "/" && (
-            <Button
-              sx={{
-                backgroundColor: "white",
-                border: "none",
-                display: {
-                  xs: "flex",
-                  sm: "none",
-                  md: "flex",
-                },
-              }}
-              PrefixComponent={
-                <ExpandMoreIcon
-                  sx={{
-                    color: "rgb(0, 204, 188)",
-                    pr: 1,
-                  }}
-                />
-              }
-            >
-              <Typography sx={{ color: "#2e3333" }}>Partner with Us</Typography>
-            </Button>
+            <Button PrefixIcon={ExpandMoreIcon} title="Partner with Us" />
           )}
 
           <Button
-            sx={{
-              border: "0.02px solid #ccc",
-              display: { xs: "none", sm: "flex" },
-              mr: 0.5,
-              fontSize: "1rem",
-              backgroundColor: "white",
-            }}
-            PrefixComponent={
-              <HomeOutlinedIcon
-                sx={{
-                  color: "rgb(0, 204, 188)",
-                  pr: 0.8,
-                }}
-              />
-            }
-          >
-            <Typography sx={{ display: { xs: "none", sm: "flex" } }}>
-              <Link
-                to={"/SignPage"}
-                style={{
-                  textDecoration: "none",
-                  color: "#2e3333",
-                }}
-              >
-                Sign up or login
-              </Link>
-            </Typography>
-          </Button>
+            PrefixIcon={HomeOutlinedIcon}
+            title="Sign up or login"
+            linkTo="/SignPage"
+          />
 
-          <Button
-            sx={{
-              display: { xs: "none", sm: "flex" },
-              backgroundColor: "white",
-              border: inSignPage
-                ? "0.5px solid rgb(232, 230, 230)"
-                : "0.02px solid #ccc",
-            }}
-            PrefixComponent={
-              <Person2OutlinedIcon
-                sx={{
-                  color: "rgb(0, 204, 188)",
-                }}
-              />
-            }
-          >
-            <Typography
-              sx={{
-                color: "#2e3333",
-                display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "flex",
-                },
-              }}
-            >
-              Account
-            </Typography>
-          </Button>
+          <Button PrefixIcon={Person2OutlinedIcon} title="Account" />
         </Box>
       </Container>
     </Box>

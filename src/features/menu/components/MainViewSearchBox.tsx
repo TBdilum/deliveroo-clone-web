@@ -48,13 +48,13 @@ const MainViewSearchBox = () => {
         }}
       >
         <Typography sx={{ fontSize: "13px" }}>
-          Enter a postcode to see what we deliver:
+          Enter a restaurant name to see what we deliver:
         </Typography>
 
         <TextField
           fullWidth
           variant="outlined"
-          placeholder="Enter postcode..."
+          placeholder="Search Restaurants"
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "25px",
