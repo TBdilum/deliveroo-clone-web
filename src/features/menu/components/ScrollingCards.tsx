@@ -1,3 +1,4 @@
+import { Colors } from "../../../theme";
 import AutoScrollingCardSection from "./AutomaticScrollCard";
 import { Box } from "@mui/material";
 
@@ -7,8 +8,7 @@ const ScrollingCards = () => {
       sx={{
         width: "100%",
         height: "auto",
-        backgroundColor: "rgb(253, 252, 252)",
-        padding: "0rem 0",
+        backgroundColor: Colors.background.light,
       }}
     >
       <AutoScrollingCardSection />

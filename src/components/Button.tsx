@@ -1,6 +1,7 @@
 import React from "react";
 import { ButtonBase, ButtonBaseProps, Typography } from "@mui/material";
 import { Link, To } from "react-router-dom";
+import { Colors } from "../theme";
 
 type ButtonProps = ButtonBaseProps & {
   PrefixIcon?: React.ComponentType<{
@@ -30,21 +31,25 @@ function Button({
         borderRadius: 1,
         fontFamily: "IBM Plex Sans, serif;",
         whiteSpace: "nowrap",
-        border: "0.02px solid #ccc",
+        border: `0.01px solid ${Colors.border.default}`,
+        "&:hover": {
+          border: `0.5px solid ${Colors.border.subtle}`,
+        },
         display: { xs: "none", sm: "flex" },
         mr: 0.5,
         fontSize: "1rem",
-        backgroundColor: "white",
+        backgroundColor: Colors.background.defaultLight,
         ...(sx ?? {}),
+        paddingLeft: 1,
       }}
     >
       {PrefixIcon && (
         <PrefixIcon
           style={{
-            color: "rgb(0, 204, 188)",
-            paddingRight: 0.8,
-            height: "1.5rem",
-            width: "1.5rem",
+            color: Colors.background.brand,
+            paddingRight: "0.3rem",
+            height: "1.6rem",
+            width: "1.6rem",
             aspectRatio: 1,
           }}
         />
@@ -57,7 +62,7 @@ function Button({
             to={linkTo}
             style={{
               textDecoration: "none",
-              color: "#2e3333",
+              color: Colors.text.default,
             }}
           >
             {title}

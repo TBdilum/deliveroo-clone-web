@@ -3,6 +3,7 @@ import RestaurantInfoView from "../features/menu/views/RestaurantInfoView";
 import CategoriesBar from "../features/menu/components/CategoriesBar";
 import MenuView from "../features/menu/views/MenuView";
 import Cart from "../features/menu/components/Cart";
+import { Colors } from "../theme";
 
 const HomePage = () => {
   return (
@@ -13,12 +14,12 @@ const HomePage = () => {
         sx={{
           flexGrow: 1,
           width: "100%",
-          backgroundColor: "rgba(255, 255, 255, 0.75)",
+          backgroundColor: Colors.background.default,
           minHeight: "calc(100vh - 130px)",
           overflowY: "auto",
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{}}>
           <Grid container spacing={2}>
             <Grid
               size={{

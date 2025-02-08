@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { Colors } from "../../../theme";
 
 type CategoryChipProps = {
   data: {
@@ -18,8 +19,12 @@ const CategoryChip = ({ data, onClick, selected }: CategoryChipProps) => {
     <Box
       onClick={handleOnClick}
       sx={{
-        backgroundColor: selected ? "#00b8a9" : "#ffffff",
-        color: selected ? "#ffffff" : "#00b8a9",
+        backgroundColor: selected
+          ? Colors.background.brand
+          : Colors.background.defaultLight,
+        color: selected
+          ? Colors.background.defaultLight
+          : Colors.background.brand,
         borderRadius: "20px",
         border: "none",
         fontWeight: selected ? "bold" : "regular",

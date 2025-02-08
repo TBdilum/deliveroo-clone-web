@@ -1,19 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import { Colors } from "../../../theme";
 
 const MealDeal = () => {
   return (
     <Box
       sx={{
         width: "100%",
-        maxHeight: "340px",
+        maxHeight: "365px",
         padding: "2rem 0",
-        backgroundColor: "#000",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Meal Deals Background */}
       <Box
         sx={{
           position: "absolute",
@@ -35,14 +34,13 @@ const MealDeal = () => {
         />
       </Box>
 
-      {/* Content */}
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           gap: "0.3rem",
           alignItems: "center",
-          color: "white",
+          color: Colors.text.inverse,
           zIndex: 2,
           position: "relative",
           padding: "2rem",
@@ -69,6 +67,7 @@ const MealDeal = () => {
               paddingLeft: "0.1rem",
               paddingRight: "0.1rem",
               textAlign: "center",
+              color: Colors.text.inverse,
             }}
           >
             Up to 25% off meal deals
@@ -92,6 +91,7 @@ const MealDeal = () => {
             mb: "0.5rem",
             mt: "1rem",
             fontSize: { xs: "0.8rem", sm: "1rem", md: "1.2rem" },
+            color: Colors.text.inverse,
           }}
         >
           Need a midweek pick-me-up, a break from cooking for the family or just
@@ -103,6 +103,7 @@ const MealDeal = () => {
             textAlign: "center",
             mb: "1.3rem",
             fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
+            color: Colors.text.inverse,
           }}
         >
           Subject to availability. Participating restaurants only.
@@ -110,7 +111,6 @@ const MealDeal = () => {
         </Typography>
       </Box>
 
-      {/* Item Row Image */}
       <img
         src="/assets/merch-itemrow.svg"
         alt="item-row"
@@ -121,6 +121,7 @@ const MealDeal = () => {
           height: "auto",
           position: "absolute",
           bottom: 0,
+          marginTop: "auto",
         }}
       />
     </Box>

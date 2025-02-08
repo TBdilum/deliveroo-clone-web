@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CategoryChip from "./CategoryChip";
 import { getCategories } from "../../../backend/getCategories";
 import { ICategory } from "../../../data/Sides";
+import { Colors } from "../../../theme";
 
 export const categories: ICategory[] = [];
 
@@ -46,14 +47,14 @@ const CategoriesBar = () => {
       sx={{
         borderTopWidth: 1,
         borderStyle: "solid",
-        borderColor: "#EEEEEE",
+        borderColor: Colors.border.default,
         position: "sticky",
         height: "70px",
         alignItems: "center",
         display: "flex",
         top: "60px",
         zIndex: "1001",
-        backgroundColor: "white",
+        backgroundColor: Colors.background.defaultLight,
       }}
     >
       <Container

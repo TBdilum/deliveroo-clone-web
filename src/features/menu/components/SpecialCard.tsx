@@ -3,6 +3,7 @@ import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import Button from "../../../components/Button";
 import { IDish } from "../../../data/Sides";
 import AddIcon from "@mui/icons-material/Add";
+import { Colors } from "../../../theme";
 
 type SpecialCardProps = {
   data: IDish;
@@ -19,12 +20,12 @@ const SpecialCard = ({ data }: SpecialCardProps) => {
         display: "flex",
         flexDirection: "column",
         overflow: "unset",
-        background: "white",
+        backgroundColor: Colors.background.defaultLight,
         boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
         borderRadius: "12px",
         borderWidth: 1.5,
         borderStyle: "solid",
-        borderColor: "rgba(0,0,0,0.05)",
+        borderColor: Colors.border.default,
       }}
     >
       <CardMedia
@@ -64,7 +65,11 @@ const SpecialCard = ({ data }: SpecialCardProps) => {
           }}
         >
           <AddIcon
-            sx={{ height: "1.2rem", width: "1.2rem", color: "#00b8a9" }}
+            sx={{
+              height: "1.2rem",
+              width: "1.2rem",
+              color: Colors.text.default,
+            }}
           />
         </Button>
       </Box>

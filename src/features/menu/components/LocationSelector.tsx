@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
+import { Colors } from "../../../theme";
 const LocationSelector = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -30,7 +31,7 @@ const LocationSelector = () => {
       }}
       onClick={handleOnClick}
     >
-      <DirectionsBikeOutlinedIcon sx={{ color: "#00b8a9" }} />
+      <DirectionsBikeOutlinedIcon sx={{ color: Colors.background.brand }} />
       <Typography
         sx={{
           mx: 2,
@@ -40,7 +41,7 @@ const LocationSelector = () => {
       </Typography>
       <Typography
         sx={{
-          color: "#00b8a9",
+          color: Colors.background.brand,
         }}
       >
         Change

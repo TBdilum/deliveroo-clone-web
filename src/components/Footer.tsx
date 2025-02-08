@@ -4,6 +4,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { GooglePlayButton, AppStoreButton } from "react-mobile-app-button";
+import { Colors } from "../theme";
 
 const Footer = () => {
   const location = useLocation();
@@ -12,13 +13,12 @@ const Footer = () => {
   return (
     <div
       style={{
-        backgroundColor: "rgb(46, 51, 51)",
+        backgroundColor: Colors.background.darker,
         paddingTop: "2rem",
-        color: "white",
         position: isMainPage ? "sticky" : "static",
         width: "100%",
         display: "flex",
-        top: "600px",
+        bottom: "0",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
@@ -34,13 +34,14 @@ const Footer = () => {
           gap: "1rem",
           width: "80%",
           height: "auto",
+          color: Colors.text.inverse,
         }}
       >
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "rgb(61, 65, 65)",
+            backgroundColor: Colors.background.dark,
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
@@ -69,7 +70,7 @@ const Footer = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "rgb(61, 65, 65)",
+            backgroundColor: Colors.background.dark,
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
@@ -95,7 +96,7 @@ const Footer = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "rgb(61, 65, 65)",
+            backgroundColor: Colors.background.dark,
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
@@ -121,7 +122,7 @@ const Footer = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "rgb(61, 65, 65)",
+            backgroundColor: Colors.background.dark,
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
@@ -157,7 +158,7 @@ const Footer = () => {
             gap: "2rem",
             top: "0",
             width: "100%",
-            color: "white",
+            color: Colors.text.inverse,
             justifyContent: "space-between",
             marginTop: "-1.5rem",
             marginBottom: "1rem",
@@ -176,7 +177,11 @@ const Footer = () => {
           </Box>
           <Box right={0}>
             <Typography
-              sx={{ fontSize: "0.8rem", color: " #585c5c", mt: "1rem" }}
+              sx={{
+                fontSize: "0.8rem",
+                color: Colors.text.light,
+                mt: "1rem",
+              }}
             >
               © 2025 Deliveroo
             </Typography>

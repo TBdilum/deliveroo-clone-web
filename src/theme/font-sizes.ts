@@ -1,4 +1,4 @@
-const fontSizes = {
+export const FontSizes = {
   font: {
     heading: {
       xxlarge: "2.5rem",
@@ -21,4 +21,4 @@ const fontSizes = {
   },
 };
 
-export default fontSizes;
+export default FontSizes;

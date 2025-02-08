@@ -5,7 +5,7 @@ import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchBar from "../features/menu/components/SearchBar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Svgs } from "../theme";
+import { Colors, Paddings, Svgs } from "../theme";
 
 const Header = () => {
   const location = useLocation();
@@ -14,7 +14,9 @@ const Header = () => {
   return (
     <Box
       sx={{
-        backgroundColor: isTransparent ? "transparent" : "white",
+        backgroundColor: isTransparent
+          ? "transparent"
+          : Colors.background.defaultLight,
         width: "100%",
         height: "60px",
         display: "flex",
@@ -26,7 +28,7 @@ const Header = () => {
         paddingBottom: "0.8rem",
         paddingTop: "0.5rem",
         borderBottomWidth: isTransparent ? 0 : "0.5px",
-        borderColor: "#ccc",
+        borderColor: Colors.border.subtle,
         borderStyle: "solid",
       }}
     >
@@ -46,6 +48,8 @@ const Header = () => {
             height: "100%",
             display: "flex",
             alignItems: "center",
+            paddingLeft: Paddings.Left.header.PaddingLeft,
+            paddingTop: Paddings.Left.header.PaddingTop,
           }}
         >
           <Link to="/">
@@ -75,7 +79,9 @@ const Header = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-end",
-            gap: "5px",
+            gap: "8px",
+            paddingTop: Paddings.Left.header.PaddingTop,
+            paddingRight: Paddings.Left.header.PaddingRight,
           }}
         >
           {location.pathname === "/" && (

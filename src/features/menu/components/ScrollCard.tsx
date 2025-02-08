@@ -1,11 +1,11 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-interface ManCardProps {
+interface MainCardProps {
   image: string;
 }
 
-const ManCard: React.FC<ManCardProps> = ({ image }) => {
+const MainCard: React.FC<MainCardProps> = ({ image }) => {
   return (
     <Box
       sx={{
@@ -32,4 +32,4 @@ const ManCard: React.FC<ManCardProps> = ({ image }) => {
   );
 };
 
-export default ManCard;
+export default MainCard;

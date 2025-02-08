@@ -4,32 +4,31 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AppleIcon from "@mui/icons-material/Apple";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { Link } from "react-router-dom";
-import { Svgs } from "../theme";
+import { Colors, Svgs } from "../theme";
 
 const SignUpPage = () => {
   return (
     <Box
       sx={{
         width: "100vw",
-        height: "65vh",
+        height: "68vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "white",
+        backgroundColor: Colors.background.light,
       }}
     >
-      {/* Sign-Up Form Container */}
       <Box
         sx={{
           width: "100%",
           maxWidth: "500px",
           padding: "2rem",
-          backgroundColor: "white",
+          backgroundColor: Colors.background.light,
           borderRadius: "10px",
           textAlign: "center",
+          marginTop: "3rem",
         }}
       >
-        {/* Title */}
         <Typography
           variant="h5"
           fontWeight="bold"
@@ -39,12 +38,11 @@ const SignUpPage = () => {
           Sign Up or Log In
         </Typography>
 
-        {/* Input Fields */}
         <Button
           PrefixComponent={<FacebookOutlinedIcon />}
           sx={{
-            color: "white",
-            backgroundColor: "#4c69ba",
+            color: Colors.text.inverse,
+            backgroundColor: Colors.icon.facebook,
             width: "100%",
             height: "3rem",
             gap: "0.5rem",
@@ -58,7 +56,7 @@ const SignUpPage = () => {
         <Button
           PrefixComponent={<Svgs.GoogleLogo width={"1.5rem"} />}
           sx={{
-            color: "black",
+            color: Colors.text.default,
             border: "1px solid grey",
             marginTop: "0.5rem",
             width: "100%",
@@ -74,7 +72,7 @@ const SignUpPage = () => {
         <Button
           PrefixComponent={<AppleIcon />}
           sx={{
-            color: "white",
+            color: Colors.text.inverse,
             backgroundColor: "black",
             marginTop: "0.5rem",
             width: "100%",
@@ -94,21 +92,29 @@ const SignUpPage = () => {
             margin: "1.5rem 0",
           }}
         >
-          <Divider sx={{ flexGrow: 1, backgroundColor: "#ccc" }} />
+          <Divider
+            sx={{ flexGrow: 1, backgroundColor: Colors.border.subtle }}
+          />
           <Typography
-            sx={{ margin: "0 1rem", fontSize: "0.9rem", color: "black" }}
+            sx={{
+              margin: "0 1rem",
+              fontSize: "0.9rem",
+              color: Colors.text.default,
+            }}
           >
             or
           </Typography>
-          <Divider sx={{ flexGrow: 1, backgroundColor: "#ccc" }} />
+          <Divider
+            sx={{ flexGrow: 1, backgroundColor: Colors.border.subtle }}
+          />
         </Box>
 
         <Button
           PrefixComponent={<EmailOutlinedIcon />}
           sx={{
             width: "100%",
-            color: "white",
-            backgroundColor: "rgb(0, 204, 188)",
+            color: Colors.text.inverse,
+            backgroundColor: Colors.background.brand,
             height: "3rem",
             gap: "0.5rem",
             fontWeight: "bold",
@@ -128,7 +134,7 @@ const SignUpPage = () => {
           By continuing you agree to our{" "}
           <Link
             to={"https://deliveroo.co.uk/legal"}
-            style={{ color: "rgb(0, 204, 188)" }}
+            style={{ color: Colors.background.brand }}
           >
             T&Cs.
           </Link>{" "}
@@ -136,7 +142,7 @@ const SignUpPage = () => {
           <br />
           <Link
             to={"https://deliveroo.co.uk/legal"}
-            style={{ color: "rgb(0, 204, 188)" }}
+            style={{ color: Colors.background.brand }}
           >
             Privacy Policy.
           </Link>{" "}
@@ -144,7 +150,7 @@ const SignUpPage = () => {
           understand and improve our services.{" "}
           <Link
             to={"https://deliveroo.co.uk/privacy#use-of-your-information"}
-            style={{ color: "rgb(0, 204, 188)" }}
+            style={{ color: Colors.background.brand }}
           >
             For more information see here.
           </Link>

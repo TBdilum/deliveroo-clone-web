@@ -1,8 +1,8 @@
 import { Box, Card, Typography } from "@mui/material";
-import React from "react";
 import { IDish } from "../../../data/Sides";
 import Button from "../../../components/Button";
 import AddIcon from "@mui/icons-material/Add";
+import { Colors } from "../../../theme";
 
 type DishProps = {
   data: IDish;
@@ -12,7 +12,7 @@ const Dish = ({ data }: DishProps) => {
   return (
     <Card
       sx={{
-        border: "1px solid rgba(0, 0, 0, 0.1)",
+        border: `1px solid ${Colors.border.default}`,
         borderRadius: "12px",
         overflow: "hidden",
         p: 2,
@@ -24,8 +24,8 @@ const Dish = ({ data }: DishProps) => {
         width: "100%",
         maxHeight: "150px",
         maxWidth: "600px",
-        boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
-        backgroundColor: "white",
+        boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
+        backgroundColor: Colors.background.defaultLight,
       }}
     >
       <Box
@@ -70,7 +70,7 @@ const Dish = ({ data }: DishProps) => {
         </Typography>
         <Typography
           sx={{
-            color: "text.secondary",
+            color: Colors.text.lighter,
             fontSize: "0.7rem",
             mb: 1,
             overflow: "hidden",
@@ -84,7 +84,7 @@ const Dish = ({ data }: DishProps) => {
         <Typography
           sx={{
             fontWeight: "normal",
-            color: "rgba(0, 0, 0, 0.85)",
+            color: Colors.text.default,
           }}
         >
           {data.price}
@@ -93,21 +93,26 @@ const Dish = ({ data }: DishProps) => {
 
       <Button
         sx={{
-          backgroundColor: "#00CCBC",
-          color: "white",
-          borderRadius: "8px",
-          minWidth: "40px",
-          height: "40px",
+          backgroundColor: Colors.background.defaultLight,
+          color: Colors.text.inverse,
+          border: `1px solid ${Colors.border.subtle}`,
+          borderRadius: "4px",
+          width: "auto",
+          height: "100px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          "&:hover": {
-            backgroundColor: "#00b8a9",
-          },
           ml: "10px",
         }}
       >
-        <AddIcon />
+        <AddIcon
+          sx={{
+            color: Colors.text.default,
+            display: "flex",
+            alignItems: "center",
+            ml: 1,
+          }}
+        />
       </Button>
     </Card>
   );

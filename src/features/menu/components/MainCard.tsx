@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import Button from "../../../components/Button";
+import { Colors } from "../../../theme";
 
 interface MainCardProps {
   image: string;
@@ -50,7 +51,8 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
             fontSize: "1.5rem",
             fontWeight: "bold",
             textAlign: "left",
-            color: "#333",
+            color: Colors.text.default,
+            fontSmoothing: "antialiased",
           }}
         >
           {title}
@@ -59,9 +61,10 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
         <Typography
           sx={{
             fontSize: "0.8rem",
-            color: "#666",
+            color: Colors.text.default,
+            fontSmoothing: "antialiased",
+
             textAlign: "left",
-            marginBottom: "50px",
             marginTop: "10px",
           }}
         >
@@ -72,19 +75,20 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
       <Box
         sx={{
           position: "relative",
-          marginTop: "-30px",
         }}
       >
         <Button
           sx={{
-            backgroundColor: "#00CCBC",
-            color: "white",
+            backgroundColor: Colors.background.brand,
+            color: Colors.text.inverse,
             fontSize: "0.9rem",
             fontWeight: "bold",
-            borderRadius: "20px",
+            borderRadius: "3px",
             textTransform: "none",
             width: "50%",
-            marginTop: "-90px",
+            fontSmoothing: "antialiased",
+
+            marginTop: "-70px",
           }}
         >
           Get Started

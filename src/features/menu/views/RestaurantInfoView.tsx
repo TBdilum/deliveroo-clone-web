@@ -9,6 +9,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getRestaurants } from "../../../backend/getRestaurants";
+import { Colors } from "../../../theme";
 
 interface Restaurant {
   name: string;
@@ -75,7 +76,7 @@ const RestaurantInfoView = () => {
           PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
           sx={{
             gap: 1,
-            color: "rgb(0, 204, 188)",
+            color: Colors.background.brand,
             fontSize: "1rem",
             fontWeight: "normal",
             left: "0",
@@ -104,7 +105,7 @@ const RestaurantInfoView = () => {
                 md: 2,
                 overflow: "hidden",
               },
-              boxShadow: "0px 1px 1px 0.5px  #ccc",
+              boxShadow: `0px 1px 1px 0.5px  ${Colors.border.subtle}`,
             }}
           >
             <img
@@ -179,12 +180,12 @@ const RestaurantInfoView = () => {
           <InfoButton
             title="Info"
             description="Map, allergens and hygiene rating"
-            Icon={<InfoOutlinedIcon sx={{ color: "#585c5c" }} />}
+            Icon={<InfoOutlinedIcon sx={{ color: Colors.icon.info }} />}
           />
           <InfoButton
             title="4.8 Excellent (500+)"
             description="Tasty Food"
-            Icon={<StarOutlinedIcon sx={{ color: "#4d7c1b" }} />}
+            Icon={<StarOutlinedIcon sx={{ color: Colors.icon.star }} />}
           />
           <Box
             sx={{
@@ -201,7 +202,7 @@ const RestaurantInfoView = () => {
               sx={{ my: 2, border: "0.5px solid #ccc" }}
               PrefixComponent={
                 <PeopleOutlineOutlinedIcon
-                  sx={{ mr: 1, color: "rgb(0, 204, 188)" }}
+                  sx={{ mr: 1, color: Colors.background.brand }}
                 />
               }
             >
@@ -226,10 +227,10 @@ const RestaurantInfoView = () => {
         >
           <LocationSelector />
           <Button
-            sx={{ my: 2, border: "0.5px solid #ccc" }}
+            sx={{ my: 2, border: `0.5px solid ${Colors.border.subtle}` }}
             PrefixComponent={
               <PeopleOutlineOutlinedIcon
-                sx={{ mr: 1, color: "rgb(0, 204, 188)" }}
+                sx={{ mr: 1, color: Colors.background.brand }}
               />
             }
           >

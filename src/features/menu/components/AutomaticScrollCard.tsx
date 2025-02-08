@@ -7,18 +7,16 @@ const AutoScrollingCardSection = () => {
       sx={{
         width: "100%",
         padding: "0 0",
-        overflow: "hidden", // Adjust as needed
+        overflow: "hidden",
       }}
     >
-      {/* First row */}
       <Box
         sx={{
           display: "flex",
           animation: "scrollLeft 90s linear infinite",
-          gap: 0, // No space between cards
+          gap: 0,
         }}
       >
-        {/* First set of images */}
         <Box sx={{ flexShrink: 0 }}>
           <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/eb03fc27b1/burrito-wide.jpg" />
         </Box>
@@ -83,7 +81,6 @@ const AutoScrollingCardSection = () => {
           <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/256x256/294e8b5572/berry-dessert.jpg" />
         </Box>
 
-        {/* Clone the images for seamless scrolling */}
         <Box sx={{ flexShrink: 0 }}>
           <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/512x256/eb03fc27b1/burrito-wide.jpg" />
         </Box>
@@ -149,12 +146,11 @@ const AutoScrollingCardSection = () => {
         </Box>
       </Box>
 
-      {/* Second row */}
       <Box
         sx={{
           display: "flex",
-          animation: "scrollLeft 90s linear infinite", // Continuous scroll animation
-          gap: 0, // No space between cards
+          animation: "scrollLeft 90s linear infinite",
+          gap: 0,
         }}
       >
         {/* Second set of images */}
@@ -222,7 +218,6 @@ const AutoScrollingCardSection = () => {
           <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/256x256/76ba414158/cola.jpg" />
         </Box>
 
-        {/* Clone the images for seamless scrolling */}
         <Box sx={{ flexShrink: 0 }}>
           <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/256x256/76ba414158/cola.jpg" />
         </Box>

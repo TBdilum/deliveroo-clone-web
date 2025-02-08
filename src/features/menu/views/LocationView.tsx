@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import { Grid2 as Grid } from "@mui/material";
 import { GooglePlayButton } from "react-mobile-app-button";
 import { AppStoreButton } from "react-mobile-app-button";
+import { Colors } from "../../../theme";
 
 const LocationView = () => {
   return (
@@ -9,7 +10,7 @@ const LocationView = () => {
       sx={{
         width: "100%",
         padding: "2rem",
-        backgroundColor: "rgb(253, 252, 252)",
+        backgroundColor: Colors.background.light,
       }}
     >
       <Box
@@ -17,9 +18,8 @@ const LocationView = () => {
           display: "flex",
           flexDirection: { xs: "column", lg: "row" },
           width: "100%",
-          backgroundColor: "white",
           borderRadius: "10px",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+          boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
           overflow: "hidden",
         }}
       >
@@ -28,18 +28,25 @@ const LocationView = () => {
             display: "flex",
             flexDirection: "column",
             gap: "1.5rem",
-            maxWidth: "600px",
+            maxWidth: "100%",
             padding: "2rem",
             flexGrow: 1,
           }}
         >
           <Typography
-            sx={{ fontWeight: "bold", fontSize: { xs: "1.5rem", sm: "2rem" } }}
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "1.5rem", sm: "2rem" },
+              color: Colors.text.default,
+            }}
           >
             Track orders to your door
           </Typography>
           <Typography
-            sx={{ color: "#555", fontSize: { xs: "0.875rem", sm: "1rem" } }}
+            sx={{
+              color: Colors.text.default,
+              fontSize: { xs: "0.875rem", sm: "1rem" },
+            }}
           >
             Get your favourite food delivered in a flash. You’ll see when your
             rider’s picked up your order and be able to follow them along the

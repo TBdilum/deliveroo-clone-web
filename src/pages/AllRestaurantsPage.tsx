@@ -1,10 +1,11 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
 import { getAllRestaurants } from "../backend/getAllRestaurants";
 import { useEffect, useState } from "react";
 import InfoButton from "../features/menu/components/InfoButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Link } from "react-router-dom";
+import { Colors } from "../theme/colors";
 
 interface Restaurant {
   name: string;
@@ -75,19 +76,18 @@ const AllRestaurantsPage = () => {
               flexDirection: "row",
               alignItems: "center",
               borderRadius: 2,
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+              boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
               marginBottom: "2rem",
               transition: "transform 0.2s ease-in-out",
               "&:hover": {
                 cursor: "pointer",
-                transform: "scale(1.02)",
-                boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.15)",
+                transform: "scale(1.004)",
+                boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
               },
             }}
           >
             <Grid container spacing={0} alignItems="center">
-              {/* Image Section */}
-              <Grid item xs={12} sm={3}>
+              <Grid size={{ xs: 12, sm: 3 }}>
                 <Box
                   sx={{
                     width: "100%",
@@ -108,8 +108,7 @@ const AllRestaurantsPage = () => {
                 </Box>
               </Grid>
 
-              {/* Text Section */}
-              <Grid item xs={12} sm={9}>
+              <Grid size={{ xs: 12, sm: 9 }}>
                 <Box
                   sx={{
                     padding: "1rem",
@@ -127,7 +126,7 @@ const AllRestaurantsPage = () => {
                     {restaurant.tags.join(" • ")}
                   </Typography>
 
-                  <Typography variant="body2" sx={{ color: "#444" }}>
+                  <Typography variant="body2" sx={{ color: Colors.text.dark }}>
                     Opens at {restaurant.openingAt} | ${restaurant.minimumValue}{" "}
                     min | ${restaurant.deliveryCharge} delivery
                   </Typography>
@@ -143,12 +142,16 @@ const AllRestaurantsPage = () => {
                     <InfoButton
                       title="Info"
                       description="Map, allergens and hygiene rating"
-                      Icon={<InfoOutlinedIcon sx={{ color: "#585c5c" }} />}
+                      Icon={
+                        <InfoOutlinedIcon sx={{ color: Colors.text.lighter }} />
+                      }
                     />
                     <InfoButton
                       title="4.8 Excellent (500+)"
                       description="Tasty Food"
-                      Icon={<StarOutlinedIcon sx={{ color: "#4d7c1b" }} />}
+                      Icon={
+                        <StarOutlinedIcon sx={{ color: Colors.icon.star }} />
+                      }
                     />
                   </Box>
                 </Box>

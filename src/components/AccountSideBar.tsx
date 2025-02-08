@@ -5,6 +5,7 @@ import logo from "../assets/deliverooLogo.svg";
 import cross from "../assets/cancel (1).png";
 import { Link } from "react-router-dom";
 import account from "../assets/account.png";
+import { Colors } from "../theme";
 
 type Anchor = "right";
 
@@ -29,7 +30,6 @@ export default function AnchorTemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
       width="22rem"
@@ -44,16 +44,18 @@ export default function AnchorTemporaryDrawer() {
         <Link to="/">
           <img
             src={logo}
+            alt="Deliveroo Logo"
             style={{ margin: "1rem 1rem", cursor: "pointer" }}
           ></img>
         </Link>
         <img
           src={cross}
+          alt="Cross icon"
           style={{
             width: "1rem",
             height: "1rem",
             marginRight: "13px",
-            color: "green",
+            color: Colors.icon.star,
             cursor: "pointer",
           }}
         ></img>
@@ -70,16 +72,22 @@ export default function AnchorTemporaryDrawer() {
             style={{
               height: "2.5rem",
               width: "100%",
-              backgroundColor: "white",
+              backgroundColor: Colors.background.light,
               borderRadius: "0.3rem",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid #D8D8D8",
+              border: `1px solid ${Colors.border.default}`,
             }}
           >
-            <img src={account} style={{ width: "15px", height: "15px" }} />
+            <div>
+              <img
+                src={account}
+                style={{ width: "15px", height: "15px" }}
+                alt="Account"
+              />
+            </div>
             Account
           </button>
           <Drawer

@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
+import { Colors } from "../../../theme";
 
 type InfoButtonProps = {
   title: string;
@@ -25,7 +26,7 @@ const InfoButton = ({ title, description, Icon }: InfoButtonProps) => {
         }}
       >
         <Typography>{title}</Typography>
-        <Typography sx={{ color: "#585c5c" }}>{description}</Typography>
+        <Typography sx={{ color: Colors.icon.info }}>{description}</Typography>
       </Box>
       <Box>
         <ChevronRightOutlinedIcon />

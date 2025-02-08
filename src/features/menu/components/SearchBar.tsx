@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { Box, IconButton, InputAdornment, OutlinedInput } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { Colors } from "../../../theme/colors";
 
 const SearchBar = () => {
   const [searchKey, setSearchKey] = useState("");
@@ -38,7 +39,7 @@ const SearchBar = () => {
           "& .MuiOutlinedInput-notchedOutline": {
             border: "none",
           },
-          border: "0.5px solid #ccc",
+          border: `0.5px solid ${Colors.border.subtle}`,
         }}
         startAdornment={
           <InputAdornment position="start">

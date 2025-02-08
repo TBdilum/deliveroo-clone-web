@@ -4,6 +4,7 @@ const LandingPageBackground = () => {
   return (
     <img
       src="../../public/assets/rooute.svg"
+      alt="Landing Page Background"
       style={{
         display: "flex",
         alignItems: "center",
