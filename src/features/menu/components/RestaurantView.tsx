@@ -51,7 +51,6 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
                   width: "100%",
                   height: "200px",
                   borderRadius: "8px 0 0 8px",
-                  overflow: "hidden",
                 }}
               >
                 <img
@@ -61,7 +60,7 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
                     width: "100%",
                     height: "100%",
                     maxWidth: "300px",
-                    minWidth: "300px",
+                    minWidth: "200px",
                     objectFit: "contain",
                   }}
                 />

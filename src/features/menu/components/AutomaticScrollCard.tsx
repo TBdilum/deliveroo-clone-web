@@ -6,14 +6,13 @@ const AutoScrollingCardSection = () => {
     <Box
       sx={{
         width: "100%",
-        padding: "0 0",
         overflow: "hidden",
       }}
     >
       <Box
         sx={{
           display: "flex",
-          animation: "scrollLeft 90s linear infinite",
+          animation: "scrollLeft 80s linear infinite",
           gap: 0,
         }}
       >
@@ -149,7 +148,7 @@ const AutoScrollingCardSection = () => {
       <Box
         sx={{
           display: "flex",
-          animation: "scrollLeft 90s linear infinite",
+          animation: "scrollLeft 80s linear infinite",
           gap: 0,
         }}
       >

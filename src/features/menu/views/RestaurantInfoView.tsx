@@ -81,7 +81,6 @@ const RestaurantInfoView = () => {
             fontSize: "1rem",
             fontWeight: "normal",
             left: "0",
-            marginLeft: "-1rem",
           }}
         >
           Back

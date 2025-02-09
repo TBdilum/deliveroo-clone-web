@@ -16,6 +16,7 @@ const SignUpPage = () => {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: Colors.background.light,
+        marginTop: "1rem",
       }}
     >
       <Box
