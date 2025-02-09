@@ -75,6 +75,7 @@ const RestaurantInfoView = () => {
         <Button
           PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
           sx={{
+            border: "none",
             gap: 1,
             color: Colors.background.brand,
             fontSize: "1rem",

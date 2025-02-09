@@ -16,17 +16,17 @@ const Header = () => {
       sx={{
         backgroundColor: isTransparent
           ? "transparent"
-          : Colors.background.defaultLight,
+          : Colors.background.light,
         width: "100%",
         height: "60px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        position: isTransparent ? "absolute" : "fixed",
+        position: isTransparent ? "sticky" : "fixed",
         top: "0",
         zIndex: "10000",
-        paddingBottom: "0.8rem",
-        paddingTop: "0.5rem",
+        paddingBottom: "3.2rem",
+        paddingTop: "1rem",
         borderBottomWidth: isTransparent ? 0 : "0.5px",
         borderColor: Colors.border.subtle,
         borderStyle: "solid",
@@ -38,7 +38,7 @@ const Header = () => {
           width: "100%",
           height: "100%",
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           position: "relative",
         }}
       >
@@ -48,7 +48,7 @@ const Header = () => {
             height: "100%",
             display: "flex",
             alignItems: "center",
-            paddingLeft: Paddings.Left.header.PaddingLeft,
+
             paddingTop: Paddings.Left.header.PaddingTop,
           }}
         >

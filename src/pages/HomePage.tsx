@@ -7,7 +7,7 @@ import { Colors } from "../theme";
 
 const HomePage = () => {
   return (
-    <Box sx={{ flexGrow: 1, width: "100%" }}>
+    <Box sx={{ flexGrow: 1, width: "100%", mt: 7 }}>
       <RestaurantInfoView />
       <CategoriesBar />
       <Box

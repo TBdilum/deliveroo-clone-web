@@ -10,6 +10,7 @@ import MainLayout from "./layout/MainLayout";
 import WithPageTitle from "./hocs/WithPageTitle";
 import LandingPage from "./pages/LandingPage";
 import AllRestaurantsPage from "./pages/AllRestaurantsPage";
+import FilteredRestaurantsPage from "./pages/FilteredRestaurantsPage";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -43,8 +44,16 @@ const App = () => {
         <Route
           path="/restaurants"
           element={
-            <WithPageTitle title="Restaurants">
+            <WithPageTitle title="All-Restaurants">
               <AllRestaurantsPage />
+            </WithPageTitle>
+          }
+        ></Route>
+        <Route
+          path="/filtered-restaurants"
+          element={
+            <WithPageTitle title="Filt-Restaurants">
+              <FilteredRestaurantsPage />
             </WithPageTitle>
           }
         ></Route>

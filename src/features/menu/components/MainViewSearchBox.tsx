@@ -6,16 +6,27 @@ import {
   IconButton,
 } from "@mui/material";
 import NearMeOutlinedIcon from "@mui/icons-material/NearMeOutlined";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Colors } from "../../../theme";
+import { useState } from "react";
 
 const MainViewSearchBox = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchInput = () => {
+    if (searchInput.trim() !== "") {
+      navigate(
+        `/filtered-restaurants?search=${encodeURIComponent(searchInput)}`,
+      );
+    }
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-
         width: "100%",
         maxWidth: "600px",
         zIndex: 1,
@@ -65,6 +76,8 @@ const MainViewSearchBox = () => {
           fullWidth
           variant="outlined"
           placeholder="Search Restaurants"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "25px",
@@ -91,6 +104,7 @@ const MainViewSearchBox = () => {
             endAdornment: (
               <InputAdornment position="end" sx={{ marginRight: "-8px" }}>
                 <IconButton
+                  onClick={handleSearchInput}
                   sx={{
                     backgroundColor: Colors.background.brand,
                     borderRadius: "25px",
