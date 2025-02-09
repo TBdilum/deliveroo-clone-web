@@ -6,10 +6,17 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import SearchBar from "../features/menu/components/SearchBar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Colors, Paddings, Svgs } from "../theme";
+import AnchorTemporaryDrawer from "./AccountSideBar";
+import React from "react";
 
 const Header = () => {
   const location = useLocation();
   const isTransparent = location.pathname === "/";
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  const toggleDrawer = (open: boolean) => {
+    setDrawerOpen(open);
+  };
 
   return (
     <Box
@@ -24,7 +31,7 @@ const Header = () => {
         justifyContent: "center",
         position: isTransparent ? "absolute" : "fixed",
         top: "0",
-        zIndex: "10000",
+        zIndex: "1000",
         paddingBottom: "3.2rem",
         paddingTop: "1rem",
         borderBottomWidth: isTransparent ? 0 : "0.5px",
@@ -107,8 +114,10 @@ const Header = () => {
               alignItems: "center",
               justifyContent: "center",
             }}
+            onClick={() => toggleDrawer(true)}
           />
         </Box>
+        <AnchorTemporaryDrawer open={drawerOpen} toggleDrawer={toggleDrawer} />
       </Container>
     </Box>
   );
