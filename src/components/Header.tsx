@@ -81,7 +81,6 @@ const Header = () => {
             justifyContent: "flex-end",
             gap: "8px",
             paddingTop: Paddings.Left.header.PaddingTop,
-            paddingRight: Paddings.Left.header.PaddingRight,
           }}
         >
           {location.pathname === "/" && (

@@ -1,8 +1,8 @@
-import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
+import { Box, Grid2 as Grid } from "@mui/material";
 import { getAllRestaurants } from "../backend/getAllRestaurants";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Colors } from "../theme/colors";
+
+import RestaurantView from "../features/menu/components/RestaurantView";
 
 interface Restaurant {
   name: string;
@@ -47,90 +47,20 @@ const AllRestaurantsPage = () => {
   return (
     <Box
       sx={{
-        paddingTop: "60px",
-        paddingX: "6rem",
+        paddingTop: "100px",
+        paddingX: "2rem",
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        flexDirection: { sm: "column", xs: "column", lg: "row" },
+        flexWrap: "wrap",
+        justifyContent: "space-evenly",
         width: "100%",
       }}
     >
-      {restaurant.map((restaurant) => (
-        <Link
-          to={`/restaurants/${restaurant.name}/menu`}
-          key={restaurant.name}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-            width: "300px",
-            height: "100%",
-          }}
-        >
-          <Container
-            disableGutters
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              borderRadius: 2,
-              boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
-              marginBottom: "2rem",
-              transition: "transform 0.2s ease-in-out",
-              "&:hover": {
-                cursor: "pointer",
-                transform: "scale(1.004)",
-                boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
-              },
-            }}
-          >
-            <Grid container spacing={0} alignItems="center">
-              <Grid size={{ xs: 12, sm: 5 }}>
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: "200px",
-                    borderRadius: "8px 0 0 8px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img
-                    alt={restaurant.name}
-                    src={restaurant.image}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      maxWidth: "300px",
-                      minWidth: "300px",
-                      objectFit: "fill",
-                    }}
-                  />
-                </Box>
-              </Grid>
-
-              <Grid size={{ xs: 12, sm: 7 }}>
-                <Box
-                  sx={{
-                    padding: "1rem",
-                    textAlign: "left",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 1,
-                  }}
-                >
-                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                    {restaurant.name}
-                  </Typography>
-
-                  <Typography variant="body2" sx={{ color: "gray" }}>
-                    {restaurant.tags.join(" • ")}
-                  </Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Link>
-      ))}
+      <Grid container spacing={2} justifyContent="center">
+        {restaurant.map((restaurant) => (
+          <RestaurantView key={restaurant.name} restaurant={restaurant} />
+        ))}
+      </Grid>
     </Box>
   );
 };
