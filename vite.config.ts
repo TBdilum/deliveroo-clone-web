@@ -7,5 +7,13 @@ export default defineConfig({
   plugins: [react(), svgr()],
   server: {
     allowedHosts: true,
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000", // Backend URL
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""), // Optional rewrite
+      },
+    },
   },
 });

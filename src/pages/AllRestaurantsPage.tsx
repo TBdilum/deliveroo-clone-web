@@ -1,9 +1,6 @@
 import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
 import { getAllRestaurants } from "../backend/getAllRestaurants";
 import { useEffect, useState } from "react";
-import InfoButton from "../features/menu/components/InfoButton";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import { Link } from "react-router-dom";
 import { Colors } from "../theme/colors";
 
@@ -55,6 +52,7 @@ const AllRestaurantsPage = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        width: "100%",
       }}
     >
       {restaurant.map((restaurant) => (
@@ -64,14 +62,14 @@ const AllRestaurantsPage = () => {
           style={{
             textDecoration: "none",
             color: "inherit",
-            width: "100%",
+            width: "300px",
             height: "100%",
           }}
         >
           <Container
             disableGutters
-            maxWidth="lg"
             sx={{
+              width: "100%",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
@@ -87,7 +85,7 @@ const AllRestaurantsPage = () => {
             }}
           >
             <Grid container spacing={0} alignItems="center">
-              <Grid size={{ xs: 12, sm: 3 }}>
+              <Grid size={{ xs: 12, sm: 5 }}>
                 <Box
                   sx={{
                     width: "100%",
@@ -102,13 +100,15 @@ const AllRestaurantsPage = () => {
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "contain",
+                      maxWidth: "300px",
+                      minWidth: "300px",
+                      objectFit: "fill",
                     }}
                   />
                 </Box>
               </Grid>
 
-              <Grid size={{ xs: 12, sm: 9 }}>
+              <Grid size={{ xs: 12, sm: 7 }}>
                 <Box
                   sx={{
                     padding: "1rem",
@@ -125,35 +125,6 @@ const AllRestaurantsPage = () => {
                   <Typography variant="body2" sx={{ color: "gray" }}>
                     {restaurant.tags.join(" • ")}
                   </Typography>
-
-                  <Typography variant="body2" sx={{ color: Colors.text.dark }}>
-                    Opens at {restaurant.openingAt} | ${restaurant.minimumValue}{" "}
-                    min | ${restaurant.deliveryCharge} delivery
-                  </Typography>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      gap: 2,
-                      mt: 1,
-                      flexDirection: "column",
-                    }}
-                  >
-                    <InfoButton
-                      title="Info"
-                      description="Map, allergens and hygiene rating"
-                      Icon={
-                        <InfoOutlinedIcon sx={{ color: Colors.text.lighter }} />
-                      }
-                    />
-                    <InfoButton
-                      title="4.8 Excellent (500+)"
-                      description="Tasty Food"
-                      Icon={
-                        <StarOutlinedIcon sx={{ color: Colors.icon.star }} />
-                      }
-                    />
-                  </Box>
                 </Box>
               </Grid>
             </Grid>

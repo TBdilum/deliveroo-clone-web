@@ -12,12 +12,16 @@ const MainView = () => {
         justifyContent: "center",
         backgroundColor: Colors.background.light,
         backgroundImage: "url(/assets/route.svg)",
-        backgroundSize: "contain",
-        backgroundPosition: "3% 20%",
-        top: "0",
+        backgroundSize: { xs: "contain 30%", sm: "contain", md: "contain" }, // Adjust based on breakpoints
+
+        backgroundPosition: {
+          xs: "left top",
+          sm: "left top",
+          md: "left top",
+        },
+        top: 0,
         backgroundRepeat: "no-repeat",
         padding: "2rem 1rem",
-        position: "relative",
       }}
     >
       <Grid size={{ xs: 0, sm: 0, md: 4, lg: 4 }}>
@@ -47,7 +51,7 @@ const MainView = () => {
         </Box>
       </Grid>
 
-      <Grid size={{ xs: 12, sm: 8, md: 4, lg: 4 }} sx={{ zIndex: 100 }}>
+      <Grid size={{ xs: 12, sm: 8, md: 4, lg: 4 }} sx={{ zIndex: 100, mt: 4 }}>
         <MainViewSearchBox />
       </Grid>
 

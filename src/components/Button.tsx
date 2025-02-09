@@ -35,12 +35,13 @@ function Button({
         "&:hover": {
           border: `0.5px solid ${Colors.border.subtle}`,
         },
-        display: { xs: "none", sm: "flex" },
-        mr: 0.5,
+        display: { xs: "flex", sm: "flex" },
         fontSize: "1rem",
         backgroundColor: Colors.background.defaultLight,
         ...(sx ?? {}),
         paddingLeft: 1,
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       {PrefixIcon && (

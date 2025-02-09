@@ -28,9 +28,7 @@ const MainViewSearchBox = () => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        maxWidth: "600px",
         zIndex: 1,
-        padding: "2rem",
       }}
     >
       <Typography
@@ -56,14 +54,12 @@ const MainViewSearchBox = () => {
           flexDirection: "column",
           backgroundColor: "white",
           marginTop: "30px",
-          width: "180%",
+          width: "100%",
           alignContent: "center",
           justifyContent: "center",
-          maxWidth: "600px",
           height: "180px",
           padding: "1rem 1.5rem",
           borderRadius: "4px",
-          marginLeft: "-100px",
           color: Colors.text.default,
           boxShadow: `0px 4px 10px ${Colors.boxShadow.default}`,
         }}
@@ -77,16 +73,23 @@ const MainViewSearchBox = () => {
           variant="outlined"
           placeholder="Search Restaurants"
           value={searchInput}
+          onKeyDown={(e) => {
+            console.log("Key pressed:", e.key);
+            if (e.key === "Enter") {
+              handleSearchInput();
+            }
+          }}
           onChange={(e) => setSearchInput(e.target.value)}
           sx={{
             "& .MuiOutlinedInput-root": {
               borderRadius: "25px",
-              fontSize: { xs: "1rem", sm: "2.5rem", md: "2rem" },
+              fontSize: { xs: "1rem", sm: "2.5rem", md: "1rem" },
               height: "50px",
+              textAlign: "center",
             },
             "& .MuiInputBase-input": {
               alignItems: "center",
-              marginBottom: { xs: "0", sm: "0.7rem" },
+              marginBottom: { xs: "0", sm: "0.1rem" },
               "&::placeholder": {
                 fontSize: { xs: "0.75rem", sm: "1rem" },
                 opacity: 0.4,

@@ -1,6 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import React from "react";
-import Button from "../../../components/Button";
 import { Colors } from "../../../theme";
 
 interface MainCardProps {
@@ -15,8 +14,10 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        width: "95%",
+        width: "100%",
         height: "450px",
+        mt: 2,
+        mb: 2,
       }}
     >
       <Box
@@ -25,8 +26,9 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
           height: "250px",
           overflow: "hidden",
           borderRadius: "10px",
-          marginBottom: "15px",
+          marginBottom: "10px",
           position: "relative",
+          justifyContent: "flex-start",
         }}
       >
         <img
@@ -53,6 +55,7 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
             textAlign: "left",
             color: Colors.text.default,
             fontSmoothing: "antialiased",
+            marginBottom: "15px",
           }}
         >
           {title}
@@ -63,37 +66,30 @@ const MainCard: React.FC<MainCardProps> = ({ image, title, description }) => {
             fontSize: "0.8rem",
             color: Colors.text.default,
             fontSmoothing: "antialiased",
-
+            marginBottom: "1px",
             textAlign: "left",
-            marginTop: "10px",
           }}
         >
           {description}
         </Typography>
       </Box>
-
-      <Box
+      <IconButton
         sx={{
-          position: "relative",
+          backgroundColor: Colors.background.brand,
+          color: Colors.text.inverse,
+          fontSize: "0.9rem",
+          fontWeight: "bold",
+          borderRadius: "3px",
+          width: "50%",
+          maxWidth: "100%",
+          fontSmoothing: "antialiased",
+          paddingTop: "-10px",
+          paddingBottom: "10px",
+          marginTop: "-20px",
         }}
       >
-        <Button
-          sx={{
-            backgroundColor: Colors.background.brand,
-            color: Colors.text.inverse,
-            fontSize: "0.9rem",
-            fontWeight: "bold",
-            borderRadius: "3px",
-            textTransform: "none",
-            width: "50%",
-            fontSmoothing: "antialiased",
-
-            marginTop: "-70px",
-          }}
-        >
-          Get Started
-        </Button>
-      </Box>
+        Get Started
+      </IconButton>
     </Box>
   );
 };

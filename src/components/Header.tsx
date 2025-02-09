@@ -22,7 +22,7 @@ const Header = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        position: isTransparent ? "sticky" : "fixed",
+        position: isTransparent ? "absolute" : "fixed",
         top: "0",
         zIndex: "10000",
         paddingBottom: "3.2rem",
@@ -85,16 +85,25 @@ const Header = () => {
           }}
         >
           {location.pathname === "/" && (
-            <Button PrefixIcon={ExpandMoreIcon} title="Partner with Us" />
+            <Button
+              PrefixIcon={ExpandMoreIcon}
+              title="Partner with Us"
+              sx={{ backgroundColor: Colors.background.light }}
+            />
           )}
 
           <Button
             PrefixIcon={HomeOutlinedIcon}
             title="Sign up or login"
             linkTo="/SignPage"
+            sx={{ backgroundColor: Colors.background.light }}
           />
 
-          <Button PrefixIcon={Person2OutlinedIcon} title="Account" />
+          <Button
+            PrefixIcon={Person2OutlinedIcon}
+            title="Account"
+            sx={{ backgroundColor: Colors.background.light }}
+          />
         </Box>
       </Container>
     </Box>

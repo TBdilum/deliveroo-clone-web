@@ -7,10 +7,8 @@ const MainCardView = () => {
     <Box
       sx={{
         width: "100%",
-        padding: "0.5rem",
+        padding: "1rem",
         backgroundColor: Colors.background.default,
-        paddingTop: "4rem",
-        paddingBottom: "2rem",
       }}
     >
       <Grid

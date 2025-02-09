@@ -1,6 +1,6 @@
 export const getFilteredRestaurants = async () => {
   try {
-    const response = await fetch("http://localhost:3000/restaurants/");
+    const response = await fetch("/api/restaurants/");
     if (!response.ok) {
       throw new Error("Failed to fetch filtered Restaurants.");
     }
