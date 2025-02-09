@@ -101,7 +101,12 @@ const Header = () => {
           <Button
             PrefixIcon={Person2OutlinedIcon}
             title="Account"
-            sx={{ backgroundColor: Colors.background.light }}
+            sx={{
+              backgroundColor: Colors.background.light,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           />
         </Box>
       </Container>

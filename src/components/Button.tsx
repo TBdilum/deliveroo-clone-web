@@ -39,18 +39,18 @@ function Button({
         fontSize: "1rem",
         backgroundColor: Colors.background.defaultLight,
         ...(sx ?? {}),
-        paddingLeft: 1,
         alignItems: "center",
         justifyContent: "center",
+        paddingRight: { xs: "0.5rem", sm: "1rem" },
+        paddingLeft: { xs: "0.5rem", sm: "1rem" },
       }}
     >
       {PrefixIcon && (
         <PrefixIcon
           style={{
             color: Colors.background.brand,
-            paddingRight: "0.3rem",
-            height: "1.6rem",
-            width: "1.6rem",
+            height: "1.5rem",
+            width: "1.5rem",
             aspectRatio: 1,
           }}
         />
@@ -58,7 +58,12 @@ function Button({
       {PrefixComponent}
 
       {title && linkTo ? (
-        <Typography sx={{ display: { xs: "none", sm: "flex" } }}>
+        <Typography
+          sx={{
+            display: { xs: "none", sm: "flex" },
+            marginLeft: { md: "1rem", lg: "0.5rem" },
+          }}
+        >
           <Link
             to={linkTo}
             style={{
@@ -70,7 +75,12 @@ function Button({
           </Link>
         </Typography>
       ) : (
-        <Typography sx={{ display: { xs: "none", sm: "flex" } }}>
+        <Typography
+          sx={{
+            display: { xs: "none", sm: "flex" },
+            marginLeft: { md: "1rem", lg: "0.5rem" },
+          }}
+        >
           {title}
         </Typography>
       )}
