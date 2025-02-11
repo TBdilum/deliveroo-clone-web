@@ -97,7 +97,6 @@ const Header = () => {
               sx={{ backgroundColor: Colors.background.light }}
             />
           )}
-
           <Button
             PrefixIcon={HomeOutlinedIcon}
             title="Sign up or login"

@@ -12,7 +12,7 @@ const MainView = () => {
         justifyContent: "center",
         backgroundColor: Colors.background.light,
         backgroundImage: "url(/assets/route.svg)",
-        backgroundSize: { xs: "contain 30%", sm: "contain", md: "contain" }, // Adjust based on breakpoints
+        backgroundSize: { xs: "contain 30%", sm: "contain", md: "contain" },
 
         backgroundPosition: {
           xs: "left top",

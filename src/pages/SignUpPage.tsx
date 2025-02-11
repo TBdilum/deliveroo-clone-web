@@ -110,20 +110,23 @@ const SignUpPage = () => {
           />
         </Box>
 
-        <Button
-          PrefixComponent={<EmailOutlinedIcon />}
-          sx={{
-            width: "100%",
-            color: Colors.text.inverse,
-            backgroundColor: Colors.background.brand,
-            height: "3rem",
-            gap: "0.5rem",
-            fontWeight: "bold",
-            fontSize: "1rem",
-          }}
-        >
-          Continue With Email
-        </Button>
+        <Link to={"/SignPage/SignUp"}>
+          <Button
+            PrefixComponent={<EmailOutlinedIcon />}
+            sx={{
+              width: "100%",
+              color: Colors.text.inverse,
+              backgroundColor: Colors.background.brand,
+              height: "3rem",
+              gap: "0.5rem",
+              fontWeight: "bold",
+              fontSize: "1rem",
+            }}
+          >
+            Continue With Email
+          </Button>
+        </Link>
+
         <Typography
           sx={{
             fontSize: "0.75rem",

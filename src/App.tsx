@@ -11,6 +11,8 @@ import WithPageTitle from "./hocs/WithPageTitle";
 import LandingPage from "./pages/LandingPage";
 import AllRestaurantsPage from "./pages/AllRestaurantsPage";
 import FilteredRestaurantsPage from "./pages/FilteredRestaurantsPage";
+import NewSignUpPage from "./pages/NewSignUpPage";
+import SignPageLayout from "./layout/SignPageLayout";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -33,14 +35,11 @@ const App = () => {
             </WithPageTitle>
           }
         ></Route>
-        <Route
-          path="/SignPage"
-          element={
-            <WithPageTitle title="Sign Up">
-              <SignUpPage />
-            </WithPageTitle>
-          }
-        ></Route>
+        <Route path="/SignPage" element={<SignPageLayout />}>
+          <Route index element={<SignUpPage />}></Route>
+          <Route path="SignUp" element={<NewSignUpPage />}></Route>
+          <Route path="LogIn" element={<NewSignUpPage />}></Route>
+        </Route>
         <Route
           path="/restaurants"
           element={
