@@ -110,7 +110,7 @@ const SignUpPage = () => {
           />
         </Box>
 
-        <Link to={"/SignPage/SignUp"}>
+        <Link to={"/SignPage/SignUp"} style={{ textDecoration: "none" }}>
           <Button
             PrefixComponent={<EmailOutlinedIcon />}
             sx={{

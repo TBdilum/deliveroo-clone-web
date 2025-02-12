@@ -1,11 +1,11 @@
-export const authenticateUser = async (UserName: string, Password: string) => {
+export const authenticateUser = async (name: string, password: string) => {
   try {
-    const response = await fetch("/api/login", {
+    const response = await fetch("/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ UserName, Password }),
+      body: JSON.stringify({ name, password }),
     });
 
     if (!response.ok) {
