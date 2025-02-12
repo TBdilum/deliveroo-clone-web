@@ -17,7 +17,11 @@ const NewSignUpPage = () => {
     console.log(userName, password);
 
     try {
-      await createNewUser(userName, password);
+      const token = await createNewUser(userName, password);
+      if (token) {
+        localStorage.setItem("token", token);
+        console.log(token, `successfully logged in as ${userName}`);
+      }
       navigate("/");
     } catch (err) {
       setError("Failed to Create User. Please try again.");
