@@ -77,7 +77,7 @@ const AutoScrollingCardSection = () => {
           <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/512x255/e50bd99ee7/sushi-wide.jpg" />
         </Box>
         <Box sx={{ flexShrink: 0 }}>
-          <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/256x256/294e8b5572/berry-dessert.jpg" />
+          <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/256x256/9788ec70a6/partner-fiveguys.jpg" />
         </Box>
 
         <Box sx={{ flexShrink: 0 }}>
@@ -141,7 +141,7 @@ const AutoScrollingCardSection = () => {
           <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/512x255/e50bd99ee7/sushi-wide.jpg" />
         </Box>
         <Box sx={{ flexShrink: 0 }}>
-          <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/256x256/294e8b5572/berry-dessert.jpg" />
+          <ScrollCard image="https://img2.storyblok.com/filters:format(webp)/f/62776/256x256/9788ec70a6/partner-fiveguys.jpg" />
         </Box>
       </Box>
 

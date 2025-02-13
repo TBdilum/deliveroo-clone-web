@@ -14,20 +14,19 @@ const NewSignUpPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    console.log(userName, password);
 
     try {
-      const token = await createNewUser(userName, password);
-      if (token) {
-        localStorage.setItem("token", token);
-        console.log(token, `successfully logged in as ${userName}`);
+      const data = await createNewUser(userName, password);
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/");
       }
-      navigate("/");
-    } catch (err) {
-      setError("Failed to Create User. Please try again.");
-      console.error("Login error:", err);
+    } catch {
+      setError("User Exists Please Log In");
     }
   };
+
   return (
     <Box
       sx={{

@@ -10,13 +10,11 @@ export const createNewUser = async (name: string, password: string) => {
 
     const data = await response.json();
 
-    if (data.token) {
-      return data.token;
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to create user");
     }
 
-    if (!response.ok) {
-      throw new Error("failed");
-    }
+    return data;
   } catch (error) {
     console.error("Error Creating user:", error);
     throw error;

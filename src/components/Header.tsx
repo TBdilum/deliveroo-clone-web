@@ -18,6 +18,8 @@ const Header = () => {
     setDrawerOpen(open);
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     <Box
       sx={{
@@ -97,12 +99,14 @@ const Header = () => {
               sx={{ backgroundColor: Colors.background.light }}
             />
           )}
-          <Button
-            PrefixIcon={HomeOutlinedIcon}
-            title="Sign up or login"
-            linkTo="/SignPage"
-            sx={{ backgroundColor: Colors.background.light }}
-          />
+          {!token && (
+            <Button
+              PrefixIcon={HomeOutlinedIcon}
+              title="Sign up or login"
+              linkTo="/SignPage"
+              sx={{ backgroundColor: Colors.background.light }}
+            />
+          )}
 
           <Button
             PrefixIcon={Person2OutlinedIcon}

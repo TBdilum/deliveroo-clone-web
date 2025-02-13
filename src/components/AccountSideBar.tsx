@@ -3,18 +3,42 @@ import Drawer from "@mui/material/Drawer";
 import { Link } from "react-router-dom";
 import { Colors, Svgs } from "../theme";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import Button from "./Button";
+import { jwtDecode } from "jwt-decode";
 
 type AnchorTemporaryDrawerProps = {
   open: boolean;
   toggleDrawer: (open: boolean) => void;
 };
 
+interface DecodedToken {
+  name: string;
+}
+
 export default function AnchorTemporaryDrawer({
   open,
   toggleDrawer,
 }: Readonly<AnchorTemporaryDrawerProps>) {
+  const token = localStorage.getItem("token");
+
+  let UserName = "";
+
+  try {
+    if (token) {
+      const decodedToken: DecodedToken = jwtDecode(token);
+      UserName = decodedToken.name;
+    }
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    localStorage.removeItem("token");
+  }
+
+  function LogOut() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   const list = () => (
     <Box
       width={{ xs: "18rem", sm: "20rem", md: "22rem" }}
@@ -47,24 +71,95 @@ export default function AnchorTemporaryDrawer({
           ></ClearOutlinedIcon>
         </IconButton>
       </Box>
-      <Box>
-        <Link to={"/SignPage"} style={{ textDecoration: "none" }}>
+
+      {!token && (
+        <Box>
+          <Link to={"/SignPage"} style={{ textDecoration: "none" }}>
+            <Button
+              onClick={() => toggleDrawer(false)}
+              style={{
+                textDecoration: "none",
+                alignItems: "center",
+                marginLeft: "1rem",
+                width: "90%",
+                marginTop: "4rem",
+                backgroundColor: Colors.background.brand,
+                color: Colors.text.inverse,
+              }}
+            >
+              Log in or Sign up
+            </Button>
+          </Link>
+        </Box>
+      )}
+
+      {token && (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            sx={{
+              mt: "4rem",
+              fontSize: "2rem",
+              fontWeight: "bold",
+              color: Colors.text.default,
+            }}
+          >{`Hello! ${UserName}`}</Typography>
           <Button
-            onClick={() => toggleDrawer(false)}
-            style={{
-              textDecoration: "none",
+            sx={{
               alignItems: "center",
-              marginLeft: "1rem",
+
               width: "90%",
               marginTop: "4rem",
               backgroundColor: Colors.background.brand,
               color: Colors.text.inverse,
             }}
           >
-            Log in Or sing up
+            Dashboard
           </Button>
-        </Link>
-      </Box>
+          <Button
+            sx={{
+              alignItems: "center",
+              width: "90%",
+              marginTop: "1rem",
+              backgroundColor: Colors.background.brand,
+              color: Colors.text.inverse,
+            }}
+          >
+            Settings
+          </Button>
+          <Button
+            onClick={() => LogOut()}
+            sx={{
+              alignItems: "center",
+
+              width: "90%",
+              marginTop: "1rem",
+              backgroundColor: Colors.background.brand,
+              color: Colors.text.inverse,
+            }}
+          >
+            Log Out
+          </Button>
+          <Button
+            sx={{
+              alignItems: "center",
+
+              width: "90%",
+              top: "350px",
+              marginTop: "1rem",
+              backgroundColor: Colors.background.brand,
+              color: Colors.text.inverse,
+            }}
+          >
+            Checkout
+          </Button>
+        </Box>
+      )}
     </Box>
   );
 
