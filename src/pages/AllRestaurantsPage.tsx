@@ -3,6 +3,7 @@ import { getAllRestaurants } from "../backend/getAllRestaurants";
 import { useEffect, useState } from "react";
 
 import RestaurantView from "../features/menu/components/RestaurantView";
+import LoadingIndicator from "../features/menu/components/LoadingIndicator";
 
 interface Restaurant {
   name: string;
@@ -41,7 +42,11 @@ const AllRestaurantsPage = () => {
   }
 
   if (!restaurant) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <LoadingIndicator />
+      </div>
+    );
   }
 
   return (

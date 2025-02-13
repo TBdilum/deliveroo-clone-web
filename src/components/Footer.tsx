@@ -18,7 +18,6 @@ const Footer = () => {
         position: isMainPage ? "sticky" : "static",
         width: "100%",
         display: "flex",
-        minHeight: "400px",
         bottom: "0",
         flexDirection: "column",
         alignItems: "center",
@@ -34,7 +33,6 @@ const Footer = () => {
           alignItems: "flex-start",
           gap: "1rem",
           width: "80%",
-          height: "100%",
           color: Colors.text.inverse,
         }}
       >
@@ -46,7 +44,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
-            minHeight: "280px",
+            minHeight: "450px",
             maxWidth: "500px",
           }}
         >
@@ -75,7 +73,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
-            minHeight: "280px",
+            minHeight: "450px",
             maxWidth: "500px",
           }}
         >
@@ -101,7 +99,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
-            minHeight: "280px",
+            minHeight: "450px",
             maxWidth: "500px",
           }}
         >
@@ -127,7 +125,7 @@ const Footer = () => {
             padding: "1.5rem",
             flex: 1,
             minWidth: "240px",
-            minHeight: "280px",
+            minHeight: "450px",
             maxWidth: "500px",
           }}
         >

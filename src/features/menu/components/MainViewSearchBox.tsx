@@ -82,12 +82,25 @@ const MainViewSearchBox = () => {
           onChange={(e) => setSearchInput(e.target.value)}
           sx={{
             "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                border: `1px solid ${Colors.border.subtleLight}`,
+                boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: Colors.border.dark,
+              },
+              "&:hover fieldset": {
+                border: `1px solid ${Colors.border.subtleLight}`,
+              },
               borderRadius: "25px",
+              caretColor: Colors.background.brand,
+
               fontSize: { xs: "1rem", sm: "2.5rem", md: "1rem" },
               height: "50px",
               textAlign: "center",
             },
             "& .MuiInputBase-input": {
+              borderColor: Colors.border.default,
               alignItems: "center",
               marginBottom: { xs: "0", sm: "0.1rem" },
               "&::placeholder": {
@@ -99,7 +112,13 @@ const MainViewSearchBox = () => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <IconButton>
+                <IconButton
+                  sx={{
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                    },
+                  }}
+                >
                   <NearMeOutlinedIcon sx={{ color: Colors.background.brand }} />
                 </IconButton>
               </InputAdornment>
@@ -112,6 +131,9 @@ const MainViewSearchBox = () => {
                     backgroundColor: Colors.background.brand,
                     borderRadius: "25px",
                     padding: "0.5rem 1rem",
+                    "&:hover": {
+                      backgroundColor: Colors.background.brandHover,
+                    },
                   }}
                 >
                   <Typography sx={{ color: Colors.text.inverse }}>

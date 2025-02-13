@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import RestaurantView from "../features/menu/components/RestaurantView";
+import LoadingIndicator from "../features/menu/components/LoadingIndicator";
 
 interface FilteredRestaurant {
   name: string;
@@ -24,10 +25,13 @@ const FilteredRestaurantsPage = () => {
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get("search")?.toLowerCase() ?? "";
 
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
-        const data = await getFilteredRestaurants();
+        const data = await delay(1000).then(() => getFilteredRestaurants());
         if (!searchQuery) {
           setFilteredRestaurants(data);
         }
@@ -48,9 +52,16 @@ const FilteredRestaurantsPage = () => {
 
   let content;
   if (loading) {
-    content = (
-      <Typography variant="h6" color="gray" sx={{ mb: 4 }}>
-        ...Loading
+    return (
+      <Typography
+        sx={{
+          mb: 4,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <LoadingIndicator />
       </Typography>
     );
   } else if (filteredRestaurants.length === 0) {
@@ -69,11 +80,14 @@ const FilteredRestaurantsPage = () => {
     <Box
       sx={{
         paddingTop: "100px",
-        paddingX: "2rem",
+        paddingX: "6rem",
         display: "flex",
         flexDirection: { sm: "column", xs: "column", lg: "row" },
         flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "center",
         width: "100%",
+        height: "100%",
       }}
     >
       <Grid container spacing={2}>

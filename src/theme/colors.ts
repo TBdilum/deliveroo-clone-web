@@ -3,6 +3,7 @@ export const Colors = {
     default: "#f1f0f0",
     defaultLight: "rgba(255, 255, 255, 0.6)",
     brand: "#00ccbc",
+    brandHover: "#02bdae",
     light: "#ffffff",
     dark: "#3d4141",
     darker: "#2e3333",
@@ -17,6 +18,8 @@ export const Colors = {
   border: {
     default: "#e8ebeb",
     subtle: "#ccc",
+    subtleLight: "#00000014",
+    dark: "#2e3333",
   },
   boxShadow: {
     default: "rgba(0, 0, 0, 0.1)",

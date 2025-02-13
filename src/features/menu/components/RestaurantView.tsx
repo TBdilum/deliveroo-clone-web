@@ -25,14 +25,14 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
         style={{
           textDecoration: "none",
           color: "inherit",
-          width: "100%",
+          width: "100vw",
         }}
       >
         <Container
           disableGutters
           sx={{
             display: "flex",
-            alignItems: "center",
+            minWidth: "500px",
             borderRadius: 2,
             boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
             marginBottom: "2rem",
@@ -62,6 +62,7 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
                     maxWidth: "300px",
                     minWidth: "200px",
                     objectFit: "contain",
+                    paddingRight: "1rem",
                   }}
                 />
               </Box>
@@ -71,7 +72,7 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
               <Box
                 sx={{
                   padding: "1rem",
-                  textAlign: "left",
+                  textAlign: "left-top",
                   display: "flex",
                   flexDirection: "column",
                   gap: 1,

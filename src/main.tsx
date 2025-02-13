@@ -4,6 +4,7 @@ import App from "./App.tsx";
 //import { Provider } from "react-redux";
 //import { store } from "./store/store.tsx";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { HelmetProvider } from "react-helmet-async";
 
 const theme = createTheme({
   typography: {
@@ -15,9 +16,11 @@ const theme = createTheme({
 });
 
 createRoot(document.getElementById("root")!).render(
-  <ThemeProvider theme={theme}>
-    <StrictMode>
-      <App />
-    </StrictMode>
-  </ThemeProvider>,
+  <HelmetProvider>
+    <ThemeProvider theme={theme}>
+      <StrictMode>
+        <App />
+      </StrictMode>
+    </ThemeProvider>
+  </HelmetProvider>,
 );
