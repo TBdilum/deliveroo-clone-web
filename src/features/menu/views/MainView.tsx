@@ -10,7 +10,7 @@ const MainView = () => {
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: Colors.background.light,
+        backgroundColor: Colors.background.default,
         backgroundImage: "url(/assets/route.svg)",
         backgroundSize: { xs: "contain 30%", sm: "contain", md: "contain" },
 

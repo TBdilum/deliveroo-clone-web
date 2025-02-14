@@ -23,7 +23,7 @@ const App = () => {
           path="/"
           index
           element={
-            <WithPageTitle title="Deliveroo">
+            <WithPageTitle title="Home">
               <LandingPage />
             </WithPageTitle>
           }

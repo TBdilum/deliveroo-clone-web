@@ -36,9 +36,10 @@ const MainViewSearchBox = () => {
       <Typography
         sx={{
           fontWeight: "bolder",
+          mt: "2rem",
           fontSize: { xs: "1.8rem", sm: "2.5rem", md: "2.4rem" },
           lineHeight: 1.2,
-          textAlign: "center",
+          textAlign: { sx: "left", md: "center" },
           textWrap: "none",
           whiteSpace: "pre",
           textOverflow: "ellipsis",

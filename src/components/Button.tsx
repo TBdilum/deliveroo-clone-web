@@ -37,7 +37,7 @@ function Button({
         },
         display: { xs: "flex", sm: "flex" },
         fontSize: "1rem",
-        backgroundColor: Colors.background.defaultLight,
+        backgroundColor: Colors.background.light,
         ...(sx ?? {}),
         alignItems: "center",
         justifyContent: "center",
