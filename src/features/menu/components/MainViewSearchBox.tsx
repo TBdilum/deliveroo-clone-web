@@ -14,6 +14,8 @@ const MainViewSearchBox = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+
   const handleSearchInput = () => {
     if (searchInput.trim() !== "") {
       navigate(
@@ -55,10 +57,10 @@ const MainViewSearchBox = () => {
           backgroundColor: "white",
           marginTop: "30px",
           width: "100%",
+          maxWidth: "900px",
           alignContent: "center",
           justifyContent: "center",
-          height: "180px",
-          padding: "1rem 1.5rem",
+          padding: "3rem 2rem",
           borderRadius: "4px",
           color: Colors.text.default,
           boxShadow: `0px 4px 10px ${Colors.boxShadow.default}`,
@@ -74,7 +76,6 @@ const MainViewSearchBox = () => {
           placeholder="Search Restaurants"
           value={searchInput}
           onKeyDown={(e) => {
-            console.log("Key pressed:", e.key);
             if (e.key === "Enter") {
               handleSearchInput();
             }
@@ -124,7 +125,7 @@ const MainViewSearchBox = () => {
               </InputAdornment>
             ),
             endAdornment: (
-              <InputAdornment position="end" sx={{ marginRight: "-8px" }}>
+              <InputAdornment position="end" sx={{ marginRight: "-10px" }}>
                 <IconButton
                   onClick={handleSearchInput}
                   sx={{
@@ -136,7 +137,9 @@ const MainViewSearchBox = () => {
                     },
                   }}
                 >
-                  <Typography sx={{ color: Colors.text.inverse }}>
+                  <Typography
+                    sx={{ color: Colors.text.inverse, fontWeight: "bold" }}
+                  >
                     Search
                   </Typography>
                 </IconButton>
@@ -145,9 +148,15 @@ const MainViewSearchBox = () => {
           }}
         />
 
-        <Typography sx={{ fontSize: "12px", marginTop: "1rem" }}>
+        <Typography
+          sx={{
+            fontSize: "12px",
+            marginTop: "1rem",
+            display: token ? "none" : "flex",
+          }}
+        >
           <Link
-            to={"/SignPage"}
+            to={"/SignPage/login"}
             style={{
               color: Colors.background.brand,
               textDecoration: "none",

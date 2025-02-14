@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Colors, Paddings, Svgs } from "../theme";
 import AnchorTemporaryDrawer from "./AccountSideBar";
 import React from "react";
+import TokenDecoder from "../TokenDecoder";
 
 const Header = () => {
   const location = useLocation();
@@ -118,7 +119,7 @@ const Header = () => {
 
           <Button
             PrefixIcon={Person2OutlinedIcon}
-            title="Account"
+            title={TokenDecoder()}
             sx={{
               backgroundColor: Colors.background.light,
               display: "flex",

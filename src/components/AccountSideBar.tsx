@@ -5,34 +5,18 @@ import { Colors, Svgs } from "../theme";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { IconButton, Typography } from "@mui/material";
 import Button from "./Button";
-import { jwtDecode } from "jwt-decode";
+import TokenDecoder from "../TokenDecoder";
 
 type AnchorTemporaryDrawerProps = {
   open: boolean;
   toggleDrawer: (open: boolean) => void;
 };
 
-interface DecodedToken {
-  name: string;
-}
-
 export default function AnchorTemporaryDrawer({
   open,
   toggleDrawer,
 }: Readonly<AnchorTemporaryDrawerProps>) {
   const token = localStorage.getItem("token");
-
-  let UserName = "";
-
-  try {
-    if (token) {
-      const decodedToken: DecodedToken = jwtDecode(token);
-      UserName = decodedToken.name;
-    }
-  } catch (error) {
-    console.error("Error decoding token:", error);
-    localStorage.removeItem("token");
-  }
 
   function LogOut() {
     localStorage.clear();
@@ -108,7 +92,7 @@ export default function AnchorTemporaryDrawer({
               fontWeight: "bold",
               color: Colors.text.default,
             }}
-          >{`Hello! ${UserName}`}</Typography>
+          >{`Hello! ${TokenDecoder()}`}</Typography>
           <Button
             sx={{
               alignItems: "center",
