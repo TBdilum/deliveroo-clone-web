@@ -1,4 +1,4 @@
-import { Divider, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "../components/Button";
 import { Colors } from "../theme/colors";
@@ -49,7 +49,7 @@ const NewSignUpPage = () => {
               color: Colors.text.default,
             }}
           >
-            Sign Up Or Log In
+            Sign Up
           </Typography>
           <label>
             <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
@@ -104,7 +104,6 @@ const NewSignUpPage = () => {
             style={{
               width: "100%",
               display: "flex",
-              alignItems: "center",
               flexDirection: "column",
               marginTop: "1rem",
               marginBottom: "1rem",
@@ -114,7 +113,8 @@ const NewSignUpPage = () => {
               type="submit"
               style={{
                 width: "100%",
-                marginTop: "1rem",
+                marginTop: "3rem",
+                marginBottom: "1rem",
                 backgroundColor: Colors.background.default,
                 color: Colors.text.default,
               }}
@@ -127,57 +127,19 @@ const NewSignUpPage = () => {
               </Typography>
             )}
 
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                margin: "1.5rem 0",
-              }}
-            >
-              <Divider
-                sx={{
-                  flexGrow: 1,
-                  borderBottomWidth: 2,
-                  borderColor: Colors.border.subtle,
-                }}
-              />
-              <Typography
-                sx={{
-                  margin: "0 1rem",
-                  fontSize: "0.9rem",
-                  color: Colors.text.default,
-                }}
-              >
-                or
-              </Typography>
-              <Divider
-                sx={{
-                  flexGrow: 1,
-                  borderBottomWidth: 2,
-                  borderColor: Colors.border.subtle,
-                }}
-              />
-            </Box>
-            <Link
-              to={"/SignPage/login"}
-              style={{
-                textDecoration: "none",
-                color: Colors.text.inverse,
-                width: "100%",
-              }}
-            >
-              <Button
-                type="submit"
+            <Typography>
+              Existing User? Please{" "}
+              <Link
+                to={"/SignPage/login"}
                 style={{
+                  textDecoration: "none",
+                  color: Colors.background.brand,
                   width: "100%",
-
-                  backgroundColor: Colors.background.brand,
                 }}
               >
                 Log In
-              </Button>
-            </Link>
+              </Link>
+            </Typography>
           </Box>
         </form>
       </Box>

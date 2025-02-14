@@ -37,11 +37,18 @@ const App = () => {
           }
         ></Route>
         <Route path="/SignPage" element={<SignPageLayout />}>
-          <Route index element={<SignUpPage />}></Route>
+          <Route
+            index
+            element={
+              <WithPageTitle title="Account">
+                <SignUpPage />
+              </WithPageTitle>
+            }
+          ></Route>
           <Route
             path="SignUp"
             element={
-              <WithPageTitle title="SignUp or Login">
+              <WithPageTitle title="SignUp">
                 <NewSignUpPage />
               </WithPageTitle>
             }

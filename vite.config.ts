@@ -5,14 +5,7 @@ import svgr from "vite-plugin-svgr";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), svgr()],
-  define: {
-    "import.meta.env.PROD": JSON.stringify(
-      process.env.NODE_ENV === "production",
-    ),
-  },
-  esbuild: {
-    drop: process.env.NODE_ENV === "production" ? ["console", "debugger"] : [],
-  },
+
   server: {
     allowedHosts: true,
     proxy: {

@@ -8,17 +8,13 @@ export const authenticateUser = async (name: string, password: string) => {
       body: JSON.stringify({ name, password }),
     });
 
-    if (!response.ok) {
-      throw new Error("Authentication failed");
-    }
-
     const data = await response.json();
 
-    if (data.token) {
-      return data.token;
-    } else {
-      throw new Error("Invalid credentials");
+    if (!response.ok) {
+      throw new Error(data.message || "Authentication failed");
     }
+
+    return data;
   } catch (error) {
     console.error("Error authenticating user:", error);
     throw error;

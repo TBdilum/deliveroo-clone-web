@@ -12,6 +12,10 @@ import React from "react";
 const Header = () => {
   const location = useLocation();
   const isTransparent = location.pathname === "/";
+  const notShowing =
+    location.pathname === "/SignPage/login" ||
+    location.pathname === "/SignPage/signup";
+
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const toggleDrawer = (open: boolean) => {
@@ -99,12 +103,16 @@ const Header = () => {
               sx={{ backgroundColor: Colors.background.light }}
             />
           )}
+
           {!token && (
             <Button
               PrefixIcon={HomeOutlinedIcon}
               title="Sign up or login"
               linkTo="/SignPage"
-              sx={{ backgroundColor: Colors.background.light }}
+              sx={{
+                backgroundColor: Colors.background.light,
+                display: notShowing ? "none" : "flex",
+              }}
             />
           )}
 

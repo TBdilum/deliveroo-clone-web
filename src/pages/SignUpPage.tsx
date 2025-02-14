@@ -110,7 +110,7 @@ const SignUpPage = () => {
           />
         </Box>
 
-        <Link to={"/SignPage/SignUp"} style={{ textDecoration: "none" }}>
+        <Link to={"/SignPage/login"} style={{ textDecoration: "none" }}>
           <Button
             PrefixComponent={<EmailOutlinedIcon />}
             sx={{
@@ -150,7 +150,7 @@ const SignUpPage = () => {
           >
             Privacy Policy.
           </Link>{" "}
-          We use your data to offer you a personalised experience and to better
+          We use your data to offer you a personalized experience and to better
           understand and improve our services.{" "}
           <Link
             to={"https://deliveroo.co.uk/privacy#use-of-your-information"}

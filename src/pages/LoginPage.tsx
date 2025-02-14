@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { authenticateUser } from "../backend/authenticateUser";
 import { Colors } from "../theme/colors";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
@@ -13,20 +13,15 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    console.log(userName, password);
-
     try {
-      const token = await authenticateUser(userName, password);
-      if (token) {
-        localStorage.setItem("token", token);
-        console.log(token, `successfully logged in as ${userName}`);
+      const response = await authenticateUser(userName, password);
+      if (response?.token) {
+        localStorage.setItem("token", response.token);
         navigate("/");
-      } else {
-        setError("Invalid username or password");
       }
-    } catch (err) {
-      setError("Failed to log in. Please try again.");
-      console.error("Login error:", err);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      setError(err.message || "An error occurred");
     }
   };
 
@@ -117,7 +112,7 @@ export default function Login() {
               display: "flex",
               alignItems: "center",
               flexDirection: "column",
-              marginTop: "2rem",
+              marginTop: "4rem",
               marginBottom: "1rem",
             }}
           >
@@ -133,6 +128,15 @@ export default function Login() {
             </Button>
           </Box>
         </form>
+        <Typography>
+          New User?{" "}
+          <Link
+            to={"/SignPage/signup"}
+            style={{ textDecoration: "none", color: Colors.background.brand }}
+          >
+            Create an Account
+          </Link>
+        </Typography>
       </Box>
     </Box>
   );
