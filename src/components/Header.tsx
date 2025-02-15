@@ -71,20 +71,21 @@ const Header = () => {
           </Link>
         </Box>
 
-        {location.pathname === "/menu" && (
-          <Box
-            sx={{
-              flex: 2,
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              paddingTop: "0.5rem",
-            }}
-          >
-            <SearchBar />
-          </Box>
-        )}
+        {location.pathname.startsWith("/restaurants/") &&
+          location.pathname.endsWith("/menu") && (
+            <Box
+              sx={{
+                flex: 2,
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "1rem",
+              }}
+            >
+              <SearchBar />
+            </Box>
+          )}
 
         <Box
           sx={{

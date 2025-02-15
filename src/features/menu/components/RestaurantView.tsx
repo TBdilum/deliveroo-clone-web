@@ -25,16 +25,18 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
         style={{
           textDecoration: "none",
           color: "inherit",
-          width: "100%", // Changed from 100vw to 100%
-          display: "block", // Ensure Link behaves as a block-level element
+          width: "100%",
+          display: "flex",
         }}
       >
         <Container
           disableGutters
           sx={{
             display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             width: "100%",
-            minWidth: { sx: "auto", sm: "400px", md: "400px" },
+            minWidth: { sm: "400px", md: "400px" },
             borderRadius: 2,
             boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
             marginBottom: "2rem",
@@ -67,8 +69,7 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
                     width: "100%",
                     height: "100%",
                     maxWidth: "300px",
-                    minWidth: "200px",
-                    minHeight: "250px",
+
                     objectFit: "contain",
                   }}
                 />
@@ -81,8 +82,8 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
                   textAlign: "left",
                   display: "flex",
                   flexDirection: "column",
-                  paddingLeft: "3rem",
-                  textWrap: "nowrap",
+                  paddingLeft: { xs: "0rem", sm: "2rem" },
+                  textWrap: { xs: "wrap", sm: "nowrap" },
                   gap: 1,
                 }}
               >
