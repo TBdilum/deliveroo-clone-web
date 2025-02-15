@@ -25,7 +25,8 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
         style={{
           textDecoration: "none",
           color: "inherit",
-          width: "100vw",
+          width: "100%", // Changed from 100vw to 100%
+          display: "block", // Ensure Link behaves as a block-level element
         }}
       >
         <Container
@@ -77,7 +78,7 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
             <Grid size={{ xs: 12, sm: 7 }}>
               <Box
                 sx={{
-                  textAlign: "left-top",
+                  textAlign: "left",
                   display: "flex",
                   flexDirection: "column",
                   paddingLeft: "3rem",
@@ -88,11 +89,12 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
                 <Typography
                   variant="h5"
                   sx={{ fontWeight: "bold", textWrap: "none" }}
+                  component="div"
                 >
                   {restaurant.name}
                 </Typography>
 
-                <Typography variant="body2" sx={{ color: "gray" }}>
+                <Typography sx={{ color: "gray" }} component="div">
                   {restaurant.tags.join(" • ")}
                 </Typography>
               </Box>

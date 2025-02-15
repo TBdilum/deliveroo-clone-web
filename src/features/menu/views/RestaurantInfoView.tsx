@@ -60,6 +60,7 @@ const RestaurantInfoView = () => {
 
   return (
     <Container
+      key={restaurant.name}
       disableGutters
       maxWidth="xl"
       sx={{
@@ -138,44 +139,48 @@ const RestaurantInfoView = () => {
           >
             {restaurant.name}
           </Typography>
-          <Typography
-            variant="body1"
+          <Box
             sx={{
               mt: 1,
               display: "flex",
             }}
           >
             {restaurant.tags.map((tag, index) => (
-              <>
-                <Typography key={index + tag} variant="body1">
+              <Box key={index + tag} component="span">
+                <Typography variant="body1" component="span">
                   {tag}
                 </Typography>
                 {restaurant.tags.length > index + 1 && (
-                  <Typography sx={{ mx: 1 }}>•</Typography>
+                  <Typography sx={{ mx: 1 }} component="span">
+                    •
+                  </Typography>
                 )}
-              </>
+              </Box>
             ))}
-          </Typography>
-          <Typography
-            variant="body1"
+          </Box>
+          <Box
             sx={{
               mt: 1,
               display: "flex",
               whiteSpace: "nowrap",
             }}
           >
-            <Typography variant="body1">
+            <Typography variant="body1" component="span">
               Opens at {restaurant.openingAt}
             </Typography>
-            <Typography sx={{ mx: 1 }}>•</Typography>
-            <Typography variant="body1">
+            <Typography sx={{ mx: 1 }} component="span">
+              •
+            </Typography>
+            <Typography variant="body1" component="span">
               ${restaurant.minimumValue} minimum
             </Typography>
-            <Typography sx={{ mx: 1 }}>•</Typography>
-            <Typography variant="body1">
+            <Typography sx={{ mx: 1 }} component="span">
+              •
+            </Typography>
+            <Typography variant="body1" component="span">
               ${restaurant.deliveryCharge} delivery
             </Typography>
-          </Typography>
+          </Box>
 
           <InfoButton
             title="Info"

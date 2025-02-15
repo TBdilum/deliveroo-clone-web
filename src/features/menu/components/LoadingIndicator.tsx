@@ -1,10 +1,11 @@
 import Lottie from "react-lottie-player";
 import loadingAnimation from "../../../assets/animations/lottie-loading-dot-animation.json";
 import { Colors } from "../../../theme";
+import { Box } from "@mui/material";
 
 const LoadingIndicator = () => {
   return (
-    <div
+    <Box
       style={{
         display: "flex",
         justifyContent: "center",
@@ -18,7 +19,7 @@ const LoadingIndicator = () => {
         play
         style={{ width: 150, height: 150, color: Colors.background.brand }}
       />
-    </div>
+    </Box>
   );
 };
 

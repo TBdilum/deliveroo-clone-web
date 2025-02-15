@@ -53,7 +53,7 @@ const FilteredRestaurantsPage = () => {
   let content;
   if (loading) {
     return (
-      <Typography
+      <Box
         sx={{
           mb: 4,
           display: "flex",
@@ -62,11 +62,11 @@ const FilteredRestaurantsPage = () => {
         }}
       >
         <LoadingIndicator />
-      </Typography>
+      </Box>
     );
   } else if (filteredRestaurants.length === 0) {
     content = (
-      <Typography variant="h6" color="gray" sx={{ mb: 4 }}>
+      <Typography variant="h6" color="gray" sx={{ mb: 4 }} component="div">
         No Restaurants Found
       </Typography>
     );
