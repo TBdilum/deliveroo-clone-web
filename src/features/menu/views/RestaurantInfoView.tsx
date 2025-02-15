@@ -129,6 +129,7 @@ const RestaurantInfoView = () => {
           }}
           sx={{
             px: 2,
+            mt: { xs: 2, sm: 2, md: 2, lg: 0 },
           }}
         >
           <Typography

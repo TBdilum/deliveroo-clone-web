@@ -66,9 +66,26 @@ const FilteredRestaurantsPage = () => {
     );
   } else if (filteredRestaurants.length === 0) {
     content = (
-      <Typography variant="h6" color="gray" sx={{ mb: 4 }} component="div">
-        No Restaurants Found
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "10rem",
+          height: "80vh",
+          width: "40vw",
+        }}
+      >
+        <Typography
+          variant="h6"
+          color="gray"
+          sx={{ mb: 1, fontWeight: "bold", fontSize: "2.5rem" }}
+          component="div"
+        >
+          No Restaurants Found
+        </Typography>
+        <img src="/src/assets/svgs/NotFound.svg" alt="No Restaurants Found" />
+      </Box>
     );
   } else {
     content = filteredRestaurants.map((restaurant) => (
