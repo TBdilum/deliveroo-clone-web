@@ -3,6 +3,7 @@ import { dishes, IDish } from "../../../data/Sides";
 import Dish from "../components/Dish";
 import { useMemo } from "react";
 import { categories } from "../components/CategoriesBar";
+import { Colors } from "../../../theme/colors";
 
 const DishView = () => {
   const groupedDishes = useMemo(() => {
@@ -41,8 +42,9 @@ const DishView = () => {
             sx={{
               fontWeight: "bold",
               fontSize: "1.3rem",
-              marginTop: "1rem",
+              marginTop: "5rem",
               marginBottom: "1.5rem",
+              color: Colors.text.default,
             }}
           >
             {category?.name}
@@ -60,9 +62,10 @@ const DishView = () => {
                 sx={{ marginBottom: "1rem" }}
                 key={dish.id}
                 size={{
+                  xs: 12,
                   sm: 12,
                   md: 6,
-                  lg: 4,
+                  lg: 6,
                 }}
               >
                 <Dish data={dish} />

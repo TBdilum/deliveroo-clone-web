@@ -44,6 +44,9 @@ const Dish = ({ data }: DishProps) => {
             width: "100%",
             height: "100%",
             objectFit: "cover",
+            backgroundImage: "url(/src/assets/svgs/placeholder-menu.svg)",
+            backgroundPosition: "center",
+            backgroundSize: "contain",
           }}
         />
       </Box>
@@ -61,8 +64,8 @@ const Dish = ({ data }: DishProps) => {
       >
         <Typography
           sx={{
-            fontWeight: "bold",
-            fontSize: "0.9rem",
+            fontWeight: "bolder",
+            fontSize: "1rem",
             mb: 0.5,
           }}
         >
@@ -83,7 +86,8 @@ const Dish = ({ data }: DishProps) => {
         </Typography>
         <Typography
           sx={{
-            fontWeight: "normal",
+            fontWeight: "bold",
+            fontSize: "0.8rem",
             color: Colors.text.default,
           }}
         >
@@ -98,6 +102,7 @@ const Dish = ({ data }: DishProps) => {
           border: `1px solid ${Colors.border.subtle}`,
           borderRadius: "4px",
           width: "auto",
+          maxWidth: "50px",
           height: "100px",
           display: "flex",
           alignItems: "center",
@@ -110,7 +115,8 @@ const Dish = ({ data }: DishProps) => {
             color: Colors.text.default,
             display: "flex",
             alignItems: "center",
-            ml: 1,
+            justifyContent: "center",
+            mr: 1,
           }}
         />
       </Button>
