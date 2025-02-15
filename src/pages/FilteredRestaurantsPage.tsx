@@ -79,8 +79,8 @@ const FilteredRestaurantsPage = () => {
   return (
     <Box
       sx={{
-        paddingTop: "100px",
-        paddingX: "6rem",
+        paddingTop: "70px",
+        paddingX: "3rem",
         display: "flex",
         flexDirection: { sm: "column", xs: "column", lg: "row" },
         flexWrap: "wrap",

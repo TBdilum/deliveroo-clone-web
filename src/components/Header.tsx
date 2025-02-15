@@ -119,7 +119,7 @@ const Header = () => {
 
           <Button
             PrefixIcon={Person2OutlinedIcon}
-            title={TokenDecoder()}
+            title={`${TokenDecoder()}` || "Account"}
             sx={{
               backgroundColor: Colors.background.light,
               display: "flex",

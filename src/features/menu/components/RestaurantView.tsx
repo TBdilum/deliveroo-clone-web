@@ -19,7 +19,7 @@ interface RestaurantViewProps {
 
 const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
   return (
-    <Grid size={{ xs: 12, sm: 6, lg: 6 }} key={restaurant.name}>
+    <Grid size={{ xs: 12, sm: 12, md: 12, lg: 6 }} key={restaurant.name}>
       <Link
         to={`/restaurants/${restaurant.name}/menu`}
         style={{
@@ -32,10 +32,12 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
           disableGutters
           sx={{
             display: "flex",
-            minWidth: "500px",
+            width: "100%",
+            minWidth: { sx: "auto", sm: "400px", md: "400px" },
             borderRadius: 2,
             boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
             marginBottom: "2rem",
+            marginTop: "2rem",
             transition: "transform 0.2s ease-in-out",
             "&:hover": {
               cursor: "pointer",
@@ -45,11 +47,15 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
           }}
         >
           <Grid container spacing={0} alignItems="center">
-            <Grid size={{ xs: 12, sm: 6 }}>
+            <Grid size={{ xs: 12, sm: 5 }}>
               <Box
                 sx={{
                   width: "100%",
-                  height: "200px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minHeight: "200px",
+                  maxHeight: "300px",
                   borderRadius: "8px 0 0 8px",
                 }}
               >
@@ -61,24 +67,28 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
                     height: "100%",
                     maxWidth: "300px",
                     minWidth: "200px",
+                    minHeight: "250px",
                     objectFit: "contain",
-                    paddingRight: "1rem",
                   }}
                 />
               </Box>
             </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
+            <Grid size={{ xs: 12, sm: 7 }}>
               <Box
                 sx={{
-                  padding: "1rem",
                   textAlign: "left-top",
                   display: "flex",
                   flexDirection: "column",
+                  paddingLeft: "3rem",
+                  textWrap: "nowrap",
                   gap: 1,
                 }}
               >
-                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                <Typography
+                  variant="h5"
+                  sx={{ fontWeight: "bold", textWrap: "none" }}
+                >
                   {restaurant.name}
                 </Typography>
 

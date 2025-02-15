@@ -22,6 +22,7 @@ const Footer = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        marginTop: "auto",
       }}
     >
       <Container
