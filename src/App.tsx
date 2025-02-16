@@ -5,13 +5,13 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import SignUpPage from "./pages/SignUpPage";
+import AccountPage from "./pages/AccountPage";
 import MainLayout from "./layout/MainLayout";
 import WithPageTitle from "./hocs/WithPageTitle";
 import LandingPage from "./pages/LandingPage";
 import AllRestaurantsPage from "./pages/AllRestaurantsPage";
 import FilteredRestaurantsPage from "./pages/FilteredRestaurantsPage";
-import NewSignUpPage from "./pages/NewSignUpPage";
+import SignUpPage from "./pages/SignUpPage";
 import SignPageLayout from "./layout/SignPageLayout";
 import LoginPage from "./pages/LoginPage";
 
@@ -41,7 +41,7 @@ const App = () => {
             index
             element={
               <WithPageTitle title="Account">
-                <SignUpPage />
+                <AccountPage />
               </WithPageTitle>
             }
           ></Route>
@@ -49,7 +49,7 @@ const App = () => {
             path="SignUp"
             element={
               <WithPageTitle title="SignUp">
-                <NewSignUpPage />
+                <SignUpPage />
               </WithPageTitle>
             }
           ></Route>

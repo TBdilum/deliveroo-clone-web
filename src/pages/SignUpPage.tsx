@@ -1,164 +1,147 @@
+import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
 import Button from "../components/Button";
-import { Box, Typography, Divider } from "@mui/material";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import AppleIcon from "@mui/icons-material/Apple";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import { Link } from "react-router-dom";
-import { Colors, Svgs } from "../theme";
-
+import { Colors } from "../theme/colors";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { createNewUser } from "../backend/createNewUser";
 const SignUpPage = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const data = await createNewUser(userName, password);
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/");
+      }
+    } catch {
+      setError("User Exists Please Log In");
+    }
+  };
+
   return (
     <Box
       sx={{
-        width: "100vw",
-        height: "68vh",
-        display: "flex",
+        mt: 10,
         justifyContent: "center",
+        height: "60vh",
+        display: "flex",
         alignItems: "center",
-        backgroundColor: Colors.background.light,
-        marginTop: "1rem",
+        marginLeft: "1.1rem",
+        marginRight: "1.5rem",
       }}
     >
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: "500px",
-          padding: "2rem",
-          backgroundColor: Colors.background.light,
-          borderRadius: "10px",
-          textAlign: "center",
-          marginTop: "3rem",
-        }}
-      >
-        <Typography
-          variant="h5"
-          fontWeight="bold"
-          textAlign={"left"}
-          sx={{ marginBottom: "1rem" }}
-        >
-          Sign Up or Log In
-        </Typography>
-
-        <Button
-          PrefixComponent={<FacebookOutlinedIcon />}
-          sx={{
-            color: Colors.text.inverse,
-            backgroundColor: Colors.icon.facebook,
-            width: "100%",
-            height: "3rem",
-            gap: "0.5rem",
-            fontWeight: "bold",
-            fontSize: "1rem",
-          }}
-        >
-          Continue With Facebook
-        </Button>
-
-        <Button
-          PrefixComponent={<Svgs.GoogleLogo width={"1.5rem"} />}
-          sx={{
-            color: Colors.text.default,
-            border: "1px solid grey",
-            marginTop: "0.5rem",
-            width: "100%",
-            height: "3rem",
-            mb: "0.5rem",
-            gap: "0.5rem",
-            fontWeight: "bold",
-            fontSize: "1rem",
-          }}
-        >
-          Continue With Google
-        </Button>
-        <Button
-          PrefixComponent={<AppleIcon />}
-          sx={{
-            color: Colors.text.inverse,
-            backgroundColor: "black",
-            marginTop: "0.5rem",
-            width: "100%",
-            height: "3rem",
-            gap: "0.5rem",
-            fontWeight: "bold",
-            fontSize: "1rem",
-          }}
-        >
-          Continue With Apple
-        </Button>
-
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            margin: "1.5rem 0",
-          }}
-        >
-          <Divider
-            sx={{ flexGrow: 1, backgroundColor: Colors.border.subtle }}
-          />
+      <Box sx={{ width: "100%", maxWidth: "400px" }}>
+        <form onSubmit={handleSubmit}>
           <Typography
             sx={{
-              margin: "0 1rem",
-              fontSize: "0.9rem",
+              fontWeight: "bolder",
+              mb: 4,
+              fontSize: "2rem",
               color: Colors.text.default,
             }}
           >
-            or
+            Sign Up
           </Typography>
-          <Divider
-            sx={{ flexGrow: 1, backgroundColor: Colors.border.subtle }}
-          />
-        </Box>
-
-        <Link to={"/SignPage/login"} style={{ textDecoration: "none" }}>
-          <Button
-            PrefixComponent={<EmailOutlinedIcon />}
-            sx={{
+          <label>
+            <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
+              Username
+            </Typography>
+            <input
+              type="text"
+              onChange={(e) => setUserName(e.target.value)}
+              required
+              onInvalid={(e) => {
+                (e.target as HTMLInputElement).setCustomValidity(
+                  "Please enter a valid username.",
+                );
+              }}
+              onInput={(e) => {
+                (e.target as HTMLInputElement).setCustomValidity("");
+              }}
+              style={{
+                padding: "0.5rem",
+                fontSize: "1.2rem",
+                width: "100%",
+                height: "40px",
+                marginBottom: "1rem",
+              }}
+            />
+          </label>
+          <label>
+            <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
+              Password
+            </Typography>
+            <input
+              type="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+              onInvalid={(e) => {
+                (e.target as HTMLInputElement).setCustomValidity(
+                  "Password can not be empty.",
+                );
+              }}
+              onInput={(e) => {
+                (e.target as HTMLInputElement).setCustomValidity("");
+              }}
+              style={{
+                width: "100%",
+                height: "40px",
+                padding: "0.5rem",
+                fontSize: "1.2rem",
+              }}
+            />
+          </label>
+          <Box
+            style={{
               width: "100%",
-              color: Colors.text.inverse,
-              backgroundColor: Colors.background.brand,
-              height: "3rem",
-              gap: "0.5rem",
-              fontWeight: "bold",
-              fontSize: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              marginTop: "1rem",
+              marginBottom: "1rem",
             }}
           >
-            Continue With Email
-          </Button>
-        </Link>
+            <Button
+              type="submit"
+              style={{
+                width: "100%",
+                marginTop: "3rem",
+                marginBottom: "1rem",
+                backgroundColor: Colors.background.default,
+                color: Colors.text.default,
+              }}
+            >
+              Create Account
+            </Button>
+            {error && (
+              <Typography color="error" sx={{ mt: 1, textAlign: "center" }}>
+                {error}
+              </Typography>
+            )}
 
-        <Typography
-          sx={{
-            fontSize: "0.75rem",
-            marginTop: "1rem",
-            width: "100%",
-            textAlign: "left",
-          }}
-        >
-          By continuing you agree to our{" "}
-          <Link
-            to={"https://deliveroo.co.uk/legal"}
-            style={{ color: Colors.background.brand }}
-          >
-            T&Cs.
-          </Link>{" "}
-          Please also check out our
-          <br />
-          <Link
-            to={"https://deliveroo.co.uk/legal"}
-            style={{ color: Colors.background.brand }}
-          >
-            Privacy Policy.
-          </Link>{" "}
-          We use your data to offer you a personalized experience and to better
-          understand and improve our services.{" "}
-          <Link
-            to={"https://deliveroo.co.uk/privacy#use-of-your-information"}
-            style={{ color: Colors.background.brand }}
-          >
-            For more information see here.
-          </Link>
-        </Typography>
+            <Typography>
+              Existing User? Please{" "}
+              <Link
+                to={"/SignPage/login"}
+                style={{
+                  textDecoration: "none",
+                  color: Colors.background.brand,
+                  width: "100%",
+                }}
+              >
+                Log In
+              </Link>
+            </Typography>
+          </Box>
+        </form>
       </Box>
     </Box>
   );

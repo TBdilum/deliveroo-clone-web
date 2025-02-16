@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { authenticateUser } from "../backend/authenticateUser";
 import { Colors } from "../theme/colors";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
@@ -30,7 +30,7 @@ export default function Login() {
       sx={{
         mt: 10,
         justifyContent: "center",
-        height: "60vh",
+        height: "37vh",
         display: "flex",
         alignItems: "center",
         marginLeft: "1.1rem",
@@ -42,24 +42,28 @@ export default function Login() {
           <Typography
             sx={{
               fontWeight: "bolder",
-              mb: 4,
-              fontSize: "2rem",
+              mb: 3,
+              fontSize: "1.5rem",
               color: Colors.text.default,
             }}
           >
-            Log In
+            Sign up or log in
           </Typography>
           <label>
-            <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
-              Username
+            <Typography
+              sx={{ fontWeight: "normal", color: Colors.text.default }}
+            >
+              Email address
             </Typography>
             <input
               type="text"
               value={userName}
+              placeholder="e.g. name@example.com"
+              autoComplete="email"
               required
               onInvalid={(e) => {
                 (e.target as HTMLInputElement).setCustomValidity(
-                  "Please enter a valid username.",
+                  "Please enter a valid Email address.",
                 );
               }}
               onInput={(e) => {
@@ -67,15 +71,26 @@ export default function Login() {
               }}
               onChange={(e) => setUserName(e.target.value)}
               style={{
-                padding: "0.5rem",
-                fontSize: "1.2rem",
+                padding: "1.5rem",
+                fontSize: "1rem",
                 width: "100%",
                 height: "40px",
                 marginBottom: "1rem",
+                marginTop: "0.5rem",
+                border: `1px solid ${Colors.border.default}`,
+                borderRadius: "3px",
+                boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
               }}
             />
+            <style>
+              {`
+      input::placeholder {
+        color: ${Colors.text.light};
+      }
+    `}
+            </style>
           </label>
-          <label>
+          <label style={{ display: "none" }}>
             <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
               Password
             </Typography>
@@ -106,37 +121,32 @@ export default function Login() {
             </Typography>
           )}
 
-          <Box
-            sx={{
+          <Button
+            type="submit"
+            style={{
+              padding: "0.7rem",
+              fontWeight: "bold",
               width: "100%",
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-              marginTop: "4rem",
-              marginBottom: "1rem",
+              backgroundColor: Colors.background.brand,
+              color: Colors.text.inverse,
             }}
           >
-            <Button
-              type="submit"
-              style={{
-                width: "100%",
-                backgroundColor: Colors.background.brand,
-                color: Colors.text.inverse,
-              }}
-            >
-              Log In
-            </Button>
-          </Box>
-        </form>
-        <Typography>
-          New User?{" "}
-          <Link
-            to={"/SignPage/signup"}
-            style={{ textDecoration: "none", color: Colors.background.brand }}
+            Continue
+          </Button>
+          <Button
+            style={{
+              padding: "0.7rem",
+              marginTop: "0.5rem",
+              fontWeight: "normal",
+              width: "100%",
+              border: `1px solid ${Colors.border.default}`,
+              backgroundColor: Colors.background.defaultLight,
+              color: Colors.background.brand,
+            }}
           >
-            Create an Account
-          </Link>
-        </Typography>
+            Forgot password?
+          </Button>
+        </form>
       </Box>
     </Box>
   );

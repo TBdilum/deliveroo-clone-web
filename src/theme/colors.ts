@@ -14,6 +14,7 @@ export const Colors = {
     lighter: "#585c5c",
     inverse: "#ffffff",
     dark: "#444",
+    placeholder: "#76777FFF",
   },
   border: {
     default: "#e8ebeb",

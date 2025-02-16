@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Grid2 as Grid } from "@mui/material";
+import { Box, Container, Typography, Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
@@ -33,7 +33,7 @@ const Footer = () => {
           justifyContent: "space-between",
           alignItems: "flex-start",
           gap: "1rem",
-          width: "80%",
+          width: { xs: "100%", sm: "100%", md: "100%", lg: "80%" },
           color: Colors.text.inverse,
         }}
       >
@@ -51,17 +51,47 @@ const Footer = () => {
         >
           <Typography
             variant="h6"
-            sx={{ marginBottom: "1rem", fontSize: "1rem" }}
+            sx={{ marginBottom: "1rem", fontSize: "1rem", fontWeight: "bold" }}
           >
             Discover
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.8rem" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.8rem",
+              marginBottom: "1rem",
+              "&:hover": {
+                color: Colors.background.brand,
+                cursor: "pointer",
+              },
+            }}
+          >
             Deliveroo
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.8rem" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.8rem",
+              marginBottom: "1rem",
+              "&:hover": {
+                color: Colors.background.brand,
+                cursor: "pointer",
+              },
+            }}
+          >
             Investors
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.8rem" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.8rem",
+              marginBottom: "1rem",
+              "&:hover": {
+                color: Colors.background.brand,
+                cursor: "pointer",
+              },
+            }}
+          >
             About Us
           </Typography>
         </Box>
@@ -80,14 +110,34 @@ const Footer = () => {
         >
           <Typography
             variant="h6"
-            sx={{ marginBottom: "1rem", fontSize: "1rem" }}
+            sx={{ marginBottom: "1rem", fontSize: "1rem", fontWeight: "bold" }}
           >
             Legal
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.8rem" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.8rem",
+              marginBottom: "1rem",
+              "&:hover": {
+                color: Colors.background.brand,
+                cursor: "pointer",
+              },
+            }}
+          >
             Terms & Conditions
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.8rem" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.8rem",
+              marginBottom: "1rem",
+              "&:hover": {
+                color: Colors.background.brand,
+                cursor: "pointer",
+              },
+            }}
+          >
             Privacy
           </Typography>
         </Box>
@@ -106,14 +156,34 @@ const Footer = () => {
         >
           <Typography
             variant="h6"
-            sx={{ marginBottom: "1rem", fontSize: "1rem" }}
+            sx={{ marginBottom: "1rem", fontSize: "1rem", fontWeight: "bold" }}
           >
             Help
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.8rem" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.8rem",
+              marginBottom: "1rem",
+              "&:hover": {
+                color: Colors.background.brand,
+                cursor: "pointer",
+              },
+            }}
+          >
             Contact
           </Typography>
-          <Typography variant="body2" sx={{ fontSize: "0.8rem" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "0.8rem",
+              marginBottom: "1rem",
+              "&:hover": {
+                color: Colors.background.brand,
+                cursor: "pointer",
+              },
+            }}
+          >
             FAQs
           </Typography>
         </Box>
@@ -132,16 +202,16 @@ const Footer = () => {
         >
           <Typography
             variant="h6"
-            sx={{ marginBottom: "1rem", fontSize: "1rem" }}
+            sx={{ marginBottom: "1rem", fontSize: "1rem", fontWeight: "bold" }}
           >
             Take Deliveroo with you
           </Typography>
           <Grid container spacing={2}>
-            <Grid size={{ sm: 12, xs: 12 }}>
+            <Grid item sm={12} xs={12}>
               <AppStoreButton theme={"dark"} width={200} height={50} url={""} />
             </Grid>
 
-            <Grid size={{ sm: 12, xs: 12 }}>
+            <Grid item sm={12} xs={12}>
               <GooglePlayButton
                 theme={"dark"}
                 width={200}
