@@ -5,6 +5,7 @@ import App from "./App.tsx";
 //import { store } from "./store/store.tsx";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { HelmetProvider } from "react-helmet-async";
+import { SnackbarProvider } from "notistack";
 
 const theme = createTheme({
   typography: {
@@ -19,7 +20,13 @@ createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
     <ThemeProvider theme={theme}>
       <StrictMode>
-        <App />
+        <SnackbarProvider
+          maxSnack={3}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          style={{ marginTop: "3rem" }}
+        >
+          <App />
+        </SnackbarProvider>
       </StrictMode>
     </ThemeProvider>
   </HelmetProvider>,

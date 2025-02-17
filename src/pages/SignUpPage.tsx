@@ -7,7 +7,9 @@ import { useState } from "react";
 import { createNewUser } from "../backend/createNewUser";
 import PasswordInput from "../PasswordInput";
 import { passwordSchema } from "../features/menu/validations/password.validation";
+import { useSnackbar } from "notistack";
 const SignUpPage = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,6 +32,9 @@ const SignUpPage = () => {
 
       if (data.token) {
         localStorage.setItem("token", data.token);
+        enqueueSnackbar("Account created successfully!", {
+          variant: "success",
+        });
         navigate("/");
       }
     } catch (err: any) {
