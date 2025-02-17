@@ -1,29 +1,69 @@
-import { Typography } from "@mui/material";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "../components/Button";
 import { Colors } from "../theme/colors";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { createNewUser } from "../backend/createNewUser";
+import PasswordInput from "../PasswordInput";
+import { passwordSchema } from "../features/menu/validations/password.validation";
 const SignUpPage = () => {
-  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [confirmError, setConfirmError] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const emailFromLogin = searchParams.get("email") ?? "";
+
+  const [email, setEmail] = useState(emailFromLogin);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
     try {
-      const data = await createNewUser(userName, password);
+      const data = await createNewUser(email, password);
 
       if (data.token) {
         localStorage.setItem("token", data.token);
         navigate("/");
       }
-    } catch {
-      setError("User Exists Please Log In");
+    } catch (err: any) {
+      setError(err.data.message);
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordValue = e.target.value;
+    setPassword(passwordValue);
+    try {
+      passwordSchema.parse(passwordValue);
+      setError("");
+    } catch (err: any) {
+      setError(err.errors[0].message);
+    }
+  };
+
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const confirmPasswordValue = e.target.value;
+    setConfirmPassword(confirmPasswordValue);
+    try {
+      if (confirmPasswordValue !== password) {
+        setConfirmError("Passwords do not match");
+        setIsButtonDisabled(true);
+      } else {
+        setIsButtonDisabled(false);
+        setConfirmError("");
+      }
+    } catch (err: any) {
+      setConfirmError(err.errors[0].message);
+      setIsButtonDisabled(true);
     }
   };
 
@@ -32,7 +72,7 @@ const SignUpPage = () => {
       sx={{
         mt: 10,
         justifyContent: "center",
-        height: "60vh",
+        height: "50vh",
         display: "flex",
         alignItems: "center",
         marginLeft: "1.1rem",
@@ -44,62 +84,71 @@ const SignUpPage = () => {
           <Typography
             sx={{
               fontWeight: "bolder",
-              mb: 4,
-              fontSize: "2rem",
+              mb: 3,
+              fontSize: "1.5rem",
               color: Colors.text.default,
             }}
           >
             Sign Up
           </Typography>
           <label>
-            <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
-              Username
+            <Typography
+              sx={{ fontWeight: "normal", color: Colors.text.default }}
+            >
+              Email
             </Typography>
             <input
-              type="text"
-              onChange={(e) => setUserName(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="e.g name@example.com"
               required
-              onInvalid={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity(
-                  "Please enter a valid username.",
-                );
-              }}
-              onInput={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity("");
-              }}
               style={{
-                padding: "0.5rem",
-                fontSize: "1.2rem",
+                padding: "1.5rem",
+                fontSize: "1rem",
                 width: "100%",
                 height: "40px",
                 marginBottom: "1rem",
+                marginTop: "0.5rem",
+                border: `1px solid ${Colors.border.default}`,
+                borderRadius: "3px",
+                boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
               }}
             />
           </label>
           <label>
-            <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
+            <Typography
+              sx={{ fontWeight: "normal", color: Colors.text.default }}
+            >
               Password
             </Typography>
-            <input
-              type="password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-              onInvalid={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity(
-                  "Password can not be empty.",
-                );
-              }}
-              onInput={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity("");
-              }}
-              style={{
-                width: "100%",
-                height: "40px",
-                padding: "0.5rem",
-                fontSize: "1.2rem",
-              }}
+            <PasswordInput
+              onChange={handlePasswordChange}
+              value={password}
+              error={error}
             />
+            {error && (
+              <Typography color="error" sx={{ textAlign: "left" }}>
+                {error}
+              </Typography>
+            )}
+            <Typography
+              sx={{ fontWeight: "normal", color: Colors.text.default, mt: 2 }}
+            >
+              Confirm Password
+            </Typography>
+            <PasswordInput
+              onChange={handleConfirmPasswordChange}
+              value={confirmPassword}
+              error={confirmError}
+            />
+            {confirmError && (
+              <Typography color="error" sx={{ textAlign: "left" }}>
+                {confirmError}
+              </Typography>
+            )}
           </label>
+
           <Box
             style={{
               width: "100%",
@@ -111,21 +160,23 @@ const SignUpPage = () => {
           >
             <Button
               type="submit"
-              style={{
+              sx={{
+                cursor: "pointer",
+                disabled: isButtonDisabled ? "none" : "flex",
+                padding: "0.7rem",
+                fontWeight: "bold",
+                mb: 1,
                 width: "100%",
-                marginTop: "3rem",
-                marginBottom: "1rem",
-                backgroundColor: Colors.background.default,
-                color: Colors.text.default,
+                backgroundColor: isButtonDisabled
+                  ? Colors.background.subtleLight
+                  : Colors.background.brand,
+                color: isButtonDisabled
+                  ? Colors.text.placeholder
+                  : Colors.text.inverse,
               }}
             >
               Create Account
             </Button>
-            {error && (
-              <Typography color="error" sx={{ mt: 1, textAlign: "center" }}>
-                {error}
-              </Typography>
-            )}
           </Box>
         </form>
       </Box>

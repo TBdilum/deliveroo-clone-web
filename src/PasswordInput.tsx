@@ -6,9 +6,14 @@ import { Colors } from "./theme/colors";
 interface PasswordInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error: string;
 }
 
-export default function PasswordInput({ value, onChange }: PasswordInputProps) {
+export default function PasswordInput({
+  value,
+  onChange,
+  error,
+}: PasswordInputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -30,11 +35,11 @@ export default function PasswordInput({ value, onChange }: PasswordInputProps) {
           fontSize: "1rem",
           width: "100%",
           height: "40px",
-          marginBottom: "1rem",
           marginTop: "0.5rem",
-          border: `1px solid ${Colors.border.default}`,
+          border: `1px solid ${error ? "red" : Colors.border.default}`,
           borderRadius: "3px",
-          boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
+          boxShadow: error ? "0 0 0 2px rgba(255, 0, 0, 0.5)" : "none",
+          outline: "none",
         }}
       />
       <IconButton
@@ -42,7 +47,7 @@ export default function PasswordInput({ value, onChange }: PasswordInputProps) {
         sx={{
           position: "absolute",
           right: 10,
-          top: "20%",
+          top: "27%",
         }}
       >
         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}

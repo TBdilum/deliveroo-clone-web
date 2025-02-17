@@ -11,7 +11,7 @@ import PasswordInput from "../PasswordInput";
 
 export default function Login() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState(""); // Moved password state here
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [showPasswordField, setShowPasswordField] = useState(false);
@@ -69,6 +69,8 @@ export default function Login() {
     }
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     <Box
       sx={{
@@ -91,7 +93,7 @@ export default function Login() {
               color: Colors.text.default,
             }}
           >
-            Sign up or log in
+            {token ? "Log In" : "Sign Up Or Log In"}
           </Typography>
           <label>
             <Typography
@@ -122,7 +124,18 @@ export default function Login() {
           </label>
 
           {showPasswordField && (
-            <PasswordInput value={password} onChange={handlePasswordChange} />
+            <Box>
+              <Typography
+                sx={{ fontWeight: "normal", color: Colors.text.default }}
+              >
+                Password
+              </Typography>
+              <PasswordInput
+                value={password}
+                onChange={handlePasswordChange}
+                error={error}
+              />
+            </Box>
           )}
 
           {error && (
@@ -133,7 +146,9 @@ export default function Login() {
           {showCreateAccount && (
             <Button
               type="button"
-              onClick={() => navigate("/Account/SignUp")}
+              onClick={() =>
+                navigate(`/Account/SignUp?email=${encodeURIComponent(email)}`)
+              }
               sx={{
                 cursor: "pointer",
                 padding: "0.7rem",
@@ -156,6 +171,7 @@ export default function Login() {
               display: showCreateAccount ? "none" : "flex",
               padding: "0.7rem",
               fontWeight: "bold",
+              mt: 2,
               mb: 1,
               width: "100%",
               backgroundColor: isButtonDisabled

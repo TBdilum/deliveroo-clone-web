@@ -2,6 +2,7 @@ export const Colors = {
   background: {
     default: "#f1f0f0",
     defaultLight: "rgba(255, 255, 255, 0.6)",
+    subtleLight: "#E2E5E5",
     brand: "#00ccbc",
     brandHover: "#02bdae",
     light: "#ffffff",

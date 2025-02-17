@@ -1,11 +1,11 @@
-export const createNewUser = async (name: string, password: string) => {
+export const createNewUser = async (email: string, password: string) => {
   try {
     const response = await fetch("/api/users/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, password }),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await response.json();
