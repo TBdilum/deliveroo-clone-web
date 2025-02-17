@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Colors } from "../theme/colors";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
@@ -11,6 +11,9 @@ import { useSnackbar } from "notistack";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import Button from "../components/Button";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 const SignUpPage = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [checked, setChecked] = useState(false);
@@ -101,8 +104,29 @@ const SignUpPage = () => {
         alignItems: "center",
         marginLeft: "1.1rem",
         marginRight: "1.5rem",
+        flexDirection: "column",
       }}
     >
+      <Box>
+        <Button
+          onClick={() => navigate("/Account/LogIn")}
+          PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
+          sx={{
+            border: "none",
+            color: Colors.background.brand,
+            fontSize: "1rem",
+            fontWeight: "normal",
+            borderRadius: "150px",
+            mb: 3,
+            left: "-200px",
+            "&:hover": {
+              border: "none",
+            },
+          }}
+        >
+          Back
+        </Button>
+      </Box>
       <Box sx={{ width: "100%", maxWidth: "400px" }}>
         <form onSubmit={handleSubmit}>
           <Typography
@@ -128,13 +152,14 @@ const SignUpPage = () => {
               placeholder="e.g name@example.com"
               required
               style={{
+                outlineColor: Colors.text.default,
+                border: `1px solid ${Colors.border.default}`,
                 padding: "1.5rem",
                 fontSize: "1rem",
                 width: "100%",
                 height: "40px",
                 marginBottom: "1rem",
                 marginTop: "0.5rem",
-                border: `1px solid ${Colors.border.default}`,
                 borderRadius: "3px",
                 boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
               }}

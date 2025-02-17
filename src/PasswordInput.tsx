@@ -36,10 +36,12 @@ export default function PasswordInput({
           width: "100%",
           height: "40px",
           marginTop: "0.5rem",
+          outlineColor: Colors.text.default,
           border: `1px solid ${error ? "red" : Colors.border.default}`,
           borderRadius: "3px",
-          boxShadow: error ? "0 0 0 2px rgba(255, 0, 0, 0.5)" : "none",
-          outline: "none",
+          boxShadow: error
+            ? "0 0 0 2px rgba(255, 0, 0, 0.5)"
+            : `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
         }}
       />
       <IconButton

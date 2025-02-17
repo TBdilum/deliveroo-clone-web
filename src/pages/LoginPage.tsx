@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { authenticateUser } from "../backend/authenticateUser";
 import { Colors } from "../theme/colors";
 import { emailSchema } from "../features/menu/validations/email.validation";
@@ -8,6 +8,8 @@ import { passwordSchema } from "../features/menu/validations/password.validation
 import { logInUser } from "../backend/logInUser";
 import { useNavigate } from "react-router-dom";
 import PasswordInput from "../PasswordInput";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Button from "../components/Button";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -82,8 +84,29 @@ export default function Login() {
         alignItems: "center",
         marginLeft: "1.1rem",
         marginRight: "1.5rem",
+        flexDirection: "column",
       }}
     >
+      <Box>
+        <Button
+          onClick={() => navigate("/Account")}
+          PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
+          sx={{
+            border: "none",
+            color: Colors.background.brand,
+            fontSize: "1rem",
+            fontWeight: "normal",
+            borderRadius: "150px",
+            mb: 3,
+            left: "-200px",
+            "&:hover": {
+              border: "none",
+            },
+          }}
+        >
+          Back
+        </Button>
+      </Box>
       <Box sx={{ width: "100%", minWidth: "200px", maxWidth: "400px" }}>
         <form onSubmit={handleSubmit}>
           <Typography
@@ -116,6 +139,7 @@ export default function Login() {
                 width: "100%",
                 height: "40px",
                 marginTop: "0.5rem",
+                outlineColor: Colors.text.default,
                 border: `1px solid ${Colors.border.default}`,
                 borderRadius: "3px",
                 boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
