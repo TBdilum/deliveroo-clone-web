@@ -110,7 +110,7 @@ const AccountPage = () => {
           />
         </Box>
 
-        <Link to={"/SignPage/login"} style={{ textDecoration: "none" }}>
+        <Link to={"/Account/login"} style={{ textDecoration: "none" }}>
           <Button
             PrefixComponent={<EmailOutlinedIcon />}
             sx={{

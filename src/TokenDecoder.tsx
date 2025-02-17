@@ -1,24 +1,24 @@
 import { jwtDecode } from "jwt-decode";
 
 interface DecodedToken {
-  name: string;
+  firstName: string;
 }
 
 const TokenDecoder = () => {
   const token = localStorage.getItem("token");
 
-  let UserName = "";
+  let firstName = "";
 
   try {
     if (token) {
       const decodedToken: DecodedToken = jwtDecode(token);
-      UserName = decodedToken.name;
+      firstName = decodedToken.firstName;
     }
   } catch (error) {
     console.error("Error decoding token:", error);
     localStorage.removeItem("token");
   }
-  return UserName;
+  return firstName;
 };
 
 export default TokenDecoder;

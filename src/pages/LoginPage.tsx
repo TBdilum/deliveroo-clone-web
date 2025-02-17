@@ -1,27 +1,71 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { authenticateUser } from "../backend/authenticateUser";
 import { Colors } from "../theme/colors";
+import { emailSchema } from "../features/menu/validations/email.validation";
+import { passwordSchema } from "../features/menu/validations/password.validation";
+import { logInUser } from "../backend/logInUser";
 import { useNavigate } from "react-router-dom";
+import PasswordInput from "../PasswordInput";
 
 export default function Login() {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState(""); // Moved password state here
   const [error, setError] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [showPasswordField, setShowPasswordField] = useState(false);
+  const [showCreateAccount, setShowCreateAccount] = useState(false);
   const navigate = useNavigate();
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const email = e.target.value;
+    setEmail(email);
+    try {
+      emailSchema.parse(email);
+      setError("");
+      setIsButtonDisabled(false);
+    } catch (err: any) {
+      setError(err.errors[0].message);
+      setIsButtonDisabled(true);
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const passwordValue = e.target.value;
+    setPassword(passwordValue);
+    try {
+      passwordSchema.parse(passwordValue);
+      setError("");
+      setIsButtonDisabled(false);
+    } catch (err: any) {
+      setError(err.errors[0].message);
+      setIsButtonDisabled(true);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     try {
-      const response = await authenticateUser(userName, password);
-      if (response?.token) {
-        localStorage.setItem("token", response.token);
-        navigate("/");
+      if (email && password) {
+        const response = await logInUser(email, password);
+        if (response?.token) {
+          localStorage.setItem("token", response.token);
+          navigate("/");
+        }
+      } else {
+        const response = await authenticateUser(email);
+        if (response?.token) {
+          localStorage.setItem("token", response.token);
+          setShowPasswordField(true);
+          setIsButtonDisabled(true);
+        }
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || "An error occurred");
+      setShowCreateAccount(true);
+      setIsButtonDisabled(true);
     }
   };
 
@@ -30,7 +74,7 @@ export default function Login() {
       sx={{
         mt: 10,
         justifyContent: "center",
-        height: "37vh",
+        height: "50vh",
         display: "flex",
         alignItems: "center",
         marginLeft: "1.1rem",
@@ -56,20 +100,13 @@ export default function Login() {
               Email address
             </Typography>
             <input
-              type="text"
-              value={userName}
+              type="email"
+              value={email}
               placeholder="e.g. name@example.com"
               autoComplete="email"
               required
-              onInvalid={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity(
-                  "Please enter a valid Email address.",
-                );
-              }}
-              onInput={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity("");
-              }}
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={handleEmailChange}
+              readOnly={showPasswordField}
               style={{
                 padding: "1.5rem",
                 fontSize: "1rem",
@@ -82,61 +119,57 @@ export default function Login() {
                 boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
               }}
             />
-            <style>
-              {`
-      input::placeholder {
-        color: ${Colors.text.light};
-      }
-    `}
-            </style>
           </label>
-          <label style={{ display: "none" }}>
-            <Typography sx={{ fontWeight: "bold", color: Colors.text.default }}>
-              Password
-            </Typography>
-            <input
-              type="password"
-              value={password}
-              required
-              onInvalid={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity(
-                  "Password can not be empty.",
-                );
-              }}
-              onInput={(e) => {
-                (e.target as HTMLInputElement).setCustomValidity("");
-              }}
-              onChange={(e) => setPassword(e.target.value)}
-              style={{
-                width: "100%",
-                height: "40px",
-                padding: "0.5rem",
-                fontSize: "1.2rem",
-              }}
-            />
-          </label>
+
+          {showPasswordField && (
+            <PasswordInput value={password} onChange={handlePasswordChange} />
+          )}
+
           {error && (
-            <Typography color="error" sx={{ mt: 1, textAlign: "center" }}>
+            <Typography color="error" sx={{ mb: 1.5, textAlign: "center" }}>
               {error}
             </Typography>
+          )}
+          {showCreateAccount && (
+            <Button
+              type="button"
+              onClick={() => navigate("/Account/SignUp")}
+              sx={{
+                cursor: "pointer",
+                padding: "0.7rem",
+                fontWeight: "bold",
+                mb: 1,
+                width: "100%",
+                backgroundColor: Colors.background.brand,
+                color: Colors.text.inverse,
+              }}
+            >
+              Create Account
+            </Button>
           )}
 
           <Button
             type="submit"
-            style={{
+            disabled={isButtonDisabled}
+            sx={{
+              cursor: isButtonDisabled ? "not-allowed" : "pointer",
+              display: showCreateAccount ? "none" : "flex",
               padding: "0.7rem",
               fontWeight: "bold",
+              mb: 1,
               width: "100%",
-              backgroundColor: Colors.background.brand,
+              backgroundColor: isButtonDisabled
+                ? Colors.background.default
+                : Colors.background.brand,
               color: Colors.text.inverse,
             }}
           >
-            Continue
+            {showPasswordField ? "Log in" : "Continue"}
           </Button>
+
           <Button
             style={{
               padding: "0.7rem",
-              marginTop: "0.5rem",
               fontWeight: "normal",
               width: "100%",
               border: `1px solid ${Colors.border.default}`,
@@ -144,7 +177,7 @@ export default function Login() {
               color: Colors.background.brand,
             }}
           >
-            Forgot password?
+            {showPasswordField ? "Forgot Password?" : "Forgot Email?"}
           </Button>
         </form>
       </Box>

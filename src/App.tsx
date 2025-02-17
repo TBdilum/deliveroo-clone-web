@@ -36,7 +36,7 @@ const App = () => {
             </WithPageTitle>
           }
         ></Route>
-        <Route path="/SignPage" element={<SignPageLayout />}>
+        <Route path="/Account" element={<SignPageLayout />}>
           <Route
             index
             element={

@@ -110,7 +110,7 @@ const Header = () => {
             <Button
               PrefixIcon={HomeOutlinedIcon}
               title="Sign up or login"
-              linkTo="/SignPage"
+              linkTo="/Account"
               sx={{
                 backgroundColor: Colors.background.light,
                 display: notShowing ? "none" : "flex",

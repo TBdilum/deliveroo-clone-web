@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "../components/Button";
 import { Colors } from "../theme/colors";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createNewUser } from "../backend/createNewUser";
 const SignUpPage = () => {
@@ -126,20 +126,6 @@ const SignUpPage = () => {
                 {error}
               </Typography>
             )}
-
-            <Typography>
-              Existing User? Please{" "}
-              <Link
-                to={"/SignPage/login"}
-                style={{
-                  textDecoration: "none",
-                  color: Colors.background.brand,
-                  width: "100%",
-                }}
-              >
-                Log In
-              </Link>
-            </Typography>
           </Box>
         </form>
       </Box>
