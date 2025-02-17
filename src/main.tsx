@@ -1,8 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-//import { Provider } from "react-redux";
-//import { store } from "./store/store.tsx";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { HelmetProvider } from "react-helmet-async";
 import { SnackbarProvider } from "notistack";

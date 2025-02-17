@@ -6,6 +6,7 @@ import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { IconButton, Typography } from "@mui/material";
 import Button from "./Button";
 import TokenDecoder from "../TokenDecoder";
+import ShowBarWithProgress from "../ShowBarWithProgress";
 
 type AnchorTemporaryDrawerProps = {
   open: boolean;
@@ -17,6 +18,7 @@ export default function AnchorTemporaryDrawer({
   toggleDrawer,
 }: Readonly<AnchorTemporaryDrawerProps>) {
   const token = localStorage.getItem("token");
+  const firstName = TokenDecoder();
 
   function LogOut() {
     localStorage.clear();
@@ -58,7 +60,7 @@ export default function AnchorTemporaryDrawer({
 
       {!token && (
         <Box>
-          <Link to={"/SignPage"} style={{ textDecoration: "none" }}>
+          <Link to={"/Account"} style={{ textDecoration: "none" }}>
             <Button
               onClick={() => toggleDrawer(false)}
               style={{
@@ -77,7 +79,8 @@ export default function AnchorTemporaryDrawer({
         </Box>
       )}
 
-      {token && (
+      {token && firstName === "" && <ShowBarWithProgress />}
+      {token && firstName !== "" && (
         <Box
           sx={{
             display: "flex",
@@ -96,7 +99,6 @@ export default function AnchorTemporaryDrawer({
           <Button
             sx={{
               alignItems: "center",
-
               width: "90%",
               marginTop: "4rem",
               backgroundColor: Colors.background.brand,
