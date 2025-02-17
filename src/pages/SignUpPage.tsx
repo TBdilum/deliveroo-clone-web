@@ -2,14 +2,18 @@
 import { Button, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Colors } from "../theme/colors";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { createNewUser } from "../backend/createNewUser";
 import PasswordInput from "../PasswordInput";
 import { passwordSchema } from "../features/menu/validations/password.validation";
 import { useSnackbar } from "notistack";
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 const SignUpPage = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const [checked, setChecked] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -72,12 +76,27 @@ const SignUpPage = () => {
     }
   };
 
+  function label() {
+    return (
+      <Typography sx={{ fontWeight: "normal", color: Colors.text.default }}>
+        I Agree to{" "}
+        <Link
+          to={"https://deliveroo.co.uk/legal"}
+          style={{ color: Colors.background.brand, textDecoration: "none" }}
+        >
+          Terms and conditions
+        </Link>
+      </Typography>
+    );
+  }
+
   return (
     <Box
       sx={{
-        mt: 10,
+        mt: 20,
+        mb: 10,
         justifyContent: "center",
-        height: "50vh",
+        height: "auto",
         display: "flex",
         alignItems: "center",
         marginLeft: "1.1rem",
@@ -153,13 +172,25 @@ const SignUpPage = () => {
               </Typography>
             )}
           </label>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  style={{ color: Colors.background.brand }}
+                  checked={checked}
+                  onChange={(e) => setChecked(e.target.checked)}
+                />
+              }
+              label={label()}
+            />
+          </FormGroup>
 
           <Box
             style={{
               width: "100%",
               display: "flex",
               flexDirection: "column",
-              marginTop: "1rem",
+              marginTop: "2rem",
               marginBottom: "1rem",
             }}
           >
@@ -172,12 +203,14 @@ const SignUpPage = () => {
                 fontWeight: "bold",
                 mb: 1,
                 width: "100%",
-                backgroundColor: isButtonDisabled
-                  ? Colors.background.subtleLight
-                  : Colors.background.brand,
-                color: isButtonDisabled
-                  ? Colors.text.placeholder
-                  : Colors.text.inverse,
+                backgroundColor:
+                  !checked || isButtonDisabled
+                    ? Colors.background.subtleLight
+                    : Colors.background.brand,
+                color:
+                  !checked || isButtonDisabled
+                    ? Colors.text.placeholder
+                    : Colors.text.inverse,
               }}
             >
               Create Account

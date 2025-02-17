@@ -74,9 +74,10 @@ export default function Login() {
   return (
     <Box
       sx={{
-        mt: 10,
+        mt: 20,
+        mb: 10,
         justifyContent: "center",
-        height: "50vh",
+        height: "auto",
         display: "flex",
         alignItems: "center",
         marginLeft: "1.1rem",
@@ -114,7 +115,6 @@ export default function Login() {
                 fontSize: "1rem",
                 width: "100%",
                 height: "40px",
-                marginBottom: "1rem",
                 marginTop: "0.5rem",
                 border: `1px solid ${Colors.border.default}`,
                 borderRadius: "3px",
