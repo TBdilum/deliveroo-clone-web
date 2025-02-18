@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Grid } from "@mui/material";
+import { Box, Container, Typography, Grid2 as Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
@@ -197,7 +197,12 @@ const Footer = () => {
             flex: 1,
             minWidth: "240px",
             minHeight: "450px",
-            maxWidth: "500px",
+            maxWidth: "auto",
+            textAlign: {
+              xs: "center",
+              sm: "center",
+              md: "left",
+            },
           }}
         >
           <Typography
@@ -207,11 +212,11 @@ const Footer = () => {
             Take Deliveroo with you
           </Typography>
           <Grid container spacing={2}>
-            <Grid item sm={12} xs={12}>
+            <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
               <AppStoreButton theme={"dark"} width={200} height={50} url={""} />
             </Grid>
 
-            <Grid item sm={12} xs={12}>
+            <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
               <GooglePlayButton
                 theme={"dark"}
                 width={200}

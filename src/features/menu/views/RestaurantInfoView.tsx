@@ -23,6 +23,7 @@ interface Restaurant {
 }
 
 const RestaurantInfoView = () => {
+  const [imageError, setImageError] = useState(false);
   const { orgId } = useParams();
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [error, setError] = useState("");
@@ -104,11 +105,17 @@ const RestaurantInfoView = () => {
                   overflow: "hidden",
                 },
                 boxShadow: `0px 1px 1px 0.5px  ${Colors.border.subtle}`,
+                backgroundImage: imageError
+                  ? "url(/src/assets/svgs/placeholder-menu.svg)"
+                  : "none",
+                backgroundPosition: "center",
+                backgroundSize: "contain",
               }}
             >
               <img
-                alt="MainDish-image"
+                alt=""
                 src={restaurant.image}
+                onError={() => setImageError(true)}
                 style={{
                   width: "100%",
                   height: "100%",

@@ -1,6 +1,7 @@
 import { Box, Container, Grid2 as Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Colors } from "../../../theme";
+import { useState } from "react";
 
 interface Restaurant {
   name: string;
@@ -18,89 +19,103 @@ interface RestaurantViewProps {
 }
 
 const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
+  const [imageError, setImageError] = useState(false);
+
   return (
-    <Grid size={{ xs: 12, sm: 12, md: 12, lg: 6 }} key={restaurant.name}>
+    <Grid
+      size={{ xs: 12, sm: 6, md: 6, lg: 6 }}
+      key={restaurant.name}
+      sx={{ mt: 4, mb: 4 }}
+    >
       <Link
         to={`/restaurants/${restaurant.name}/menu`}
         style={{
           textDecoration: "none",
           color: "inherit",
+          display: "block",
           width: "100%",
-          display: "flex",
         }}
       >
         <Container
           disableGutters
           sx={{
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-            minWidth: { sm: "400px", md: "400px" },
+            flexDirection: { xs: "column", sm: "row" },
             borderRadius: 2,
+            overflow: "hidden",
             boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
-            marginBottom: "2rem",
-            marginTop: "2rem",
+            backgroundColor: "white",
             transition: "transform 0.2s ease-in-out",
             "&:hover": {
               cursor: "pointer",
-              transform: "scale(1.004)",
-              boxShadow: `0px 2px 8px ${Colors.boxShadow.default}`,
+              transform: "scale(1.02)",
+              boxShadow: `0px 4px 12px ${Colors.boxShadow.default}`,
             },
           }}
         >
-          <Grid container spacing={0} alignItems="center">
-            <Grid size={{ xs: 12, sm: 5 }}>
-              <Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  minHeight: "200px",
-                  maxHeight: "300px",
-                  borderRadius: "8px 0 0 8px",
-                }}
-              >
-                <img
-                  alt={restaurant.name}
-                  src={restaurant.image}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    maxWidth: "300px",
+          {/* Image Section */}
+          <Box
+            sx={{
+              width: { xs: "100%", sm: "40%" },
+              height: "200px",
+              position: "relative",
+              backgroundImage: imageError
+                ? "url(/src/assets/svgs/placeholder-menu.svg)"
+                : "none",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              flexShrink: 0,
+            }}
+          >
+            <img
+              src={restaurant.image}
+              alt={restaurant.name}
+              onError={() => setImageError(true)}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: imageError ? "none" : "block",
+              }}
+            />
+          </Box>
 
-                    objectFit: "contain",
-                  }}
-                />
-              </Box>
-            </Grid>
+          {/* Text Section */}
+          <Box
+            sx={{
+              flexGrow: 1,
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+              textAlign: "left",
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {restaurant.name}
+            </Typography>
 
-            <Grid size={{ xs: 12, sm: 7 }}>
-              <Box
-                sx={{
-                  textAlign: "left",
-                  display: "flex",
-                  flexDirection: "column",
-                  paddingLeft: { xs: "0rem", sm: "2rem" },
-                  textWrap: { xs: "wrap", sm: "nowrap" },
-                  gap: 1,
-                }}
-              >
-                <Typography
-                  variant="h5"
-                  sx={{ fontWeight: "bold", textWrap: "none" }}
-                  component="div"
-                >
-                  {restaurant.name}
-                </Typography>
-
-                <Typography sx={{ color: "gray" }} component="div">
-                  {restaurant.tags.join(" • ")}
-                </Typography>
-              </Box>
-            </Grid>
-          </Grid>
+            <Typography
+              sx={{
+                color: "gray",
+                fontSize: "0.875rem",
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 2,
+                overflow: "hidden",
+              }}
+            >
+              {restaurant.tags.join(" • ")}
+            </Typography>
+          </Box>
         </Container>
       </Link>
     </Grid>
