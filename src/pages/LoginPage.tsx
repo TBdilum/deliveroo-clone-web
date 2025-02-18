@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import PasswordInput from "../PasswordInput";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Button from "../components/Button";
+import hashPassword from "../PasswordHasherBcrypt";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -49,9 +50,10 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    const hashedPassword = hashPassword(password);
     try {
-      if (email && password) {
-        const response = await logInUser(email, password);
+      if (email && hashedPassword) {
+        const response = await logInUser(email, hashedPassword);
         if (response?.token) {
           localStorage.setItem("token", response.token);
           navigate("/");

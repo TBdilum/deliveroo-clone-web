@@ -13,6 +13,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "../components/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import hashPassword from "../PasswordHasherBcrypt";
 
 const SignUpPage = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -33,9 +34,10 @@ const SignUpPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    const hashedPassword = hashPassword(password);
 
     try {
-      const data = await createNewUser(email, password);
+      const data = await createNewUser(email, hashedPassword);
 
       if (data.token) {
         localStorage.setItem("token", data.token);
@@ -65,6 +67,7 @@ const SignUpPage = () => {
   ) => {
     const confirmPasswordValue = e.target.value;
     setConfirmPassword(confirmPasswordValue);
+
     try {
       if (confirmPasswordValue !== password) {
         setConfirmError("Passwords do not match");
