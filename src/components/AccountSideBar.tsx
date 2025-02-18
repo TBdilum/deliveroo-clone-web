@@ -28,7 +28,7 @@ export default function AnchorTemporaryDrawer({
   const list = () => (
     <Box
       width={{ xs: "18rem", sm: "20rem", md: "22rem" }}
-      zIndex={100000}
+      zIndex={1000}
       sx={{ display: "flex", flexDirection: "column" }}
     >
       <Box

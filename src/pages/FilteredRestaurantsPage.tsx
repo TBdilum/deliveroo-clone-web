@@ -71,20 +71,28 @@ const FilteredRestaurantsPage = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: "10rem",
-          height: "80vh",
-          width: "40vw",
+          marginTop: "6rem",
+          width: "100vw",
+          mt: 4,
         }}
       >
         <Typography
           variant="h6"
           color="gray"
-          sx={{ mb: 1, fontWeight: "bold", fontSize: "2.5rem" }}
+          sx={{
+            fontWeight: "bold",
+            fontSize: "1.5rem",
+            textWrap: "nowrap",
+          }}
           component="div"
         >
           No Restaurants Found
         </Typography>
-        <img src="/src/assets/svgs/NotFound.svg" alt="No Restaurants Found" />
+        <img
+          src="/src/assets/svgs/NotFound.svg"
+          alt="No Restaurants Found"
+          style={{ width: "100%", height: "auto", maxWidth: "300px" }}
+        />
       </Box>
     );
   } else {
@@ -96,20 +104,18 @@ const FilteredRestaurantsPage = () => {
   return (
     <Box
       sx={{
-        paddingTop: "70px",
-        paddingX: "3rem",
+        paddingTop: "4rem",
+        paddingX: "2rem 2rem",
         display: "flex",
         flexDirection: { sm: "column", xs: "column", lg: "row" },
         flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "100%",
+        height: "auto",
       }}
     >
-      <Grid container spacing={2}>
-        {content}
-      </Grid>
+      <Grid container>{content}</Grid>
     </Box>
   );
 };

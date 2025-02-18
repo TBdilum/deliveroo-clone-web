@@ -25,7 +25,7 @@ const RestaurantView = ({ restaurant }: RestaurantViewProps) => {
     <Grid
       size={{ xs: 12, sm: 6, md: 6, lg: 6 }}
       key={restaurant.name}
-      sx={{ mt: 4, mb: 4 }}
+      sx={{ p: 3 }}
     >
       <Link
         to={`/restaurants/${restaurant.name}/menu`}
