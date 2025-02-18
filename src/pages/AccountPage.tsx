@@ -66,6 +66,9 @@ const AccountPage = () => {
             gap: "0.5rem",
             fontWeight: "bold",
             fontSize: "1rem",
+            "&:hover": {
+              border: "1px solid grey",
+            },
           }}
         >
           Continue With Google
@@ -121,6 +124,10 @@ const AccountPage = () => {
               gap: "0.5rem",
               fontWeight: "bold",
               fontSize: "1rem",
+              "&:hover": {
+                backgroundColor: Colors.background.brandHover,
+                border: "none",
+              },
             }}
           >
             Continue With Email
