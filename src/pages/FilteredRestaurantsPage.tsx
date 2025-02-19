@@ -1,4 +1,4 @@
-import { getFilteredRestaurants } from "../backend/getFilteredRestaurants";
+import { getFilteredRestaurants } from "../services/getFilteredRestaurants";
 import { Box, Grid2 as Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";

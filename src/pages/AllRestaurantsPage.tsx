@@ -1,5 +1,5 @@
 import { Box, Grid2 as Grid } from "@mui/material";
-import { getAllRestaurants } from "../backend/getAllRestaurants";
+import { getAllRestaurants } from "../services/getAllRestaurants";
 import { useEffect, useState } from "react";
 
 import RestaurantView from "../features/menu/components/RestaurantView";

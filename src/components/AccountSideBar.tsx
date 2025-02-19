@@ -5,8 +5,9 @@ import { Colors, Svgs } from "../theme";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { IconButton, Typography } from "@mui/material";
 import Button from "./Button";
-import TokenDecoder from "../TokenDecoder";
-import ShowBarWithProgress from "../ShowBarWithProgress";
+
+import ShowBarWithProgress from "./ShowBarWithProgress";
+import { getNameFromToken } from "../utils/common";
 
 type AnchorTemporaryDrawerProps = {
   open: boolean;
@@ -18,7 +19,7 @@ export default function AnchorTemporaryDrawer({
   toggleDrawer,
 }: Readonly<AnchorTemporaryDrawerProps>) {
   const token = localStorage.getItem("token");
-  const firstName = TokenDecoder();
+  const firstName = getNameFromToken();
 
   function LogOut() {
     localStorage.clear();
@@ -95,7 +96,7 @@ export default function AnchorTemporaryDrawer({
               fontWeight: "bold",
               color: Colors.text.default,
             }}
-          >{`Hello! ${TokenDecoder()}`}</Typography>
+          >{`Hello! ${getNameFromToken()}`}</Typography>
           <Button
             sx={{
               alignItems: "center",

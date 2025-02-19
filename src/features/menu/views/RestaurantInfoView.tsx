@@ -8,7 +8,7 @@ import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getRestaurants } from "../../../backend/getRestaurants";
+import { getRestaurants } from "../../../services/getRestaurants";
 import { Colors } from "../../../theme";
 
 interface Restaurant {

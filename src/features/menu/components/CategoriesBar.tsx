@@ -2,7 +2,7 @@
 import { Box, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import CategoryChip from "./CategoryChip";
-import { getCategories } from "../../../backend/getCategories";
+import { getCategories } from "../../../services/getCategories";
 import { ICategory } from "../../../data/Sides";
 import { Colors } from "../../../theme";
 
