@@ -1,4 +1,9 @@
-export const logInUser = async (email: string, password: string) => {
+import { CheckLogInResponse } from "../../types/auth";
+
+export const logInUser = async (
+  email: string,
+  password: string,
+): Promise<CheckLogInResponse> => {
   try {
     const response = await fetch("/api/auth/login", {
       method: "POST",
@@ -8,7 +13,7 @@ export const logInUser = async (email: string, password: string) => {
       body: JSON.stringify({ email, password }),
     });
 
-    const data = await response.json();
+    const data: CheckLogInResponse = await response.json();
 
     if (!response.ok) {
       throw new Error(data.message || "Login failed");

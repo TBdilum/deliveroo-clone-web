@@ -1,3 +1,5 @@
+import { CheckRestaurantsResponse } from "../../types/restaurants";
+
 export const getRestaurants = async (orgId: string) => {
   try {
     const response = await fetch(
@@ -7,7 +9,7 @@ export const getRestaurants = async (orgId: string) => {
     if (!response.ok) {
       throw new Error("Restaurant not found");
     }
-    const data = await response.json();
+    const data: CheckRestaurantsResponse = await response.json();
     return data.data;
   } catch (error) {
     console.error("Error fetching Restaurant", error);

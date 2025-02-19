@@ -1,4 +1,9 @@
-export const createNewUser = async (email: string, password: string) => {
+import { CheckCreateNewUserResponse } from "../../types/auth";
+
+export const createNewUser = async (
+  email: string,
+  password: string,
+): Promise<CheckCreateNewUserResponse> => {
   try {
     const response = await fetch("/api/auth/signup", {
       method: "POST",
@@ -8,7 +13,7 @@ export const createNewUser = async (email: string, password: string) => {
       body: JSON.stringify({ email, password }),
     });
 
-    const data = await response.json();
+    const data: CheckCreateNewUserResponse = await response.json();
 
     if (!response.ok) {
       throw new Error(data.message || "Failed to create user");

@@ -1,4 +1,8 @@
-export const authenticateUser = async (email: string) => {
+import { CheckAuthenticateUserResponse } from "../../types/auth";
+
+export const authenticateUser = async (
+  email: string,
+): Promise<CheckAuthenticateUserResponse> => {
   try {
     const response = await fetch("/api/auth/check-email", {
       method: "POST",
@@ -6,7 +10,7 @@ export const authenticateUser = async (email: string) => {
       body: JSON.stringify({ email }),
     });
 
-    const data = await response.json();
+    const data: CheckAuthenticateUserResponse = await response.json();
     if (!data) {
       throw new Error("Empty response from server");
     }
