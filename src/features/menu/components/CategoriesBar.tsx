@@ -1,14 +1,11 @@
-/* eslint-disable react-refresh/only-export-components */
 import { Box, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import CategoryChip from "./CategoryChip";
-import { getCategories } from "../../../services/getCategories";
+import { getCategories } from "../../../services/category/getCategories";
 import { ICategory } from "../../../data/Sides";
 import { Colors } from "../../../theme";
 
-export const categories: ICategory[] = [];
-
-const CategoriesBar = () => {
+export const CategoriesBar = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [error, setError] = useState("");
@@ -80,5 +77,3 @@ const CategoriesBar = () => {
     </Box>
   );
 };
-
-export default CategoriesBar;

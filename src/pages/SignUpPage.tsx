@@ -1,86 +1,58 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Colors } from "../theme/colors";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
-import { createNewUser } from "../backend/createNewUser";
-import PasswordInput from "../PasswordInput";
-import { passwordSchema } from "../features/menu/validations/password.validation";
+import { createNewUser } from "../services/auth/createNewUser";
 import { useSnackbar } from "notistack";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { useForm, Controller } from "react-hook-form";
+import TextInput from "../components/TextInput";
 import Button from "../components/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import hashPassword from "../PasswordHasherBcrypt";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+type SignUpForm = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 const SignUpPage = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [checked, setChecked] = useState(false);
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [confirmError, setConfirmError] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const emailFromLogin = searchParams.get("email") ?? "";
 
-  const [email, setEmail] = useState(emailFromLogin);
+  const schema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+    confirmPassword: z.string().min(6),
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    const hashedPassword = hashPassword(password);
+  const form = useForm<SignUpForm>({
+    resolver: zodResolver(schema),
+  });
 
-    try {
-      const data = await createNewUser(email, hashedPassword);
+  const handleSubmit = form.handleSubmit(async (values) => {
+    const { email, confirmPassword } = values;
 
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        enqueueSnackbar("Account created successfully!", {
-          variant: "success",
-        });
-        navigate("/");
-      }
-    } catch (err: any) {
-      setError(err.data.message);
+    const data = await createNewUser(email, confirmPassword);
+
+    if (data?.token) {
+      localStorage.setItem("token", data.token);
+      enqueueSnackbar("Account created successfully!", {
+        variant: "success",
+      });
+      navigate("/");
     }
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const passwordValue = e.target.value;
-    setPassword(passwordValue);
-    try {
-      passwordSchema.parse(passwordValue);
-      setError("");
-    } catch (err: any) {
-      setError(err.errors[0].message);
-    }
-  };
-
-  const handleConfirmPasswordChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const confirmPasswordValue = e.target.value;
-    setConfirmPassword(confirmPasswordValue);
-
-    try {
-      if (confirmPasswordValue !== password) {
-        setConfirmError("Passwords do not match");
-        setIsButtonDisabled(true);
-      } else {
-        setIsButtonDisabled(false);
-        setConfirmError("");
-      }
-    } catch (err: any) {
-      setConfirmError(err.errors[0].message);
-      setIsButtonDisabled(true);
-    }
-  };
+  });
 
   function label() {
     return (
@@ -112,7 +84,7 @@ const SignUpPage = () => {
     >
       <Box>
         <Button
-          onClick={() => navigate("/Account/LogIn")}
+          onClick={() => navigate("/Account")}
           PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
           sx={{
             border: "none",
@@ -130,7 +102,7 @@ const SignUpPage = () => {
           Back
         </Button>
       </Box>
-      <Box sx={{ width: "100%", maxWidth: "400px" }}>
+      <Box sx={{ width: "100%", minWidth: "200px", maxWidth: "400px" }}>
         <form onSubmit={handleSubmit}>
           <Typography
             sx={{
@@ -142,64 +114,55 @@ const SignUpPage = () => {
           >
             Sign Up
           </Typography>
-          <label>
-            <Typography
-              sx={{ fontWeight: "normal", color: Colors.text.default }}
-            >
-              Email
-            </Typography>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g name@example.com"
-              required
-              style={{
-                outlineColor: Colors.text.default,
-                border: `1px solid ${Colors.border.default}`,
-                padding: "1.5rem",
-                fontSize: "1rem",
-                width: "100%",
-                height: "40px",
-                marginBottom: "1rem",
-                marginTop: "0.5rem",
-                borderRadius: "3px",
-                boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
-              }}
-            />
-          </label>
-          <label>
-            <Typography
-              sx={{ fontWeight: "normal", color: Colors.text.default }}
-            >
-              Password
-            </Typography>
-            <PasswordInput
-              onChange={handlePasswordChange}
-              value={password}
-              error={error}
-            />
-            {error && (
-              <Typography color="error" sx={{ textAlign: "left" }}>
-                {error}
-              </Typography>
+          <Controller
+            control={form.control}
+            name="email"
+            render={({ field, fieldState }) => (
+              <TextInput
+                label="Email address"
+                value={field.value ?? emailFromLogin}
+                onChange={field.onChange}
+                error={fieldState.error?.message}
+                placeholder="e.g. name@example.com"
+                type="email"
+                autoComplete="email"
+                required
+              />
             )}
-            <Typography
-              sx={{ fontWeight: "normal", color: Colors.text.default, mt: 2 }}
-            >
-              Confirm Password
-            </Typography>
-            <PasswordInput
-              onChange={handleConfirmPasswordChange}
-              value={confirmPassword}
-              error={confirmError}
-            />
-            {confirmError && (
-              <Typography color="error" sx={{ textAlign: "left" }}>
-                {confirmError}
-              </Typography>
+          />
+          <Controller
+            control={form.control}
+            name="password"
+            render={({ field, fieldState }) => (
+              <TextInput
+                label="Password"
+                value={field.value ?? ""}
+                onChange={field.onChange}
+                error={fieldState.error?.message}
+                placeholder="Please enter a password"
+                type="password"
+                autoComplete="password"
+                required
+              />
             )}
-          </label>
+          />
+
+          <Controller
+            control={form.control}
+            name="password"
+            render={({ field, fieldState }) => (
+              <TextInput
+                label="Confirm Password"
+                value={field.value ?? ""}
+                onChange={field.onChange}
+                error={fieldState.error?.message}
+                placeholder="Confirm password"
+                type="password"
+                autoComplete="password"
+                required
+              />
+            )}
+          />
           <FormGroup>
             <FormControlLabel
               control={
@@ -213,37 +176,23 @@ const SignUpPage = () => {
             />
           </FormGroup>
 
-          <Box
-            style={{
+          <Button
+            disabled={!form.formState.isValid}
+            type="button"
+            onClick={() => {}}
+            sx={{
+              cursor: "pointer",
+              mt: 2,
+              padding: "0.7rem",
+              fontWeight: "bold",
+              mb: 1,
               width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              marginTop: "2rem",
-              marginBottom: "1rem",
+              backgroundColor: Colors.background.brand,
+              color: Colors.text.inverse,
             }}
           >
-            <Button
-              type="submit"
-              sx={{
-                cursor: "pointer",
-                disabled: isButtonDisabled ? "none" : "flex",
-                padding: "0.7rem",
-                fontWeight: "bold",
-                mb: 1,
-                width: "100%",
-                backgroundColor:
-                  !checked || isButtonDisabled
-                    ? Colors.background.subtleLight
-                    : Colors.background.brand,
-                color:
-                  !checked || isButtonDisabled
-                    ? Colors.text.placeholder
-                    : Colors.text.inverse,
-              }}
-            >
-              Create Account
-            </Button>
-          </Box>
+            Create Account
+          </Button>
         </form>
       </Box>
     </Box>

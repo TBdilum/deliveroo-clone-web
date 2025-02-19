@@ -1,79 +1,62 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import { useMemo, useState } from "react";
 import { Box, Typography } from "@mui/material";
-import { authenticateUser } from "../backend/authenticateUser";
 import { Colors } from "../theme/colors";
-import { emailSchema } from "../features/menu/validations/email.validation";
-import { passwordSchema } from "../features/menu/validations/password.validation";
-import { logInUser } from "../backend/logInUser";
 import { useNavigate } from "react-router-dom";
-import PasswordInput from "../PasswordInput";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Button from "../components/Button";
-import hashPassword from "../PasswordHasherBcrypt";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+import { useForm, Controller } from "react-hook-form";
+import TextInput from "../components/TextInput";
+import { logInUser } from "../services/auth/logInUser";
+import { authenticateUser } from "../services/auth/authenticateUser";
+
+type LoginForm = {
+  email: string;
+  password?: string;
+};
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [showPasswordField, setShowPasswordField] = useState(false);
+  const [buttonText, setButtonText] = useState("Continue");
+
+  const schema = useMemo(
+    () =>
+      z.object({
+        email: z.string().email(),
+        password: showPasswordField ? z.string() : z.string().optional(),
+      }),
+    [showPasswordField],
+  );
+
+  const form = useForm<LoginForm>({
+    resolver: zodResolver(schema),
+  });
+
   const [showCreateAccount, setShowCreateAccount] = useState(false);
   const navigate = useNavigate();
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const email = e.target.value;
-    setEmail(email);
-    try {
-      emailSchema.parse(email);
-      setError("");
-      setIsButtonDisabled(false);
-    } catch (err: any) {
-      setError(err.errors[0].message);
-      setIsButtonDisabled(true);
-    }
-  };
+  const handleSubmit = form.handleSubmit(async (values) => {
+    const { email, password } = values;
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const passwordValue = e.target.value;
-    setPassword(passwordValue);
-    try {
-      passwordSchema.parse(passwordValue);
-      setError("");
-      setIsButtonDisabled(false);
-    } catch (err: any) {
-      setError(err.errors[0].message);
-      setIsButtonDisabled(true);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    const hashedPassword = hashPassword(password);
-    try {
-      if (email && hashedPassword) {
-        const response = await logInUser(email, hashedPassword);
-        if (response?.token) {
-          localStorage.setItem("token", response.token);
-          navigate("/");
-        }
-      } else {
-        const response = await authenticateUser(email);
-        if (response?.token) {
-          localStorage.setItem("token", response.token);
-          setShowPasswordField(true);
-          setIsButtonDisabled(true);
-        }
-      }
-    } catch (err: any) {
-      setError(err.message || "An error occurred");
+    const response = await authenticateUser(email);
+    if (response?.token) {
+      setShowPasswordField(true);
+      setButtonText("Log In");
+    } else {
       setShowCreateAccount(true);
-      setIsButtonDisabled(true);
+      return;
     }
-  };
 
-  const token = localStorage.getItem("token");
+    if (email && password) {
+      const response = await logInUser(email, password);
+      if (response?.token) {
+        localStorage.setItem("token", response.token);
+        navigate("/");
+      }
+    }
+  });
 
   return (
     <Box
@@ -119,61 +102,51 @@ export default function Login() {
               color: Colors.text.default,
             }}
           >
-            {token ? "Log In" : "Sign Up Or Log In"}
+            {buttonText}
           </Typography>
-          <label>
-            <Typography
-              sx={{ fontWeight: "normal", color: Colors.text.default }}
-            >
-              Email address
-            </Typography>
-            <input
-              type="email"
-              value={email}
-              placeholder="e.g. name@example.com"
-              autoComplete="email"
-              required
-              onChange={handleEmailChange}
-              readOnly={showPasswordField}
-              style={{
-                padding: "1.5rem",
-                fontSize: "1rem",
-                width: "100%",
-                height: "40px",
-                marginTop: "0.5rem",
-                outlineColor: Colors.text.default,
-                border: `1px solid ${Colors.border.default}`,
-                borderRadius: "3px",
-                boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
-              }}
-            />
-          </label>
+          <Controller
+            control={form.control}
+            name="email"
+            render={({ field, fieldState }) => (
+              <TextInput
+                label="Email address"
+                value={field.value ?? ""}
+                onChange={field.onChange}
+                error={fieldState.error?.message}
+                placeholder="e.g. name@example.com"
+                type="email"
+                autoComplete="email"
+                required
+              />
+            )}
+          />
 
           {showPasswordField && (
-            <Box>
-              <Typography
-                sx={{ fontWeight: "normal", color: Colors.text.default }}
-              >
-                Password
-              </Typography>
-              <PasswordInput
-                value={password}
-                onChange={handlePasswordChange}
-                error={error}
-              />
-            </Box>
+            <Controller
+              control={form.control}
+              name="password"
+              render={({ field, fieldState }) => (
+                <TextInput
+                  label="Password"
+                  value={field.value ?? ""}
+                  onChange={field.onChange}
+                  error={fieldState.error?.message}
+                  placeholder="Please enter the password"
+                  type="password"
+                  autoComplete="password"
+                  required
+                />
+              )}
+            />
           )}
 
-          {error && (
-            <Typography color="error" sx={{ mb: 1.5, textAlign: "center" }}>
-              {error}
-            </Typography>
-          )}
           {showCreateAccount && (
             <Button
               type="button"
               onClick={() =>
-                navigate(`/Account/SignUp?email=${encodeURIComponent(email)}`)
+                navigate(
+                  `/Account/SignUp?email=${encodeURIComponent(form.getValues("email"))}`,
+                )
               }
               sx={{
                 cursor: "pointer",
@@ -190,20 +163,15 @@ export default function Login() {
           )}
 
           <Button
+            disabled={!form.formState.isValid}
             type="submit"
-            disabled={isButtonDisabled}
+            variant="filled"
             sx={{
-              cursor: isButtonDisabled ? "not-allowed" : "pointer",
               display: showCreateAccount ? "none" : "flex",
-              padding: "0.7rem",
               fontWeight: "bold",
               mt: 2,
               mb: 1,
               width: "100%",
-              backgroundColor: isButtonDisabled
-                ? Colors.background.default
-                : Colors.background.brand,
-              color: Colors.text.inverse,
             }}
           >
             {showPasswordField ? "Log in" : "Continue"}

@@ -24,7 +24,7 @@ const MealDeal = () => {
         }}
       >
         <img
-          src="/assets/MealDealsBackground.svg"
+          src="src/assets/svgs/MealDealsBackground.svg"
           alt="Meal Deals Background"
           style={{
             width: "100%",
@@ -51,7 +51,7 @@ const MealDeal = () => {
           sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}
         >
           <img
-            src="/assets/merch-sparkleleft.svg"
+            src="src/assets/svgs/merch-sparkleleft.svg"
             alt="Sparkle Left"
             style={{
               minWidth: "50px",
@@ -73,7 +73,7 @@ const MealDeal = () => {
             Up to 25% off meal deals
           </Typography>
           <img
-            src="/assets/merch-sparkleright.svg"
+            src="src/assets/svgs/merch-sparkleright.svg"
             alt="Sparkle Right"
             style={{
               minWidth: "50px",
@@ -112,7 +112,7 @@ const MealDeal = () => {
       </Box>
 
       <img
-        src="/assets/merch-itemrow.svg"
+        src="src/assets/svgs/merch-itemrow.svg"
         alt="item-row"
         style={{
           minHeight: "40px",

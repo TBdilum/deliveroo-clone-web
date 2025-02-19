@@ -8,7 +8,7 @@ import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getRestaurants } from "../../../services/getRestaurants";
+import { getRestaurants } from "../../../services/restaurant/getRestaurants";
 import { Colors } from "../../../theme";
 
 interface Restaurant {
@@ -39,8 +39,7 @@ const RestaurantInfoView = () => {
           } else {
             setRestaurant(data);
           }
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        } catch (err) {
+        } catch {
           setError("Failed to fetch restaurant data");
         }
       } else {

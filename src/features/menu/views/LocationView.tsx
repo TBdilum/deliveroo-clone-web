@@ -1,7 +1,5 @@
-import { Box, Container, Typography } from "@mui/material";
-import { Grid2 as Grid } from "@mui/material";
-import { GooglePlayButton } from "react-mobile-app-button";
-import { AppStoreButton } from "react-mobile-app-button";
+import { Box, Container, Typography, Grid2 as Grid } from "@mui/material";
+import { GooglePlayButton, AppStoreButton } from "react-mobile-app-button";
 import { Colors } from "../../../theme";
 
 const LocationView = () => {

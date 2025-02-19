@@ -10,6 +10,7 @@ type ButtonProps = ButtonBaseProps & {
   PrefixComponent?: React.ReactNode;
   SuffixComponent?: React.ReactNode;
   linkTo?: To;
+  variant?: "border" | "filled";
 };
 
 function Button({
@@ -17,9 +18,11 @@ function Button({
   PrefixIcon,
   PrefixComponent,
   SuffixComponent,
-  sx,
+  sx = {},
   title,
+  variant = "border",
   linkTo,
+  disabled,
   ...props
 }: ButtonProps) {
   return (
@@ -37,12 +40,20 @@ function Button({
         },
         display: { xs: "flex", sm: "flex" },
         fontSize: "1rem",
-        backgroundColor: Colors.background.light,
-        ...(sx ?? {}),
+
+        minHeight: "42px",
         alignItems: "center",
         justifyContent: "center",
         paddingRight: { xs: "0.5rem", sm: "1rem" },
         paddingLeft: { xs: "0.5rem", sm: "1rem" },
+
+        backgroundColor: disabled
+          ? Colors.background.default
+          : variant === "border"
+            ? Colors.background.light
+            : Colors.background.brand,
+        color: variant === "border" ? Colors.text.default : Colors.text.inverse,
+        ...sx,
       }}
     >
       {PrefixIcon && (

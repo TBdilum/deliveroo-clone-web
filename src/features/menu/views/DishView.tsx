@@ -2,7 +2,7 @@ import { Box, Grid2 as Grid, Typography } from "@mui/material";
 import { dishes, IDish } from "../../../data/Sides";
 import Dish from "../components/Dish";
 import { useMemo } from "react";
-import { categories } from "../components/CategoriesBar";
+import { categories } from "../../../data/categories";
 import { Colors } from "../../../theme/colors";
 
 const DishView = () => {
