@@ -16,12 +16,12 @@ export const logInUser = async (
     const data: CheckLogInResponse = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || "Login failed");
+      return { message: data.message || "Login failed" };
     }
 
     return data;
   } catch (error) {
     console.error("Error Logging in user:", error);
-    throw error;
+    return { message: "Something went wrong. Please try again." };
   }
 };

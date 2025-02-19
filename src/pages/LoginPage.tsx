@@ -46,20 +46,30 @@ export default function Login() {
     const { email, password } = values;
 
     const response = await authenticateUser(email);
+
     if (response?.token) {
       setShowPasswordField(true);
       setButtonText("Log In");
     }
+
     if (response.message === "Email not found. Please create an account.") {
       setShowCreateAccount(true);
       setEmailError(response.message);
+      return;
     }
 
     if (email && password) {
-      const response = await logInUser(email, password);
-      if (response?.token) {
-        localStorage.setItem("token", response.token);
+      const loginResponse = await logInUser(email, password);
+
+      if (loginResponse?.token) {
+        localStorage.setItem("token", loginResponse.token);
         navigate("/");
+      } else {
+        setShowPasswordField(true);
+        form.setError("password", {
+          type: "manual",
+          message: loginResponse.message || "Invalid password",
+        });
       }
     }
   });
@@ -123,6 +133,7 @@ export default function Login() {
                 type="email"
                 autoComplete="email"
                 required
+                disabled={showPasswordField}
               />
             )}
           />

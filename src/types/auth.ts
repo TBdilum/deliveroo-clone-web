@@ -5,7 +5,7 @@ export type CheckAuthenticateUserResponse = {
 };
 
 export type CheckLogInResponse = {
-  data: string;
+  data?: string;
   token?: string;
   message: string;
 };
