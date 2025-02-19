@@ -11,6 +11,8 @@ import { useForm, Controller } from "react-hook-form";
 import TextInput from "../components/TextInput";
 import { logInUser } from "../services/auth/logInUser";
 import { authenticateUser } from "../services/auth/authenticateUser";
+import { emailSchema } from "../features/menu/validations/email.validation";
+import { passwordSchema } from "../features/menu/validations/password.validation";
 
 type LoginForm = {
   email: string;
@@ -25,8 +27,10 @@ export default function Login() {
   const schema = useMemo(
     () =>
       z.object({
-        email: z.string().email(),
-        password: showPasswordField ? z.string() : z.string().optional(),
+        email: emailSchema,
+        password: showPasswordField
+          ? passwordSchema
+          : passwordSchema.optional(),
       }),
     [showPasswordField],
   );

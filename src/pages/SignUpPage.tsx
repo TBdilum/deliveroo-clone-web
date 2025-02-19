@@ -14,6 +14,8 @@ import Button from "../components/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { emailSchema } from "../features/menu/validations/email.validation";
+import { passwordSchema } from "../features/menu/validations/password.validation";
 
 type SignUpForm = {
   email: string;
@@ -32,8 +34,8 @@ const SignUpPage = () => {
 
   const schema = z
     .object({
-      email: z.string().email(),
-      password: z.string().min(6),
+      email: emailSchema,
+      password: passwordSchema,
       confirmPassword: z.string().min(6),
     })
     .superRefine(({ password, confirmPassword }, ctx) => {
