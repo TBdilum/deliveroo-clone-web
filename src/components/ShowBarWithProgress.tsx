@@ -1,5 +1,5 @@
 import LinearProgress from "@mui/material/LinearProgress";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Colors } from "../theme";
@@ -14,22 +14,15 @@ const ShowBarWithProgress = () => {
     return () => clearInterval(timer);
   }, []);
 
-  function LogOut() {
-    localStorage.clear();
-    window.location.reload();
-  }
-
   return (
     <Box
       sx={{
         width: "100%",
-        mt: 2,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      {/* Profile Completion Box */}
       <Box
         sx={{
           display: "flex",
@@ -68,26 +61,8 @@ const ShowBarWithProgress = () => {
           />
         </Box>
 
-        {/* Arrow Icon */}
         <ArrowForwardIosIcon sx={{ color: "#00CCBC", ml: 2 }} />
       </Box>
-
-      {/* Log Out Button */}
-      <Button
-        onClick={LogOut}
-        sx={{
-          mt: 2,
-          width: "100%",
-          maxWidth: "90%",
-          backgroundColor: Colors.background.brand,
-          color: Colors.text.inverse,
-          fontWeight: "bold",
-          padding: "0.8rem",
-          borderRadius: "8px",
-        }}
-      >
-        Log Out
-      </Button>
     </Box>
   );
 };

@@ -79,9 +79,7 @@ export default function AnchorTemporaryDrawer({
           </Link>
         </Box>
       )}
-
-      {token && firstName === "" && <ShowBarWithProgress />}
-      {token && firstName !== "" && (
+      {token && (
         <Box
           sx={{
             display: "flex",
@@ -92,58 +90,72 @@ export default function AnchorTemporaryDrawer({
           <Typography
             sx={{
               mt: "4rem",
+              mb: "2rem",
               fontSize: "2rem",
               fontWeight: "bold",
               color: Colors.text.default,
             }}
-          >{`Hello! ${getNameFromToken()}`}</Typography>
+          >{`Hello! ${firstName || "Guest"}`}</Typography>
+          {token && (firstName === "" || firstName === undefined) && (
+            <ShowBarWithProgress />
+          )}
           <Button
             sx={{
-              alignItems: "center",
-              width: "90%",
-              marginTop: "4rem",
+              mt: 5,
+              width: "100%",
+              maxWidth: "90%",
               backgroundColor: Colors.background.brand,
               color: Colors.text.inverse,
+              fontWeight: "bold",
+              padding: "0.8rem",
+              borderRadius: "8px",
             }}
           >
             Dashboard
           </Button>
           <Button
             sx={{
-              alignItems: "center",
-              width: "90%",
-              marginTop: "1rem",
+              mt: 2,
+              width: "100%",
+              maxWidth: "90%",
               backgroundColor: Colors.background.brand,
               color: Colors.text.inverse,
+              fontWeight: "bold",
+              padding: "0.8rem",
+              borderRadius: "8px",
             }}
           >
             Settings
           </Button>
-          <Button
-            onClick={() => LogOut()}
-            sx={{
-              alignItems: "center",
 
-              width: "90%",
-              marginTop: "1rem",
-              backgroundColor: Colors.background.brand,
-              color: Colors.text.inverse,
-            }}
-          >
-            Log Out
-          </Button>
           <Button
             sx={{
-              alignItems: "center",
-
-              width: "90%",
-              top: "350px",
-              marginTop: "1rem",
+              mt: 2,
+              width: "100%",
+              maxWidth: "90%",
               backgroundColor: Colors.background.brand,
               color: Colors.text.inverse,
+              fontWeight: "bold",
+              padding: "0.8rem",
+              borderRadius: "8px",
             }}
           >
             Checkout
+          </Button>
+          <Button
+            onClick={LogOut}
+            sx={{
+              mt: 2,
+              width: "100%",
+              maxWidth: "90%",
+              backgroundColor: Colors.background.brand,
+              color: Colors.text.inverse,
+              fontWeight: "bold",
+              padding: "0.8rem",
+              borderRadius: "8px",
+            }}
+          >
+            Log Out
           </Button>
         </Box>
       )}
