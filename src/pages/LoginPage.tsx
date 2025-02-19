@@ -20,6 +20,7 @@ type LoginForm = {
 export default function Login() {
   const [showPasswordField, setShowPasswordField] = useState(false);
   const [buttonText, setButtonText] = useState("Continue");
+  const [emailError, setEmailError] = useState("");
 
   const schema = useMemo(
     () =>
@@ -44,9 +45,10 @@ export default function Login() {
     if (response?.token) {
       setShowPasswordField(true);
       setButtonText("Log In");
-    } else {
+    }
+    if (response.message === "Email not found. Please create an account.") {
       setShowCreateAccount(true);
-      return;
+      setEmailError(response.message);
     }
 
     if (email && password) {
@@ -112,7 +114,7 @@ export default function Login() {
                 label="Email address"
                 value={field.value ?? ""}
                 onChange={field.onChange}
-                error={fieldState.error?.message}
+                error={fieldState.error?.message ?? emailError}
                 placeholder="e.g. name@example.com"
                 type="email"
                 autoComplete="email"

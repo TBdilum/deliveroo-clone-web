@@ -77,3 +77,5 @@ export const CategoriesBar = () => {
     </Box>
   );
 };
+
+export default CategoriesBar;

@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Colors } from "../theme/colors";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createNewUser } from "../services/auth/createNewUser";
 import { useSnackbar } from "notistack";
 import Checkbox from "@mui/material/Checkbox";
@@ -30,15 +30,32 @@ const SignUpPage = () => {
 
   const emailFromLogin = searchParams.get("email") ?? "";
 
-  const schema = z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
-    confirmPassword: z.string().min(6),
-  });
+  const schema = z
+    .object({
+      email: z.string().email(),
+      password: z.string().min(6),
+      confirmPassword: z.string().min(6),
+    })
+    .superRefine(({ password, confirmPassword }, ctx) => {
+      if (password !== confirmPassword) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Passwords do not match",
+          path: ["confirmPassword"],
+        });
+      }
+    });
 
   const form = useForm<SignUpForm>({
     resolver: zodResolver(schema),
+    mode: "onChange",
   });
+
+  useEffect(() => {
+    if (emailFromLogin) {
+      form.setValue("email", emailFromLogin);
+    }
+  }, [emailFromLogin, form]);
 
   const handleSubmit = form.handleSubmit(async (values) => {
     const { email, confirmPassword } = values;
@@ -104,44 +121,17 @@ const SignUpPage = () => {
       </Box>
       <Box sx={{ width: "100%", minWidth: "200px", maxWidth: "400px" }}>
         <form onSubmit={handleSubmit}>
-          <Typography
-            sx={{
-              fontWeight: "bolder",
-              mb: 3,
-              fontSize: "1.5rem",
-              color: Colors.text.default,
-            }}
-          >
-            Sign Up
-          </Typography>
           <Controller
             control={form.control}
             name="email"
             render={({ field, fieldState }) => (
               <TextInput
                 label="Email address"
-                value={field.value ?? emailFromLogin}
-                onChange={field.onChange}
+                {...field}
                 error={fieldState.error?.message}
                 placeholder="e.g. name@example.com"
                 type="email"
                 autoComplete="email"
-                required
-              />
-            )}
-          />
-          <Controller
-            control={form.control}
-            name="password"
-            render={({ field, fieldState }) => (
-              <TextInput
-                label="Password"
-                value={field.value ?? ""}
-                onChange={field.onChange}
-                error={fieldState.error?.message}
-                placeholder="Please enter a password"
-                type="password"
-                autoComplete="password"
                 required
               />
             )}
@@ -152,13 +142,28 @@ const SignUpPage = () => {
             name="password"
             render={({ field, fieldState }) => (
               <TextInput
+                label="Password"
+                {...field}
+                error={fieldState.error?.message}
+                placeholder="Please enter a password"
+                type="password"
+                autoComplete="new-password"
+                required
+              />
+            )}
+          />
+
+          <Controller
+            control={form.control}
+            name="confirmPassword"
+            render={({ field, fieldState }) => (
+              <TextInput
                 label="Confirm Password"
-                value={field.value ?? ""}
-                onChange={field.onChange}
+                {...field}
                 error={fieldState.error?.message}
                 placeholder="Confirm password"
                 type="password"
-                autoComplete="password"
+                autoComplete="new-password"
                 required
               />
             )}
@@ -177,18 +182,14 @@ const SignUpPage = () => {
           </FormGroup>
 
           <Button
-            disabled={!form.formState.isValid}
-            type="button"
-            onClick={() => {}}
+            disabled={!form.formState.isValid || !checked}
+            type="submit"
+            variant="filled"
             sx={{
-              cursor: "pointer",
-              mt: 2,
-              padding: "0.7rem",
               fontWeight: "bold",
+              mt: 2,
               mb: 1,
               width: "100%",
-              backgroundColor: Colors.background.brand,
-              color: Colors.text.inverse,
             }}
           >
             Create Account

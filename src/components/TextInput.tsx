@@ -1,4 +1,4 @@
-import { TextField, Typography, TextFieldProps } from "@mui/material";
+import { TextField, Typography, TextFieldProps, Box } from "@mui/material";
 import { Colors } from "../theme";
 
 type TextInputProps = Omit<TextFieldProps, "error"> & {
@@ -7,7 +7,7 @@ type TextInputProps = Omit<TextFieldProps, "error"> & {
 
 function TextInput({ error, label, ...props }: TextInputProps) {
   return (
-    <>
+    <Box sx={{ marginBottom: "1rem" }}>
       <Typography sx={{ fontWeight: "normal", color: Colors.text.default }}>
         {label}
       </Typography>
@@ -18,7 +18,7 @@ function TextInput({ error, label, ...props }: TextInputProps) {
         sx={{
           fontSize: "1rem",
           marginTop: "0.5rem",
-          marginBottom: "1rem",
+
           outlineColor: Colors.text.default,
           borderRadius: "3px",
           boxShadow: `inset 0 1px 3px ${Colors.boxShadow.default}, inset 0 0 0 100px #fff`,
@@ -29,7 +29,7 @@ function TextInput({ error, label, ...props }: TextInputProps) {
           {error}
         </Typography>
       )}
-    </>
+    </Box>
   );
 }
 
