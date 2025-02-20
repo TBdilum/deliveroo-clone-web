@@ -1,3 +1,4 @@
+import axios from "axios";
 import { CheckCreateNewUserResponse } from "../../types/auth";
 
 export const createNewUser = async (
@@ -5,17 +6,14 @@ export const createNewUser = async (
   password: string,
 ): Promise<CheckCreateNewUserResponse> => {
   try {
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
+    const response = await axios.post("/api/auth/signup", {
+      email,
+      password,
     });
 
-    const data: CheckCreateNewUserResponse = await response.json();
+    const data: CheckCreateNewUserResponse = await response.data;
 
-    if (!response.ok) {
+    if (!data.token) {
       throw new Error(data.message || "Failed to create user");
     }
 

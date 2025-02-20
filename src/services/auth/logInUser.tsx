@@ -1,3 +1,4 @@
+import axios from "axios";
 import { CheckLogInResponse } from "../../types/auth";
 
 export const logInUser = async (
@@ -5,17 +6,14 @@ export const logInUser = async (
   password: string,
 ): Promise<CheckLogInResponse> => {
   try {
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
+    const response = await axios.post("/api/auth/login", {
+      email,
+      password,
     });
 
-    const data: CheckLogInResponse = await response.json();
+    const data: CheckLogInResponse = await response.data;
 
-    if (!response.ok) {
+    if (!data.token) {
       return { message: data.message || "Login failed" };
     }
 
