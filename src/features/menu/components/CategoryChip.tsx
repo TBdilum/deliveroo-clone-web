@@ -22,9 +22,7 @@ const CategoryChip = ({ data, onClick, selected }: CategoryChipProps) => {
         backgroundColor: selected
           ? Colors.background.brand
           : Colors.background.defaultLight,
-        color: selected
-          ? Colors.background.defaultLight
-          : Colors.background.brand,
+        color: selected ? Colors.text.inverse : Colors.background.brand,
         borderRadius: "20px",
         border: "none",
         fontWeight: selected ? "bold" : "regular",

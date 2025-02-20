@@ -1,14 +1,16 @@
-import { CheckGetCategoriesResponse } from "../../types/category";
+import { ICategory } from "../../data/Sides";
 
-export const getCategories = async () => {
+export const getCategories = async (): Promise<ICategory[]> => {
   try {
     const response = await fetch("/api/categories");
     if (!response.ok) {
       throw new Error("Failed to fetch categories.");
     }
-    const data: CheckGetCategoriesResponse = await response.json();
-    return data.data;
+    const result = await response.json();
+
+    return Array.isArray(result.data) ? result.data : [];
   } catch (error) {
     console.error("Error fetching categories.", error);
+    return [];
   }
 };

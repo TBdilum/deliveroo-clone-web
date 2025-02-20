@@ -10,6 +10,7 @@ export interface IDish {
 }
 
 export interface ICategory {
+  data?: [string];
   id: number;
   name: string;
 }

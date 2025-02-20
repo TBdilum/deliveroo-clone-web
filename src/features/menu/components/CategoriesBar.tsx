@@ -6,7 +6,7 @@ import { ICategory } from "../../../data/Sides";
 import { Colors } from "../../../theme";
 
 export const CategoriesBar = () => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number>(1);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number>(0);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [error, setError] = useState("");
 
@@ -17,8 +17,8 @@ export const CategoriesBar = () => {
         if (!data) {
           setError("categories not found.");
         } else {
-          categories.push(data);
           setCategories(data);
+          setSelectedCategoryId(data[0].id);
         }
       } catch (error) {
         console.error("Error fetching categories", error);
@@ -49,9 +49,9 @@ export const CategoriesBar = () => {
         height: "70px",
         alignItems: "center",
         display: "flex",
-        top: "60px",
-        zIndex: "1001",
-        backgroundColor: Colors.background.defaultLight,
+        top: "68px",
+        zIndex: "1000",
+        backgroundColor: Colors.background.light,
       }}
     >
       <Container

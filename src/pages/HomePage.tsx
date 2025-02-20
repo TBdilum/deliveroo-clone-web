@@ -16,10 +16,9 @@ const HomePage = () => {
           width: "100%",
           backgroundColor: Colors.background.default,
           minHeight: "calc(100vh - 130px)",
-          overflowY: "auto",
         }}
       >
-        <Container maxWidth="xl" sx={{}}>
+        <Container maxWidth="xl">
           <Grid container spacing={2}>
             <Grid
               size={{

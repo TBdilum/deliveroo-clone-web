@@ -9,6 +9,15 @@ export type CheckFilteredRestaurantsResponse = {
 };
 
 export type CheckRestaurantsResponse = {
-  data: object;
+  data: {
+    name: string;
+    image: string;
+    description: string;
+    tags: [string];
+    openingAt: string;
+    closingAt: string;
+    minimumValue: string;
+    deliveryCharge: string;
+  };
   message: string;
 };

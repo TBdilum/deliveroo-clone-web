@@ -11,16 +11,16 @@ import { useEffect, useState } from "react";
 import { getRestaurants } from "../../../services/restaurant/getRestaurants";
 import { Colors } from "../../../theme";
 
-interface Restaurant {
+type Restaurant = {
   name: string;
   image: string;
   description: string;
-  tags: string[];
+  tags: [string];
   openingAt: string;
   closingAt: string;
   minimumValue: string;
   deliveryCharge: string;
-}
+};
 
 const RestaurantInfoView = () => {
   const [imageError, setImageError] = useState(false);
@@ -72,6 +72,7 @@ const RestaurantInfoView = () => {
         <Box sx={{ paddingBottom: "1rem" }}>
           <Button
             PrefixComponent={<ArrowBackIcon sx={{ height: "1.3rem" }} />}
+            onClick={() => window.history.back()}
             sx={{
               border: "none",
               gap: 1,
@@ -152,18 +153,19 @@ const RestaurantInfoView = () => {
                 display: "flex",
               }}
             >
-              {restaurant.tags.map((tag, index) => (
-                <Box key={index + tag} component="span">
-                  <Typography variant="body1" component="span">
-                    {tag}
-                  </Typography>
-                  {restaurant.tags.length > index + 1 && (
-                    <Typography sx={{ mx: 1 }} component="span">
-                      •
+              {restaurant.tags &&
+                restaurant.tags.map((tag, index) => (
+                  <Box key={index + tag} component="span">
+                    <Typography variant="body1" component="span">
+                      {tag}
                     </Typography>
-                  )}
-                </Box>
-              ))}
+                    {restaurant.tags.length > index + 1 && (
+                      <Typography sx={{ mx: 1 }} component="span">
+                        •
+                      </Typography>
+                    )}
+                  </Box>
+                ))}
             </Box>
             <Box
               sx={{

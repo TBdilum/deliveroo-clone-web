@@ -1,5 +1,4 @@
 import { Box, Container, Typography, Grid2 as Grid } from "@mui/material";
-import { useLocation } from "react-router-dom";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -7,22 +6,18 @@ import { GooglePlayButton, AppStoreButton } from "react-mobile-app-button";
 import { Colors } from "../theme";
 
 const Footer = () => {
-  const location = useLocation();
-  const isMainPage = location.pathname === "/";
-
   return (
     <div
       style={{
         backgroundColor: Colors.background.darker,
         paddingTop: "2rem",
-        position: isMainPage ? "sticky" : "static",
         width: "100%",
         display: "flex",
         bottom: "0",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: "auto",
+        margin: "auto",
       }}
     >
       <Container
