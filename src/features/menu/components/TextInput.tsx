@@ -1,5 +1,5 @@
 import { TextField, Typography, TextFieldProps, Box } from "@mui/material";
-import { Colors } from "../theme";
+import { Colors } from "../../../theme";
 
 type TextInputProps = Omit<TextFieldProps, "error"> & {
   error?: string;

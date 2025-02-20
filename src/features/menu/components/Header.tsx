@@ -3,12 +3,12 @@ import { Box, Container } from "@mui/material";
 import Button from "./Button";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import SearchBar from "../features/menu/components/SearchBar";
+import SearchBar from "./SearchBar";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Colors, Paddings, Svgs } from "../theme";
+import { Colors, Paddings, Svgs } from "../../../theme";
 import AnchorTemporaryDrawer from "./AccountSideBar";
 import React from "react";
-import { getNameFromToken } from "../utils/common";
+import { getNameFromToken } from "../../../utils/common";
 
 const Header = () => {
   const location = useLocation();

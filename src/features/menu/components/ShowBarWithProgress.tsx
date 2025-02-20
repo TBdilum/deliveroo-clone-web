@@ -2,7 +2,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 import { Box, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Colors } from "../theme";
+import { Colors } from "../../../theme";
 
 const ShowBarWithProgress = () => {
   const [progress, setProgress] = useState(0);

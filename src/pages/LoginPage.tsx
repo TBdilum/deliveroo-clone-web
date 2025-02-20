@@ -3,12 +3,12 @@ import { Box, Typography } from "@mui/material";
 import { Colors } from "../theme/colors";
 import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Button from "../components/Button";
+import Button from "../features/menu/components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
 import { useForm, Controller } from "react-hook-form";
-import TextInput from "../components/TextInput";
+import TextInput from "../features/menu/components/TextInput";
 import { logInUser } from "../services/auth/logInUser";
 import { authenticateUser } from "../services/auth/authenticateUser";
 import { emailSchema } from "../features/menu/validations/email.validation";

@@ -1,13 +1,13 @@
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { Link } from "react-router-dom";
-import { Colors, Svgs } from "../theme";
+import { Colors, Svgs } from "../../../theme";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { IconButton, Typography } from "@mui/material";
 import Button from "./Button";
 
 import ShowBarWithProgress from "./ShowBarWithProgress";
-import { getNameFromToken } from "../utils/common";
+import { getNameFromToken } from "../../../utils/common";
 
 type AnchorTemporaryDrawerProps = {
   open: boolean;

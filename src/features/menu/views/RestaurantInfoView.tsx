@@ -3,7 +3,7 @@ import InfoButton from "../components/InfoButton";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import LocationSelector from "../components/LocationSelector";
-import Button from "../../../components/Button";
+import Button from "../components/Button";
 import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams } from "react-router-dom";

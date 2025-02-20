@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonBase, ButtonBaseProps, Typography } from "@mui/material";
 import { Link, To } from "react-router-dom";
-import { Colors } from "../theme";
+import { Colors } from "../../../theme";
 
 type ButtonProps = ButtonBaseProps & {
   PrefixIcon?: React.ComponentType<{

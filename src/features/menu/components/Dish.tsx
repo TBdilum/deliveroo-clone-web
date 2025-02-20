@@ -1,6 +1,6 @@
 import { Box, Card, Typography } from "@mui/material";
 import { IDish } from "../../../data/Sides";
-import Button from "../../../components/Button";
+import Button from "./Button";
 import AddIcon from "@mui/icons-material/Add";
 import { Colors } from "../../../theme";
 

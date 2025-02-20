@@ -3,7 +3,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { GooglePlayButton, AppStoreButton } from "react-mobile-app-button";
-import { Colors } from "../theme";
+import { Colors } from "../../../theme";
 
 const Footer = () => {
   return (

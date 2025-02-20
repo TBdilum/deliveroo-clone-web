@@ -1,4 +1,4 @@
-import Button from "../components/Button";
+import Button from "../features/menu/components/Button";
 import { Box, Typography, Divider } from "@mui/material";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AppleIcon from "@mui/icons-material/Apple";
