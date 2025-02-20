@@ -23,6 +23,7 @@ const LandingPage = () => {
           flexDirection: "column",
           alignItems: "center",
           width: "100%",
+          overflow: "hidden",
         }}
       >
         <MainView />

@@ -69,7 +69,7 @@ const MainView = () => {
             src="/src/assets/images/right-2x.png"
             alt="Right Graphic"
             style={{
-              minWidth: "1000px",
+              maxWidth: "1000px",
               translate: "16% ",
               width: "400%",
               height: "auto",
