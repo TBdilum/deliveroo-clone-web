@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Colors, Svgs } from "../../../theme";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import { IconButton, Typography } from "@mui/material";
@@ -25,6 +25,8 @@ export default function AnchorTemporaryDrawer({
     localStorage.clear();
     window.location.reload();
   }
+
+  const navigate = useNavigate();
 
   const list = () => (
     <Box
@@ -97,7 +99,14 @@ export default function AnchorTemporaryDrawer({
             }}
           >{`Hello! ${firstName || "Guest"}`}</Typography>
           {token && (firstName === "" || firstName === undefined) && (
-            <ShowBarWithProgress />
+            <Box
+              onClick={() => {
+                navigate("/Account/CompleteSignUp");
+                toggleDrawer(false);
+              }}
+            >
+              <ShowBarWithProgress />
+            </Box>
           )}
           <Button
             sx={{

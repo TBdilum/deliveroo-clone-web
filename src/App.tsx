@@ -14,6 +14,7 @@ import FilteredRestaurantsPage from "./pages/FilteredRestaurantsPage";
 import SignUpPage from "./pages/SignUpPage";
 import SignPageLayout from "./layout/SignPageLayout";
 import LoginPage from "./pages/LoginPage";
+import AccountCompletionPage from "./pages/AccountCompletionPage";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -42,6 +43,14 @@ const App = () => {
             element={
               <WithPageTitle title="Account">
                 <AccountPage />
+              </WithPageTitle>
+            }
+          ></Route>
+          <Route
+            path="CompleteSignUp"
+            element={
+              <WithPageTitle title="Complete SignUp">
+                <AccountCompletionPage />
               </WithPageTitle>
             }
           ></Route>
